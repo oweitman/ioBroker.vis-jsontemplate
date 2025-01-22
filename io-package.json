@@ -1,0 +1,101 @@
+{
+  "common": {
+    "name": "jsontemplate",
+    "version": "0.0.1",
+    "news": {
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "uk": "Початкова версія",
+        "zh-cn": "首次出版"
+      }
+    },
+    "titleLang": {
+      "en": "jsonTemplate",
+      "de": "jsonTemplate",
+      "ru": "jsonШаблон",
+      "pt": "jsonTemplate",
+      "nl": "jsonTemplate",
+      "fr": "jsonModèle",
+      "it": "jsonTemplate",
+      "es": "plantilla json",
+      "pl": "szablon json",
+      "uk": "jsonTemplate",
+      "zh-cn": "json模板"
+    },
+    "desc": {
+      "en": "Display jsondata with the help of html template",
+      "de": "Zeigen Sie JSON-Daten mit Hilfe einer HTML-Vorlage an",
+      "ru": "Отображение jsondata с помощью html-шаблона",
+      "pt": "Exibir jsondata com a ajuda do modelo html",
+      "nl": "Geef jsondata weer met behulp van een html-sjabloon",
+      "fr": "Afficher jsondata à l'aide d'un modèle HTML",
+      "it": "Visualizza jsondata con l'aiuto del modello HTML",
+      "es": "Mostrar jsondata con la ayuda de una plantilla html",
+      "pl": "Wyświetl jsondata za pomocą szablonu HTML",
+      "uk": "Відображення jsondata за допомогою html шаблону",
+      "zh-cn": "借助html模板显示jsondata"
+    },
+    "authors": ["oweitman <oweitman@gmx.de>"],
+    "keywords": ["json", "template", "html", "css", "datapoint"],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "jsontemplate.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.jsontemplate/main/admin/jsontemplate.png",
+    "readme": "https://github.com/oweitman/ioBroker.jsontemplate/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "restartAdapters": ["vis", "vis-2"],
+    "mode": "none",
+    "nogit": true,
+    "singleton": true,
+    "onlyWWW": true,
+    "type": "visualization-widgets",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "assumption",
+    "visWidgets": {
+      "jsontemplate": {
+        "ignoreInVersions": [2],
+        "components": [],
+        "i18n": true,
+        "url": ""
+      },
+      "vis2jsontemplateWidgets": {
+        "i18n": "component",
+        "name": "vis2jsontemplateWidgets",
+        "urlxx": "vis-2-widgets-jsontemplate/customWidgets.js",
+        "url": "http://localhost:4173/customWidgets.js",
+        "components": ["JSONTemplateWidget"]
+      }
+    },
+    "adminUI": {
+      "config": "none"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.19"
+      },
+      "vis"
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.13"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
+}

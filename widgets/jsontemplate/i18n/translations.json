@@ -1,0 +1,54 @@
+{
+    "json_oid": {
+        "en": "JSON data point",
+        "de": "JSON-Datenpunkt",
+        "ru": "Точка данных JSON",
+        "pt": "Ponto de dados JSON",
+        "nl": "JSON-gegevenspunt",
+        "fr": "Point de données JSON",
+        "it": "Punto dati JSON",
+        "es": "Punto de datos JSON",
+        "pl": "Punkt danych JSON",
+        "uk": "Точка даних JSON",
+        "zh-cn": "JSON data point"
+    },
+    "json_template": {
+        "en": "JSON Template",
+        "de": "JSON-Vorlage",
+        "ru": "Шаблон JSON",
+        "pt": "Modelo JSON",
+        "nl": "JSON-sjabloon",
+        "fr": "Modèle JSON",
+        "it": "Modello JSON",
+        "es": "Plantilla JSON",
+        "pl": "Szablon JSON",
+        "uk": "Шаблон JSON",
+        "zh-cn": "JSON Template"
+    },
+    "ova_dpCount": {
+        "en": "Number of datapoints",
+        "de": "Anzahl der Datenpunkte",
+        "ru": "Количество точек данных",
+        "pt": "Número de pontos de dados",
+        "nl": "Aantal datapunten",
+        "fr": "Nombre de points de données",
+        "it": "Numero di punti dati",
+        "es": "Número de puntos de datos",
+        "pl": "Liczba punktów danych",
+        "uk": "Кількість точок даних",
+        "zh-cn": "Number of datapoints"
+    },
+    "ova_dp": {
+        "en": "Datapoint",
+        "de": "Datenpunkt",
+        "ru": "Datapoint",
+        "pt": "Ponto de dados",
+        "nl": "Datapunt",
+        "fr": "Point de données",
+        "it": "Punto dati",
+        "es": "Datapoint",
+        "pl": "Datapoint",
+        "uk": "Точка даних",
+        "zh-cn": "Datapoint"
+    }
+}

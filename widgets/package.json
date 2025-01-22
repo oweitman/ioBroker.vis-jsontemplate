@@ -1,0 +1,13 @@
+{
+  "name": "jsontemplate-vis1-widget",
+  "version": "1.0.0",
+  "main": "jsontemplate/js/jsontemplate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild jsontemplate/js/bundle.js --bundle --outfile=jsontemplate/build/jsontemplate-dist.js --target=es6 --sourcemap",
+    "buildmin": "esbuild jsontemplate/js/bundle.js --minify --bundle --outfile=jsontemplate/build/jsontemplate-dist.js --target=es6 --sourcemap"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": ""
+}

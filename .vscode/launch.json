@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "vis edit",
+      "url": "http://127.0.0.1:8082/vis/edit.html#test",
+      "trace": true,
+      "skipFiles": ["socket.io.js"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "vis runtime",
+      "url": "http://127.0.0.1:8082/vis/index.html#main",
+      "trace": true,
+      "skipFiles": ["socket.io.js"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "vis2 Launch Edit",
+      "url": "http://127.0.0.1:8082/vis-2/edit.html#default",
+      "trace": true,
+      "skipFiles": ["socket.io.js"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "vis2 Launch runtime",
+      "url": "http://localhost:8082/vis-2/?main#default",
+      "trace": true,
+      "skipFiles": ["socket.io.js"]
+    }
+  ]
+}
+//node --inspect-brk=localhost:9229 .\node_modules\iobroker.jsontemplate\main.js
