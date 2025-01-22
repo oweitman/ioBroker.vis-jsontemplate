@@ -32,6 +32,24 @@
       "url": "http://localhost:8082/vis-2/?main#default",
       "trace": true,
       "skipFiles": ["socket.io.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch vis2 Adapter ",
+      "skipFiles": ["<node_internals>/**"],
+      "args": ["--debug", "0"],
+      "program": "node_modules/iobroker.vis-2/build-backend/main.js",
+      "cwd": "${workspaceFolder}/.dev-server/default",
+      "runtimeExecutable": "c:/Users/oweit/AppData/Roaming/fnm/aliases/default/node.exe",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "console": "internalConsole",
+      "outputCapture": "std",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "**/node_modules/**"
+      ]
     }
   ]
 }

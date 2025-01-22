@@ -25,7 +25,7 @@
         "uk": "Шаблон JSON",
         "zh-cn": "JSON Template"
     },
-    "ova_dpCount": {
+    "json_dpCount": {
         "en": "Number of datapoints",
         "de": "Anzahl der Datenpunkte",
         "ru": "Количество точек данных",
@@ -38,9 +38,9 @@
         "uk": "Кількість точок даних",
         "zh-cn": "Number of datapoints"
     },
-    "ova_dp": {
+    "json_dp": {
         "en": "Datapoint",
-        "de": "Datenpunkt",
+        "de": "Datapoint",
         "ru": "Datapoint",
         "pt": "Ponto de dados",
         "nl": "Datapunt",
@@ -50,5 +50,18 @@
         "pl": "Datapoint",
         "uk": "Точка даних",
         "zh-cn": "Datapoint"
+    },
+    "json_emptytemplate": {
+        "en": "Empty template",
+        "de": "Leere Vorlage",
+        "ru": "Пустой шаблон",
+        "pt": "Modelo vazio",
+        "nl": "Lege sjabloon",
+        "fr": "Modèle vide",
+        "it": "Modello vuoto",
+        "es": "Plantilla vacía",
+        "pl": "Pusty szablon",
+        "uk": "Порожній шаблон",
+        "zh-cn": "Empty template"
     }
 }
