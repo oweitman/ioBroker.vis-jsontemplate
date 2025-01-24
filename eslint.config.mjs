@@ -22,6 +22,7 @@ export default [
             'widgets/jsontemplate/js/highlight.pack.js',
             'widgets/jsontemplate/js/mode-ejs.js',
             'widgets/vis-2-widgets-jsontemplate',
+            '**/*.tsx',
             'admin/build',
             'admin/words.js',
             'admin/admin.d.ts',

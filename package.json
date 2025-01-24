@@ -73,7 +73,7 @@
         "test:integration": "mocha test/integration --exit",
         "test": "npm run test:js && npm run test:package",
         "check": "tsc --noEmit -p tsconfig.check.json",
-        "lint": "eslint -c eslint.config.mjs . --debug | more ",
+        "lint": "eslint -c eslint.config.mjs . ",
         "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.jsontemplate --local",
         "translate": "translate-adapter",
         "translate-vis-1": "node ./bin/translate.js --source widgets/jsontemplate/i18n/en.json --format single",
