@@ -1,123 +1,224 @@
-# ioBroker.jsontemplate
+<!-- markdownlint-disable MD036 -->
+
+# Vis 2 (o)various widgets
 
 ![Logo](admin/jsontemplate.png)
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.jsontemplate.svg)](https://www.npmjs.com/package/iobroker.jsontemplate)
+![Number of Installations](http://iobroker.live/badges/jsontemplate-installed.svg) ![Number of Installations](http://iobroker.live/badges/jsontemplate-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.jsontemplate.svg)](https://www.npmjs.com/package/iobroker.jsontemplate)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.jsontemplate.svg)](https://www.npmjs.com/package/iobroker.jsontemplate)
-![Number of Installations](https://iobroker.live/badges/jsontemplate-installed.svg)
-![Current version in stable repository](https://iobroker.live/badges/jsontemplate-stable.svg)
 
 [![NPM](https://nodei.co/npm/iobroker.jsontemplate.png?downloads=true)](https://nodei.co/npm/iobroker.jsontemplate/)
 
-**Tests:** ![Test and Release](https://github.com/oweitman/ioBroker.jsontemplate/workflows/Test%20and%20Release/badge.svg)
+## JSON Template Widget
 
-## jsontemplate adapter for ioBroker
+Using this widget, any data point with JSON data can be displayed as desired.
+The display is done using a template format, which can be thought of as a combined form of HTML code + CSS code + JavaScript + special tags that control the display of the JSON attributes.
 
-Display jsondata with the help of html template
+### Attribute JSON datapoint
 
-## Developer manual
+Selection of the data point with the corresponding JSON data.
 
-This section is intended for the developer. It can be deleted later.
+#### Attribute Template
 
-### DISCLAIMER
+The template can be used to determine the appearance of the JSON data. All valid HTML tags (including CSS attributes in style tags) can be used in the template.
+There are also special tags within which the JSON data is displayed and JavaScript instructions can be executed.
 
-Please make sure that you consider copyrights and trademarks when you use names or logos of a company and add a disclaimer to your README.
-You can check other adapters for examples or ask in the developer community. Using a name or logo of a company without permission may cause legal problems for you.
+The template system works with certain tags.
+The tags used have the following meaning
 
-### Getting started
+| `tag` | description                                                         |
+| ----- | ------------------------------------------------------------------- |
+| <%=   | The content of the contained expression / variable will be escaped. |
+| <%-   | The content of the contained expression / variable is unescaped.    |
+| <%    | No output, is used for enclosed javascript instructions             |
+| %>    | is generally a closing tag that completes one of the previous ones  |
 
-You are almost done, only a few steps left:
+Everything that is outside of these tags is displayed exactly as it is or if it is HTML interpreted as HTML. (see e.g. the p-tag, div-tag, small-tag
+Within the template you have 2 predefined variables available
 
-1. Create a new repository on GitHub with the name `ioBroker.jsontemplate`
+The JSON data is passed to the template with the prefix data. In addition, the current widgetID is also available as a variable so that it can be specified in individual CSS instructions.
 
-1. Push all files to the GitHub repo. The creator has already set up the local repository for you:
+##### Example object
 
-   ```bash
-   git push origin main
-   ```
-
-1. Add a new secret under <https://github.com/oweitman/ioBroker.jsontemplate/settings/secrets>. It must be named `AUTO_MERGE_TOKEN` and contain a personal access token with push access to the repository, e.g. yours. You can create a new token under <https://github.com/settings/tokens>.
-
-1. Head over to [main.js](main.js) and start programming!
-
-### Best Practices
-
-We've collected some [best practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) regarding ioBroker development and coding in general. If you're new to ioBroker or Node.js, you should
-check them out. If you're already experienced, you should also take a look at them - you might learn something new :)
-
-### Scripts in `package.json`
-
-Several npm scripts are predefined for your convenience. You can run them using `npm run <scriptname>`
-
-| Script name        | Description                                                                                                                                                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `test:js`          | Executes the tests you defined in `*.test.js` files.                                                                                                                     |
-| `test:package`     | Ensures your `package.json` and `io-package.json` are valid.                                                                                                             |
-| `test:integration` | Tests the adapter startup with an actual instance of ioBroker.                                                                                                           |
-| `test`             | Performs a minimal test run on package files and your tests.                                                                                                             |
-| `check`            | Performs a type-check on your code (without compiling anything).                                                                                                         |
-| `lint`             | Runs `ESLint` to check your code for formatting errors and potential bugs.                                                                                               |
-| `translate`        | Translates texts in your adapter to all required languages, see [`@iobroker/adapter-dev`](https://github.com/ioBroker/adapter-dev#manage-translations) for more details. |
-| `release`          | Creates a new release, see [`@alcalzone/release-script`](https://github.com/AlCalzone/release-script#usage) for more details.                                            |
-
-### Writing tests
-
-When done right, testing code is invaluable, because it gives you the
-confidence to change your code while knowing exactly if and when
-something breaks. A good read on the topic of test-driven development
-is <https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92>.
-Although writing tests before the code might seem strange at first, but it has very
-clear upsides.
-
-The template provides you with basic tests for the adapter startup and package files.
-It is recommended that you add your own tests into the mix.
-
-### Publishing the adapter
-
-Using GitHub Actions, you can enable automatic releases on npm whenever you push a new git tag that matches the form
-`v<major>.<minor>.<patch>`. We **strongly recommend** that you do. The necessary steps are described in `.github/workflows/test-and-release.yml`.
-
-Since you installed the release script, you can create a new
-release simply by calling:
-
-```bash
-npm run release
+```json
+{
+  "onearray": ["one", "two"],
+  "oneobject": {
+    "attribute1": 1,
+    "attribute2": 2
+  },
+  "onenumber": 123,
+  "onetext": "onetwothree"
+}
 ```
 
-Additional command line options for the release script are explained in the
-[release-script documentation](https://github.com/AlCalzone/release-script#command-line).
+With the above example, attributes could be output as follows
 
-To get your adapter released in ioBroker, please refer to the documentation
-of [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#requirements-for-adapter-to-get-added-to-the-latest-repository).
-
-### Test the adapter manually with dev-server
-
-Since you set up `dev-server`, you can use it to run, test and debug your adapter.
-
-You may start `dev-server` by calling from your dev directory:
-
-```bash
-dev-server watch
+```html
+<%- data.onenumber %> <%- data.onetext %>
 ```
 
-The ioBroker.admin interface will then be available at <http://localhost:8081/>
+**Result**
 
-Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev-server#command-line) for more details.
+```html
+123 onetwothree
+```
+
+Arrays can be accessed via an index. The index always starts with 0. However, there are also fake arrays where the index does not start with 0 or even consists of text. Here the rules for objects apply. In the example above, this would be
+
+```html
+<%- data.onearray[0] %> <%- data.onearray[1] %>
+```
+
+##### Result
+
+```html
+one two
+```
+
+If you try to output an array directly without an index, the template outputs all elements separated by commas
+
+```html
+<%- data.onearray %>
+```
+
+**Result**
+
+```html
+one,two
+```
+
+Arrays can also consist of a collection of objects. The example here contains only a simple array. An example of arrays with objects will be given later.
+
+```html
+<% for (var i = 0; i < data.onearray.length ; i++ ) { %> <%- data.onearray[i] %> <% } %>
+```
+
+**Result**
+
+```html
+one two
+```
+
+**Objects** can contain individual attributes, arrays or objects again. This means that JSON data can be nested to any depth.
+
+Attributes of an object can be addressed using dot notation or bracket notation. The dot notation only works if the attribute conforms to certain naming conventions (first character must be a letter, rest numbers or letters or underscore).
+The bracket notation also works for attributes that do not conform to the naming convention.
+
+**Dot notation**
+
+```html
+<%- data.oneobject.attribute1 %>
+```
+
+**Bracket notation**
+
+```html
+<%- data.oneobject["attribute1"] %>
+```
+
+**Result for both examples**
+
+```html
+1
+```
+
+Loop over the attributes of an object
+
+```html
+<% for (var prop in data.oneobject) { %> <%- "data.oneobject." + prop + " = " + data.oneobject[prop] %> <% } %>
+```
+
+**Result**
+
+```html
+data.oneobject.attribute1 = 1 data.oneobject.attribute2 = 2
+```
+
+**Advanced use case**
+
+In the examples above, only the pure output was covered. The template can now also be enriched with HTML tags to achieve a specific layout. Here is an example:
+
+```html
+<h3>Output</h3>
+<style>
+  .mycssclassproperty {
+    color: green;
+  }
+  .mycssclassdata {
+    color: red;
+  }
+</style>
+<% for (var prop in data.oneobject) { %>
+<div>
+  <span class="mycssclassproperty"><%- "data.oneobject." + prop + " = " %></span>
+  <span class="mycssclassdata"><%- data.oneobject[prop] %></span>
+</div>
+<% } %>
+```
+
+**Result**
+
+```html
+data.oneobject.attribute1 = 1 data.oneobject.attribute2 = 2
+```
 
 ## Changelog
 
 <!--
-    Placeholder for the next version (at the beginning of the line):
-    ### **WORK IN PROGRESS**
+	Placeholder for next versions:
+	### __WORK IN PROGRESS__
 -->
+### 1.0.0 (2025-01-24)
 
-### **WORK IN PROGRESS**
+- add package @alcalzone/release-script-plugin-manual-review as requested
+- merge vis-1 and vis-2 widgets to one adapter "jsontemplate"
 
-- (oweitman) initial release
+### 0.1.9 (2024-09-09)
+
+- fix wrong translation
+
+### 0.1.8 (2024-07-28)
+
+- improve icon
+- remove versions from io-package.json
+
+### 0.1.7 (2024-07-28)
+
+- fix widget addressing
+
+### 0.1.6 (2024-07-28)
+
+- fix widget addressing
+
+### 0.1.5 (2024-07-28)
+
+- fix adapter checker issues
+
+### 0.1.4 (2024-07-28)
+
+- fix things from adapter checker
+
+### 0.1.3 (2024-07-27)
+
+- add icon
+- add documentation
+
+### 0.1.2 (2024-07-27)
+
+- prepare release
+
+### 0.1.1 (2024-07-27)
+
+- fix widget addressing
+
+### 0.1.0 (2024-07-27)
+
+- initial Release
 
 ## License
 
-MIT License
+The MIT License (MIT)
 
 Copyright (c) 2025 oweitman <oweitman@gmx.de>
 
@@ -128,13 +229,13 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

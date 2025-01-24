@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "jsontemplate",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "news": {
+      "1.0.0": {
+        "en": "add package @alcalzone/release-script-plugin-manual-review as requested\nmerge vis-1 and vis-2 widgets to one adapter \"jsontemplate\"",
+        "de": "paket hinzufügen @alcalzone/release-script-plugin-manual-review wie gewünscht\nvis-1 und vis-2 widgets zu einem adapter \"jsontemplate\" zusammenführen",
+        "ru": "добавить пакет @alcalzone/release-script-plugin-manual-review по запросу\nслить виджеты vis-1 и vis-2 к одному адаптеру «jsontemplate»",
+        "pt": "add package @alcalzone/release-script-plugin-manual-review as requested\nmesclar vis-1 e vis-2 widgets para um adaptador \"jsontemplate\"",
+        "nl": "pakket @alcalzone/release-script-plugin-handleiding-review toevoegen zoals gevraagd\nversmelten vis-1 en vis-2 widgets met één adapter \"jsemblelaat\"",
+        "fr": "ajouter le paquet @alcalzone/release-script-plugin-manual-review comme demandé\nfusionner les widgets vis-1 et vis-2 à un seul adaptateur \"jsontemplate\"",
+        "it": "aggiungere il pacchetto @alcalzone/release-script-plugin-manual-review come richiesto\nunire i widget vis-1 e vis-2 a un adattatore \"jsontemplate\"",
+        "es": "añadir paquete @alcalzone/release-script-plugin-manual-review como se solicita\ncombinar vis-1 y vis-2 widgets a un adaptador \"jsontemplate\"",
+        "pl": "dodaj pakiet @ alcalzone / release- script- plugin- manual- review zgodnie z wnioskiem\npołączenie vis-1 i vis-2 widgets do jednego adaptera \"jsonszablon\"",
+        "uk": "додати пакет @alcalzone/випуск-script-plugin-manual-review як запитаний\nоб'єднання vis-1 і vis-2 віджетів до одного адаптера \"jsontemplate\"",
+        "zh-cn": "根据请求添加套件@alcalzone/release-script-plugin-manual-review\n将1和2部件合并到一个适配器“ jsontemplate”"
+      },
       "0.0.1": {
         "en": "initial release",
         "de": "Erstveröffentlichung",
@@ -43,8 +56,16 @@
       "uk": "Відображення jsondata за допомогою html шаблону",
       "zh-cn": "借助html模板显示jsondata"
     },
-    "authors": ["oweitman <oweitman@gmx.de>"],
-    "keywords": ["json", "template", "html", "css", "datapoint"],
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "json",
+      "template",
+      "html",
+      "css",
+      "datapoint"
+    ],
     "licenseInformation": {
       "type": "free",
       "license": "MIT"
@@ -56,7 +77,10 @@
     "readme": "https://github.com/oweitman/ioBroker.jsontemplate/blob/main/README.md",
     "loglevel": "info",
     "tier": 3,
-    "restartAdapters": ["vis", "vis-2"],
+    "restartAdapters": [
+      "vis",
+      "vis-2"
+    ],
     "mode": "none",
     "nogit": true,
     "singleton": true,
@@ -67,7 +91,9 @@
     "dataSource": "assumption",
     "visWidgets": {
       "jsontemplate": {
-        "ignoreInVersions": [2],
+        "ignoreInVersions": [
+          2
+        ],
         "components": [],
         "i18n": true,
         "url": ""
@@ -75,9 +101,11 @@
       "vis2jsontemplateWidgets": {
         "i18n": "component",
         "name": "vis2jsontemplateWidgets",
-        "urlxx": "vis-2-widgets-jsontemplate/customWidgets.js",
-        "url": "http://localhost:4173/customWidgets.js",
-        "components": ["JSONTemplateWidget"]
+        "url": "vis-2-widgets-jsontemplate/customWidgets.js",
+        "urlxx": "http://localhost:4173/customWidgets.js",
+        "components": [
+          "JSONTemplateWidget"
+        ]
       }
     },
     "adminUI": {

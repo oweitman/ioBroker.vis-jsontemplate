@@ -1,6 +1,6 @@
 {
   "name": "iobroker.jsontemplate",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Display jsondata with the help of html template",
   "author": {
     "name": "oweitman",
@@ -9,6 +9,7 @@
   "homepage": "https://github.com/oweitman/ioBroker.jsontemplate",
   "license": "MIT",
   "keywords": [
+    "iobroker",
     "json",
     "template",
     "html",

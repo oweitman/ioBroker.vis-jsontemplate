@@ -1,18 +1,5 @@
 {
-    "json_oid": {
-        "en": "JSON data point",
-        "de": "JSON-Datenpunkt",
-        "ru": "Точка данных JSON",
-        "pt": "Ponto de dados JSON",
-        "nl": "JSON-gegevenspunt",
-        "fr": "Point de données JSON",
-        "it": "Punto dati JSON",
-        "es": "Punto de datos JSON",
-        "pl": "Punkt danych JSON",
-        "uk": "Точка даних JSON",
-        "zh-cn": "JSON data point"
-    },
-    "json_template": {
+    "vis_2_jsontemplatewidget": {
         "en": "JSON Template",
         "de": "JSON-Vorlage",
         "ru": "Шаблон JSON",
@@ -25,7 +12,33 @@
         "uk": "Шаблон JSON",
         "zh-cn": "JSON Template"
     },
-    "json_dpCount": {
+    "vis_2_widgets_json_oid": {
+        "en": "JSON datapoint",
+        "de": "JSON-Datenpunkt",
+        "ru": "Точка данных JSON",
+        "pt": "Ponto de dados JSON",
+        "nl": "JSON-gegevenspunt",
+        "fr": "Point de données JSON",
+        "it": "Punto dati JSON",
+        "es": "Punto de datos JSON",
+        "pl": "Punkt danych JSON",
+        "uk": "Точка даних JSON",
+        "zh-cn": "JSON datapoint"
+    },
+    "vis_2_widgets_json_template": {
+        "en": "Template",
+        "de": "Vorlage",
+        "ru": "Шаблон",
+        "pt": "Modelo",
+        "nl": "Sjabloon",
+        "fr": "Modèle",
+        "it": "Modello",
+        "es": "Plantilla",
+        "pl": "Szablon",
+        "uk": "Шаблон",
+        "zh-cn": "Template"
+    },
+    "vis_2_widgets_json_dpcount": {
         "en": "Number of datapoints",
         "de": "Anzahl der Datenpunkte",
         "ru": "Количество точек данных",
@@ -38,30 +51,56 @@
         "uk": "Кількість точок даних",
         "zh-cn": "Number of datapoints"
     },
-    "json_dp": {
-        "en": "Datapoint",
-        "de": "Datapoint",
-        "ru": "Datapoint",
-        "pt": "Ponto de dados",
-        "nl": "Datapunt",
-        "fr": "Point de données",
-        "it": "Punto dati",
-        "es": "Datapoint",
-        "pl": "Datapoint",
-        "uk": "Точка даних",
-        "zh-cn": "Datapoint"
+    "vis_2_widgets_json_datapointsgroup": {
+        "en": "Datapoints",
+        "de": "Datenpunkte",
+        "ru": "Точки данных",
+        "pt": "Pontos de dados",
+        "nl": "Datapunten",
+        "fr": "Points de données",
+        "it": "Punti dati",
+        "es": "Puntos de datos",
+        "pl": "Punkty danych",
+        "uk": "Точки даних",
+        "zh-cn": "Datapoints"
     },
-    "json_emptytemplate": {
-        "en": "Empty template",
-        "de": "Leere Vorlage",
-        "ru": "Пустой шаблон",
-        "pt": "Modelo vazio",
-        "nl": "Lege sjabloon",
-        "fr": "Modèle vide",
-        "it": "Modello vuoto",
-        "es": "Plantilla vacía",
-        "pl": "Pusty szablon",
-        "uk": "Порожній шаблон",
-        "zh-cn": "Empty template"
+    "vis_2_widgets_json_datapoints_oid": {
+        "en": "Datapoint ID",
+        "de": "Datenpunkt-ID",
+        "ru": "Идентификатор точки данных",
+        "pt": "ID do ponto de dados",
+        "nl": "Datapunt ID",
+        "fr": "ID du point de données",
+        "it": "ID del punto dati",
+        "es": "ID del punto de datos",
+        "pl": "Identyfikator punktu danych",
+        "uk": "Ідентифікатор точки даних",
+        "zh-cn": "Datapoint ID"
+    },
+    "vis_2_widgets_json_widget_title": {
+        "en": "Template edit",
+        "de": "Vorlage bearbeiten",
+        "ru": "Редактировать шаблон",
+        "pt": "Modelo editar",
+        "nl": "Sjabloon bewerken",
+        "fr": "Modifier le modèle",
+        "it": "Template edit",
+        "es": "Edición de plantillas",
+        "pl": "Edycja szablonu",
+        "uk": "Редагування шаблону",
+        "zh-cn": "Template edit"
+    },
+    "vis_2_widgets_json_widget_save": {
+        "en": "Save",
+        "de": "Speichern Sie",
+        "ru": "Сохранить",
+        "pt": "Guardar",
+        "nl": "Sla",
+        "fr": "Économiser",
+        "it": "Risparmiare",
+        "es": "Guardar",
+        "pl": "Zapisz",
+        "uk": "Зберегти",
+        "zh-cn": "Save"
     }
 }

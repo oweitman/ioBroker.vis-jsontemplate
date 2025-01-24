@@ -39,13 +39,13 @@ vis.binds['jsontemplate'] = {
                 bound.push(data.json_oid);
             }
 
-            const dpCount = data.ova_dpCount ? data.ova_dpCount : 1;
+            const dpCount = data.json_dpCount ? data.json_dpCount : 1;
             const datapoints = [];
 
             for (let i = 1; i <= dpCount; i++) {
-                if (data[`ova_dp${i}`]) {
-                    datapoints[data[`ova_dp${i}`]] = vis.states.attr(`${data[`ova_dp${i}`]}.val`);
-                    bound.push(data[`ova_dp${i}`]);
+                if (data[`json_dp${i}`]) {
+                    datapoints[data[`json_dp${i}`]] = vis.states.attr(`${data[`json_dp${i}`]}.val`);
+                    bound.push(data[`json_dp${i}`]);
                 }
             }
 
@@ -94,13 +94,13 @@ vis.binds['jsontemplate'] = {
 
         render: function (widgetID, view, data /* , style */) {
             const oiddata = data.json_oid ? JSON.parse(vis.states.attr(`${data.json_oid}.val`)) : {};
-            const dpCount = data.ova_dpCount ? data.ova_dpCount : 1;
+            const dpCount = data.json_dpCount ? data.json_dpCount : 1;
             const template = data.json_template ? data.json_template : '';
             const datapoints = [];
 
             for (let i = 1; i <= dpCount; i++) {
-                if (data[`ova_dp${i}`]) {
-                    datapoints[data[`ova_dp${i}`]] = vis.states.attr(`${data[`ova_dp${i}`]}.val`);
+                if (data[`json_dp${i}`]) {
+                    datapoints[data[`json_dp${i}`]] = vis.states.attr(`${data[`json_dp${i}`]}.val`);
                 }
             }
             let text = '';
