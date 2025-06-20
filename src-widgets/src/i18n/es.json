@@ -1,5 +1,5 @@
 {
-    "setlabel": "Plantilla JSON",
+    "jsontemplate": "Plantilla JSON",
     "template:": "Plantilla:",
     "dpcount:": "Recuento de puntos de datos:",
     "datapoints_oid:": "ID del punto de datos:",

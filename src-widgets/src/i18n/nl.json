@@ -1,5 +1,5 @@
 {
-    "setlabel": "JSON-sjabloon",
+    "jsontemplate": "JSON-sjabloon",
     "template:": "Sjabloon:",
     "dpcount:": "Aantal datapunten:",
     "datapoints_oid:": "Datapunt ID:",

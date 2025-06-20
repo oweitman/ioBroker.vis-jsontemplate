@@ -1,5 +1,5 @@
 {
-    "setlabel": "JSON-шаблон",
+    "jsontemplate": "JSON-шаблон",
     "template:": "Шаблон:",
     "dpcount:": "Количество точек данных:",
     "datapoints_oid:": "Идентификатор точки данных:",

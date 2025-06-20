@@ -1,5 +1,5 @@
 {
-    "setlabel": "Modello JSON",
+    "jsontemplate": "Modello JSON",
     "template:": "Modello:",
     "dpcount:": "Conteggio dei punti dati:",
     "datapoints_oid:": "ID del punto dati:",

@@ -1,5 +1,5 @@
 {
-    "setlabel": "JSON template",
+    "jsontemplate": "JSON template",
     "template:": "Template:",
     "dpcount:": "Datapoint count:",
     "datapoints_oid:": "Datapoint ID:",

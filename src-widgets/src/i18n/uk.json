@@ -1,5 +1,5 @@
 {
-    "setlabel": "Шаблон JSON",
+    "jsontemplate": "Шаблон JSON",
     "template:": "Шаблон:",
     "dpcount:": "Підрахунок точок даних:",
     "datapoints_oid:": "Ідентифікатор точки доступу:",
