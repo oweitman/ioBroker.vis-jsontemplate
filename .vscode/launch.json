@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "vis1 edit",
+            "url": "http://localhost:8082/vis/edit.html#test",
+            "trace": true,
+            "skipFiles": ["socket.io.js"]
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "vis-1 runtime",
+            "url": "http://127.0.0.1:8082/vis/index.html#test",
+            "trace": true,
+            "skipFiles": ["socket.io.js"]
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "vis-2 editor",
+            "url": "http://localhost:3000/#test",
+            "webRoot": "${workspaceFolder}/src-widgets"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "vis-2 runtime",
+            "url": "http://localhost:3000/?main#test",
+            "webRoot": "${workspaceFolder}/src-widgets"
+        }
+    ]
+}

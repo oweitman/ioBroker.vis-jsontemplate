@@ -1,0 +1,11 @@
+{
+    "setlabel": "JSON template",
+    "type": "Type",
+    "private": "Private",
+    "oid": "Object ID",
+    "My Demo widget:": "My Demo widget:",
+    "template:": "Template:",
+    "dpcount:": "Datapoint count:",
+    "datapoints_oid:": "Datapoint ID:",
+    "datapointsgroup": "Datapoints:"
+}

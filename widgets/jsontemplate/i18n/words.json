@@ -1,0 +1,54 @@
+{
+    "json_dp": {
+        "en": "data point",
+        "de": "Datenpunkt",
+        "ru": "точка данных",
+        "pt": "ponto de dados",
+        "nl": "gegevenspunt",
+        "fr": "point de données",
+        "it": "punto dati",
+        "es": "punto de datos",
+        "pl": "punkt danych",
+        "uk": "точка даних",
+        "zh-cn": "data point"
+    },
+    "json_dpCount": {
+        "en": "Additional datapoint Count",
+        "de": "Zusätzlicher Datenpunkt Anzahl",
+        "ru": "Дополнительный счетчик точек данных",
+        "pt": "Contagem de pontos de dados adicionais",
+        "nl": "Extra datapunt Aantal",
+        "fr": "Nombre de points de données supplémentaires",
+        "it": "Punto dati aggiuntivo Conteggio",
+        "es": "Dato adicional Recuento",
+        "pl": "Dodatkowa liczba punktów danych",
+        "uk": "Додаткова точка даних Кількість",
+        "zh-cn": "Additional datapoint Count"
+    },
+    "json_oid": {
+        "en": "JSON data point",
+        "de": "JSON-Datenpunkt",
+        "ru": "Точка данных JSON",
+        "pt": "Ponto de dados JSON",
+        "nl": "JSON-gegevenspunt",
+        "fr": "Point de données JSON",
+        "it": "Punto dati JSON",
+        "es": "Punto de datos JSON",
+        "pl": "Punkt danych JSON",
+        "uk": "Точка даних JSON",
+        "zh-cn": "JSON data point"
+    },
+    "json_template": {
+        "en": "JSON Template",
+        "de": "JSON-Vorlage",
+        "ru": "Шаблон JSON",
+        "pt": "Modelo JSON",
+        "nl": "JSON-sjabloon",
+        "fr": "Modèle JSON",
+        "it": "Modello JSON",
+        "es": "Plantilla JSON",
+        "pl": "Szablon JSON",
+        "uk": "Шаблон JSON",
+        "zh-cn": "JSON Template"
+    }
+}

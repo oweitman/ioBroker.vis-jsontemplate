@@ -1,0 +1,102 @@
+{
+    "common": {
+        "name": "jsontemplate",
+        "version": "4.0.0",
+        "news": {
+            "3.0.0": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "vis-2-widgets-react-template.org",
+        "titleLang": {
+            "en": "jsontemplate",
+            "de": "jsontemplate",
+            "ru": "jsontemplate",
+            "pt": "jsontemplate",
+            "nl": "jsonsjabloon1",
+            "fr": "jsontemplate",
+            "it": "jsontemplate",
+            "es": "jsontemplate",
+            "pl": "jsontemplate",
+            "uk": "jsontemplate",
+            "zh-cn": "json模板1"
+        },
+        "desc": {
+            "en": "jsontemplate",
+            "de": "jsontemplate",
+            "ru": "jsontemplate",
+            "pt": "jsontemplate",
+            "nl": "jsonsjabloon1",
+            "fr": "jsontemplate",
+            "it": "jsontemplate",
+            "es": "jsontemplate",
+            "pl": "jsontemplate",
+            "uk": "jsontemplate",
+            "zh-cn": "json模板1"
+        },
+        "authors": [
+            "oweitman <oweitman@gmx.de>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Smart Home",
+            "home automation"
+        ],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "tier": 3,
+        "platform": "Javascript/Node.js",
+        "icon": "jsontemplate.png",
+        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.jsontemplate/main/admin/jsontemplate.png",
+        "enabled": true,
+        "readme": "https://github.com/oweitman/ioBroker.jsontemplate/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "none",
+        "nogit": true,
+        "singleton": true,
+        "onlyWWW": true,
+        "adminUI": {
+            "config": "none"
+        },
+        "noConfig": true,
+        "type": "visualization-widgets",
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "visWidgets": {
+            "vis2jsonTemplateWidgets": {
+                "i18n": "component",
+                "name": "vis2jsonTemplateWidgets",
+                "url": "vis2jsontemplate/customWidgets.js",
+                "urlxx": "http://localhost:4173/customWidgets.js",
+                "bundlerType": "module",
+                "components": [
+                    "JSONTemplateWidget"
+                ]
+            }
+        },
+        "restartAdapters": [
+            "vis-2"
+        ],
+        "dependencies": [
+            {
+                "js-controller": ">=5.0.19"
+            }
+        ]
+    },
+    "native": {},
+    "objects": [],
+    "instanceObjects": []
+}
