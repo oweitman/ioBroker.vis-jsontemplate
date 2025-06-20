@@ -33,8 +33,8 @@
         "@iobroker/testing": "^5.0.4",
         "@types/gulp": "^4.0.17",
         "@types/mocha": "^10.0.10",
-        "@types/node": "^22.15.29",
-        "mocha": "^11.5.0"
+        "@types/node": "^24.0.3",
+        "mocha": "^11.7.0"
     },
     "main": "widgets/vis2jsontemplate/customWidgets.js",
     "files": [
