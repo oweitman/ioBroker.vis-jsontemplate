@@ -76,7 +76,7 @@
                 "components": ["JSONTemplateWidget"]
             }
         },
-        "restartAdapters": ["vis-2"],
+        "restartAdapters": ["vis", "vis-2"],
         "dependencies": [
             {
                 "js-controller": ">=5.0.19"
