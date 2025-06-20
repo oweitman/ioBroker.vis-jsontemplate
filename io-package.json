@@ -3,7 +3,7 @@
         "name": "jsontemplate",
         "version": "4.0.0",
         "news": {
-            "3.0.0": {
+            "4.0.0": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
                 "ru": "Начальная версия",
@@ -17,7 +17,6 @@
                 "zh-cn": "首次出版"
             }
         },
-        "title": "vis-2-widgets-react-template.org",
         "titleLang": {
             "en": "jsontemplate",
             "de": "jsontemplate",
@@ -44,15 +43,8 @@
             "uk": "jsontemplate",
             "zh-cn": "json模板1"
         },
-        "authors": [
-            "oweitman <oweitman@gmx.de>"
-        ],
-        "keywords": [
-            "ioBroker",
-            "template",
-            "Smart Home",
-            "home automation"
-        ],
+        "authors": ["oweitman <oweitman@gmx.de>"],
+        "keywords": ["jsontemplate", "visualization", "widgets", "vis1", "vis2"],
         "licenseInformation": {
             "type": "free",
             "license": "MIT"
@@ -71,7 +63,6 @@
         "adminUI": {
             "config": "none"
         },
-        "noConfig": true,
         "type": "visualization-widgets",
         "connectionType": "cloud",
         "dataSource": "poll",
@@ -82,14 +73,10 @@
                 "url": "vis2jsontemplate/customWidgets.js",
                 "urlxx": "http://localhost:4173/customWidgets.js",
                 "bundlerType": "module",
-                "components": [
-                    "JSONTemplateWidget"
-                ]
+                "components": ["JSONTemplateWidget"]
             }
         },
-        "restartAdapters": [
-            "vis-2"
-        ],
+        "restartAdapters": ["vis-2"],
         "dependencies": [
             {
                 "js-controller": ">=5.0.19"
