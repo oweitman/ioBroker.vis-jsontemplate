@@ -23,9 +23,9 @@ const EJSDialog = (props: EJSDialogProps): React.JSX.Element | null => {
     return props.open ? (
         <JSONTemplateDialog
             keyboardDisabled
-            title={I18n.t('vis_2_widgets_rssfeed_widget_title')}
+            title={I18n.t('jsontemplate_dialog_title')}
             open={!0}
-            actionTitle={I18n.t('vis_2_widgets_rssfeed_widget_save')}
+            actionTitle={I18n.t('jsontemplate_dialog_save')}
             action={() => props.onChange(value)}
             onClose={props.onClose}
             minWidth={800}
