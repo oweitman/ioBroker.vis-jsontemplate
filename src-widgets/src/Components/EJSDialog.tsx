@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { I18n } from '@iobroker/adapter-react-v5';
-import RSSDialog from './RSSDialog';
+import JSONTemplateDialog from './JSONTemplateDialog';
 import EJSAceEditor from './EJSAceEditor';
 
 interface EJSDialogProps {
@@ -21,7 +21,7 @@ const EJSDialog = (props: EJSDialogProps): React.JSX.Element | null => {
     }, [props.open]);
 
     return props.open ? (
-        <RSSDialog
+        <JSONTemplateDialog
             keyboardDisabled
             title={I18n.t('vis_2_widgets_rssfeed_widget_title')}
             open={!0}
@@ -37,7 +37,7 @@ const EJSDialog = (props: EJSDialogProps): React.JSX.Element | null => {
                 height={400}
                 onChange={newValue => changeValue(newValue)}
             />
-        </RSSDialog>
+        </JSONTemplateDialog>
     ) : null;
 };
 

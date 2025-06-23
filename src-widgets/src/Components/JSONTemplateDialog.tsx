@@ -7,7 +7,7 @@ import { Close as CloseIcon } from '@mui/icons-material';
 
 import { I18n } from '@iobroker/adapter-react-v5';
 
-interface RSSDialogProps {
+interface JSONTemplateDialogProps {
     ActionIcon?: any;
     action?: () => void;
     actionColor?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
@@ -28,7 +28,7 @@ interface RSSDialogProps {
     noTranslation?: boolean;
 }
 
-const RSSDialog = (props: RSSDialogProps): React.JSX.Element | null =>
+const JSONTemplateDialog = (props: JSONTemplateDialogProps): React.JSX.Element | null =>
     props.open ? (
         <Dialog
             // @ts-expect-error
@@ -86,4 +86,4 @@ const RSSDialog = (props: RSSDialogProps): React.JSX.Element | null =>
         </Dialog>
     ) : null;
 
-export default RSSDialog;
+export default JSONTemplateDialog;
