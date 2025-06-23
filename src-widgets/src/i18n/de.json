@@ -1,7 +1,7 @@
 {
     "jsontemplate": "JSON-Vorlage",
     "dialog_title": "Vorlage",
-    "dialog_save": "Speichern Sie",
+    "dialog_save": "Speichern",
     "oid": "Datenpunkt:",
     "template:": "Vorlage:",
     "dpcount:": "Anzahl der Datenpunkte:",
