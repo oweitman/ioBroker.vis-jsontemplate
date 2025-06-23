@@ -17,11 +17,13 @@ interface VisEJSAttributeFieldProps {
     };
     data: any;
     onDataChange: (data: any) => void;
+    props: any;
 }
 const VisEJSAttributeField = ({
     field, // field properties: {name, label, type, set, singleName, component,...}
     data, // widget data
     onDataChange, // project object: {VIEWS..., [view]: {widgets: {[widgetID]: {tpl, data, style}}, settings, parentId, rerender, filterList, activeWidgets}, __settings: {}}
+    props,
 }: VisEJSAttributeFieldProps): React.JSX.Element => {
     const error = '';
 
@@ -66,6 +68,7 @@ const VisEJSAttributeField = ({
                     value={data[field.name]}
                     onChange={newValue => onDataChange({ [field.name]: newValue })}
                     onClose={() => setIdDialog(false)}
+                    themeType={props.context.theme.name}
                 />
             ) : null}
         </>

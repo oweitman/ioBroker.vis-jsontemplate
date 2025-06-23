@@ -10,6 +10,7 @@ interface EJSDialogProps {
     onClose: () => void;
     open: boolean;
     value: string;
+    themeType: string;
 }
 
 const EJSDialog = (props: EJSDialogProps): React.JSX.Element | null => {
@@ -36,6 +37,7 @@ const EJSDialog = (props: EJSDialogProps): React.JSX.Element | null => {
                 focus
                 height={400}
                 onChange={newValue => changeValue(newValue)}
+                themeType={props.themeType}
             />
         </JSONTemplateDialog>
     ) : null;

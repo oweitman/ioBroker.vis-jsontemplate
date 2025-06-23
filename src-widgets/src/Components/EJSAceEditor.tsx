@@ -14,17 +14,16 @@ import 'ace-builds/src-noconflict/ext-language_tools'; // autocomplete
 
 import { I18n } from '@iobroker/adapter-react-v5';
 
-
 interface EJSAceEditorProps {
     onChange?: (value: string) => void;
     value: string;
     readOnly?: boolean;
     height?: number | string;
     width?: number | string;
-
     refEditor?: (editor: AceEditor) => void;
     error?: boolean;
     focus?: boolean;
+    themeType: string;
 }
 
 export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
@@ -98,7 +97,6 @@ export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
             content = null;
         };
     }, []);
-
     return (
         <div
             style={{
@@ -110,8 +108,7 @@ export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
         >
             <AceEditor
                 mode="ejs"
-                // @ts-expect-error
-                theme={themeType === 'dark' ? 'clouds_midnight' : 'chrome'}
+                theme={props.themeType === 'dark' ? 'clouds_midnight' : 'chrome'}
                 width="100%"
                 height="100%"
                 value={props.value}

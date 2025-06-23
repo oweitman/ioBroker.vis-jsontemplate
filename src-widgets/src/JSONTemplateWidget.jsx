@@ -49,7 +49,7 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                                     field={field}
                                     data={data}
                                     onDataChange={onDataChange}
-                                    props
+                                    props={props}
                                 />
                             ),
                         },
@@ -94,7 +94,7 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                 width: 300,
                 height: 300,
             },
-            visPrev: '',
+            visPrev: 'widgets/vis2jsontemplate/img/jsontemplate.png',
         };
     }
 
@@ -108,7 +108,6 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
         // 3. this.state.rxStyle - contains all widget styles with replaced bindings. E.g. if this.state.styles.width is `{javascript.0.width}px`,
         //                        then this.state.rxData.type will have state value of `javascript.0.width` + 'px
         let oiddata, data, datapoints, template, dpCount;
-        let s = I18n.t('jsontemplate_datpoints_oid');
         try {
             oiddata = JSON.parse(this.state.values[`${this.state.rxData.oid}.val`] || '{}');
             data = this.state.data || {};
@@ -207,7 +206,6 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
 JSONTemplateWidget.propTypes = {
     systemConfig: PropTypes.object,
     socket: PropTypes.object,
-    themeType: PropTypes.string,
     style: PropTypes.object,
     data: PropTypes.object,
 };
