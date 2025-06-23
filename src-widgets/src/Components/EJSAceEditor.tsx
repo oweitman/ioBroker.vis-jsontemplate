@@ -5,29 +5,15 @@ import AceEditor from 'react-ace';
 
 import 'ace-builds';
 import 'ace-builds/esm-resolver';
-// import 'ace-builds/src-noconflict/ext-language_tools'; // autocomplete
-// import 'ace-builds/src-noconflict/theme-clouds_midnight';
-// import 'ace-builds/src-noconflict/theme-chrome';
-// import 'ace-builds/src-noconflict/mode-ejs';
+import 'ace-builds/src-noconflict/mode-ejs';
+import 'ace-builds/src-noconflict/theme-monokai';
+import 'ace-builds/src-noconflict/theme-clouds_midnight';
+import 'ace-builds/src-noconflict/theme-chrome';
+import 'ace-builds/src-noconflict/snippets/ejs';
+import 'ace-builds/src-noconflict/ext-language_tools'; // autocomplete
 
 import { I18n } from '@iobroker/adapter-react-v5';
 
-/* globals themeType */
-
-// Ace.config.set('basePath', './lib/js/ace');
-// Ace.config.setModuleUrl('ace/ext/language_tools', './lib/js/ace/ext-language_tools.js');
-// Ace.config.setModuleUrl('ace/theme/clouds_midnight', './lib/js/ace/theme-clouds_midnight.js');
-// Ace.config.setModuleUrl('ace/theme/chrome', './lib/js/ace/theme-chrome.js');
-// Ace.config.setModuleUrl('ace/ext/searchbox', './lib/js/ace/ext-searchbox.js');
-// Ace.config.setModuleUrl('ace/ext/beautify', './lib/js/ace/ext-beautify.js');
-// Ace.config.setModuleUrl('ace/ext/code_lens', './lib/js/ace/ext-code_lens.js');
-
-// Ace.config.setModuleUrl('ace/ext/command_bar', './lib/js/ace/ext-command_bar.js');
-// Ace.config.setModuleUrl('ace/ext/elastic_tabstops_lite', './lib/js/ace/ext-elastic_tabstops_lite.js');
-// Ace.config.setModuleUrl('ace/ext/emmet', './lib/js/ace/ext-emmet.js');
-
-// Ace.config.setModuleUrl('ace/snippets/ejs', './lib/js/ace/snippets/ejs.js');
-// Ace.config.setModuleUrl('ace/mode/ejs', './lib/js/ace/mode-ejs.js');
 
 interface EJSAceEditorProps {
     onChange?: (value: string) => void;
