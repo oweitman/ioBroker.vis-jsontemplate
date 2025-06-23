@@ -1,7 +1,11 @@
 {
     "jsontemplate": "JSON-sjabloon",
+    "dialog_title": "Sjabloon",
+    "dialog_save": "Sla",
+    "oid": "Datapunt:",
     "template:": "Sjabloon:",
     "dpcount:": "Aantal datapunten:",
-    "datapoints_oid:": "Datapunt ID:",
-    "datapointsgroup": "Datapunten:"
+    "datapoints_oid": "Datapunt ID:",
+    "datapointsgroup": "Datapunten:",
+    "datapoints_oid:": "Datapunt ID:"
 }

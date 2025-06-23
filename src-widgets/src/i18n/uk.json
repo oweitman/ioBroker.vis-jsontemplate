@@ -1,7 +1,11 @@
 {
     "jsontemplate": "Шаблон JSON",
+    "dialog_title": "Шаблон",
+    "dialog_save": "Зберегти",
+    "oid": "Точка збору даних:",
     "template:": "Шаблон:",
     "dpcount:": "Підрахунок точок даних:",
-    "datapoints_oid:": "Ідентифікатор точки доступу:",
-    "datapointsgroup": "Точки даних:"
+    "datapoints_oid": "Ідентифікатор точки доступу:",
+    "datapointsgroup": "Точки даних:",
+    "datapoints_oid:": "Ідентифікатор точки доступу:"
 }

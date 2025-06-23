@@ -1,7 +1,11 @@
 {
     "jsontemplate": "JSON-шаблон",
+    "dialog_title": "Шаблон",
+    "dialog_save": "Сохранить",
+    "oid": "Датапоинт:",
     "template:": "Шаблон:",
     "dpcount:": "Количество точек данных:",
-    "datapoints_oid:": "Идентификатор точки данных:",
-    "datapointsgroup": "Датапоинты:"
+    "datapoints_oid": "Идентификатор точки данных:",
+    "datapointsgroup": "Датапоинты:",
+    "datapoints_oid:": "Идентификатор точки данных:"
 }

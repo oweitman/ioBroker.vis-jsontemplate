@@ -1,7 +1,11 @@
 {
     "jsontemplate": "Modello JSON",
+    "dialog_title": "Modello",
+    "dialog_save": "Risparmiare",
+    "oid": "Datapoint:",
     "template:": "Modello:",
     "dpcount:": "Conteggio dei punti dati:",
-    "datapoints_oid:": "ID del punto dati:",
-    "datapointsgroup": "Punti di riferimento:"
+    "datapoints_oid": "ID del punto dati:",
+    "datapointsgroup": "Punti di riferimento:",
+    "datapoints_oid:": "ID del punto dati:"
 }

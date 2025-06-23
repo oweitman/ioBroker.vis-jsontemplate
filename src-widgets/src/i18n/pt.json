@@ -1,7 +1,11 @@
 {
     "jsontemplate": "Modelo JSON",
+    "dialog_title": "Modelo",
+    "dialog_save": "Guardar",
+    "oid": "Ponto de dados:",
     "template:": "Modelo:",
     "dpcount:": "Contagem de pontos de dados:",
-    "datapoints_oid:": "ID do ponto de dados:",
-    "datapointsgroup": "Pontos de dados:"
+    "datapoints_oid": "ID do ponto de dados:",
+    "datapointsgroup": "Pontos de dados:",
+    "datapoints_oid:": "ID do ponto de dados:"
 }

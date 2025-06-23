@@ -1,7 +1,11 @@
 {
     "jsontemplate": "JSON template",
+    "dialog_title": "Template",
+    "dialog_save": "Save",
+    "oid": "Datapoint:",
     "template:": "Template:",
     "dpcount:": "Datapoint count:",
-    "datapoints_oid:": "Datapoint ID:",
-    "datapointsgroup": "Datapoints:"
+    "datapoints_oid": "Datapoint ID:",
+    "datapointsgroup": "Datapoints:",
+    "datapoints_oid:": "Datapoint ID:"
 }
