@@ -34,7 +34,7 @@
         "@types/gulp": "^4.0.17",
         "@types/mocha": "^10.0.10",
         "@types/node": "^24.0.7",
-        "mocha": "^11.7.0"
+        "mocha": "^11.7.1"
     },
     "main": "widgets/vis2jsontemplate/customWidgets.js",
     "files": [
