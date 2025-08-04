@@ -12,7 +12,7 @@
         "@types/ace": "^0.0.52",
         "@types/ejs": "^3.1.5",
         "@vitejs/plugin-react": "^4.7.0",
-        "ace-builds": "^1.43.1",
+        "ace-builds": "^1.43.2",
         "ejs": "^3.1.10",
         "react": "^18.3.1",
         "react-ace": "^14.0.1",
