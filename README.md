@@ -1,15 +1,15 @@
 # JSONTemplate - Adapter to visualize JSON data and other data in Vis/Vis2
 
-![Logo](admin/jsontemplate.png)
+![Logo](admin/vis-jsontemplate.png)
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.jsontemplate.svg)](https://www.npmjs.com/package/iobroker.jsontemplate)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.jsontemplate.svg)](https://www.npmjs.com/package/iobroker.jsontemplate)
-![Number of Installations](https://iobroker.live/badges/jsontemplate-installed.svg)
-![Current version in stable repository](https://iobroker.live/badges/jsontemplate-stable.svg)
+[![NPM version](https://img.shields.io/npm/v/iobroker.vis-jsontemplate.svg)](https://www.npmjs.com/package/iobroker.vis-jsontemplate)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.vis-jsontemplate.svg)](https://www.npmjs.com/package/iobroker.vis-jsontemplate)
+![Number of Installations](https://iobroker.live/badges/vis-jsontemplate-installed.svg)
+![Current version in stable repository](https://iobroker.live/badges/vis-jsontemplate-stable.svg)
 
-[![NPM](https://nodei.co/npm/iobroker.jsontemplate.png?downloads=true)](https://nodei.co/npm/iobroker.jsontemplate/)
+[![NPM](https://nodei.co/npm/iobroker.vis-jsontemplate.png?downloads=true)](https://nodei.co/npm/iobroker.vis-jsontemplate/)
 
-**Tests:** ![Test and Release](https://github.com/oweitman/ioBroker.jsontemplate/workflows/Test%20and%20Release/badge.svg)
+**Tests:** ![Test and Release](https://github.com/oweitman/ioBroker.vis-jsontemplate/workflows/Test%20and%20Release/badge.svg)
 
 ## Overview
 
@@ -246,11 +246,11 @@ We place the `JSONTemplate` widget and fill in the following fields:
 </table>
 
 <script>
-    window.jsontemplate = { clicktodo: clicktodo };
+    window.vis-jsontemplate = { clicktodo: clicktodo };
 
     function getButton(id, action) {
         let text = action === 0 ? 'In Progress' : 'Completed';
-        return `<button class="btn" onclick="window.jsontemplate.clicktodo(this)" data-id="${id}" data-action="${action}">${text}</button>`;
+        return `<button class="btn" onclick="window.vis-jsontemplate.clicktodo(this)" data-id="${id}" data-action="${action}">${text}</button>`;
     }
 
     function clicktodo(el) {

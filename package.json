@@ -1,16 +1,16 @@
 {
-    "name": "iobroker.jsontemplate",
+    "name": "iobroker.vis-jsontemplate",
     "version": "4.0.0",
-    "description": "jsontemplate",
+    "description": "vis-jsontemplate",
     "author": {
         "name": "oweitman",
         "email": "oweitman@gmx.de"
     },
-    "homepage": "https://github.com/oweitman/ioBroker.jsontemplate",
+    "homepage": "https://github.com/oweitman/ioBroker.vis-jsontemplate",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/oweitman/ioBroker.jsontemplate.git"
+        "url": "https://github.com/oweitman/ioBroker.vis-jsontemplate.git"
     },
     "keywords": [
         "ioBroker",
@@ -54,7 +54,7 @@
         "lint-vis2widgets": "cd src-widgets/ && npm run lint && cd ../..",
         "build": "npm run build-vis1widgets && npm run build-vis2widgets",
         "build-vis2widgets": "node tasks --javascript-vite",
-        "build-vis1widgets": "cd widgets/jsontemplate && npm run build && cd ../..",
+        "build-vis1widgets": "cd widgets/vis-jsontemplate && npm run build && cd ../..",
         "release": "release-script --all",
         "release-patch": "release-script patch --yes",
         "release-minor": "release-script minor --yes",
@@ -62,13 +62,13 @@
         "update-packages": "ncu --upgrade && cd src-widgets && ncu --upgrade && cd ..",
         "npm": "npm i -f && cd src-widgets && npm i -f && cd ..",
         "debug": "npx dev-server watch --noStart --doNotWatch widgets/vis2jsontemplate/**",
-        "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.jsontemplate --local",
+        "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.vis-jsontemplate --local",
         "translate": "translate-adapter",
         "translate-widgets-vis2": "node ./bin/translate.js --source src-widgets/src/i18n/",
-        "translate-widgets-vis1": "node ./bin/translate.js --source widgets/jsontemplate/i18n/en.json --format single"
+        "translate-widgets-vis1": "node ./bin/translate.js --source widgets/vis-jsontemplate/i18n/en.json --format single"
     },
     "bugs": {
-        "url": "https://github.com/oweitman/ioBroker.jsontemplate/issues"
+        "url": "https://github.com/oweitman/ioBroker.vis-jsontemplate/issues"
     },
     "readmeFilename": "README.md"
 }

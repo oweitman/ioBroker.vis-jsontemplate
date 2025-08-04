@@ -7,7 +7,7 @@ export default [
         languageOptions: {
             parserOptions: {
                 projectService: {
-                    allowDefaultProject: ['jsontemplate/js/*.js', '*.js', '*.mjs'],
+                    allowDefaultProject: ['vis-jsontemplate/js/*.js', '*.js', '*.mjs'],
                 },
                 tsconfigRootDir: import.meta.dirname,
             },

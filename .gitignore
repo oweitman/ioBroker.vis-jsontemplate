@@ -4,7 +4,6 @@ src-widgets/node_modules
 src-widgets/package-lock.json
 src-widgets/build
 /src-widgets/.__mf__temp/
-widgets/vis2jsontemplate
 widgets/jsontemplate/dist
 *.tgz
 tmp/
@@ -12,3 +11,4 @@ tmp/
 .vscode/info.txt
 .vscode/secrets.txt
 
+widgets/vis-jsontemplate/i18n/en.json

@@ -1,12 +1,12 @@
 {
     "name": "iobroker.vis1-widget-jsontemplate",
     "version": "4.0.0",
-    "main": "jsontemplate/js/jsontemplate.js",
+    "main": "vis-jsontemplate/js/jsontemplate.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint -c eslint.config.mjs .",
-        "buildmin": "esbuild jsontemplate/js/bundle.js --minify --bundle --outfile=jsontemplate/dist/jsontemplate-dist.js --target=es6 --sourcemap",
-        "build": "esbuild jsontemplate/js/bundle.js --bundle --outfile=jsontemplate/dist/jsontemplate-dist.js --target=es6 --sourcemap"
+        "buildmin": "esbuild vis-jsontemplate/js/bundle.js --minify --bundle --outfile=vis-jsontemplate/dist/jsontemplate-dist.js --target=es6 --sourcemap",
+        "build": "esbuild vis-jsontemplate/js/bundle.js --bundle --outfile=vis-jsontemplate/dist/jsontemplate-dist.js --target=es6 --sourcemap"
     },
     "author": "",
     "license": "MIT",
