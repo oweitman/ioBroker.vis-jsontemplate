@@ -30,7 +30,7 @@
         "@iobroker/vis-2-widgets-react-dev": "^4.0.4",
         "@iobroker/vis-2-widgets-testing": "^1.0.6",
         "@iobroker/adapter-dev": "^1.4.0",
-        "@iobroker/testing": "^5.0.4",
+        "@iobroker/testing": "^5.1.0",
         "@types/gulp": "^4.0.17",
         "@types/mocha": "^10.0.10",
         "@types/node": "^24.1.0",
