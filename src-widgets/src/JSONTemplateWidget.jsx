@@ -94,7 +94,7 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                 width: 300,
                 height: 300,
             },
-            visPrev: 'widgets/vis2jsontemplate/img/jsontemplate.png',
+            visPrev: 'widgets/vis2vis-jsontemplate/img/jsontemplate.png',
         };
     }
 

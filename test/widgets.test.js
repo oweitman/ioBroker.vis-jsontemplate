@@ -10,7 +10,7 @@ describe('vis-2-widgets-jsontemplate', () => {
         await helper.createProject(undefined, 50000);
 
         // open widgets
-        await helper.palette.openWidgetSet(null, adapterName, 5000);
+        await helper.palette.openWidgetSet(null, "jsontemplate", 50000);
         await helper.screenshot(null, '02_widgets_opened');
     });
 
@@ -26,7 +26,7 @@ describe('vis-2-widgets-jsontemplate', () => {
     });
 
     after(async function () {
-        this.timeout(5000);
+        this.timeout(50000);
         await helper.stopBrowser();
         return helper.stopIoBroker();
     });

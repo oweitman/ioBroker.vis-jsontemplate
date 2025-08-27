@@ -67,10 +67,10 @@
         "connectionType": "cloud",
         "dataSource": "poll",
         "visWidgets": {
-            "vis2jsonTemplateWidgets": {
+            "vis2vis-jsonTemplateWidgets": {
                 "i18n": "component",
-                "name": "vis2jsonTemplateWidgets",
-                "url": "vis2jsontemplate/customWidgets.js",
+                "name": "vis2vis-jsonTemplateWidgets",
+                "url": "vis2vis-jsontemplate/customWidgets.js",
                 "urlxx": "http://localhost:4173/customWidgets.js",
                 "bundlerType": "module",
                 "components": ["JSONTemplateWidget"]

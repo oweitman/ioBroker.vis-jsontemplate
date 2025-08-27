@@ -1,4 +1,4 @@
-import{a as Na}from"./_commonjsHelpers-DsqdWQfm.js";import{v as Pa}from"./vis2jsonTemplateWidgets__loadShare__react__loadShare__-DDlUS7Ht.js";function za(e,t){for(var n=0;n<t.length;n++){const r=t[n];if(typeof r!="string"&&!Array.isArray(r)){for(const l in r)if(l!=="default"&&!(l in e)){const u=Object.getOwnPropertyDescriptor(r,l);u&&Object.defineProperty(e,l,u.get?u:{enumerable:!0,get:()=>r[l]})}}}return Object.freeze(Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}))}var Co={exports:{}},ve={},xo={exports:{}},_o={};/**
+import{a as Na}from"./_commonjsHelpers-DsqdWQfm.js";import{v as Pa}from"./vis2visjsonTemplateWidgets__loadShare__react__loadShare__-DIw4pDHA.js";function za(e,t){for(var n=0;n<t.length;n++){const r=t[n];if(typeof r!="string"&&!Array.isArray(r)){for(const l in r)if(l!=="default"&&!(l in e)){const u=Object.getOwnPropertyDescriptor(r,l);u&&Object.defineProperty(e,l,u.get?u:{enumerable:!0,get:()=>r[l]})}}}return Object.freeze(Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}))}var Co={exports:{}},ve={},xo={exports:{}},_o={};/**
  * @license React
  * scheduler.production.min.js
  *

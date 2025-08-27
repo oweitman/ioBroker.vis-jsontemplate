@@ -11,7 +11,7 @@ const config = {
     plugins: [
         federation({
             manifest: true,
-            name: 'vis2jsonTemplateWidgets',
+            name: 'vis2visjsonTemplateWidgets',
             filename: 'customWidgets.js',
             exposes: {
                 './JSONTemplateWidget': './src/JSONTemplateWidget', // List of all widgets in this package
