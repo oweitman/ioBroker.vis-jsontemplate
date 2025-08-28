@@ -25,7 +25,7 @@
         "vite-plugin-commonjs": "^0.10.4",
         "vite-plugin-top-level-await": "^1.6.0",
         "@originjs/vite-plugin-commonjs": "^1.0.3",
-        "vite-plugin-svgr": "^4.3.0",
+        "vite-plugin-svgr": "^4.5.0",
         "vite-tsconfig-paths": "^5.1.4"
     },
     "scripts": {
