@@ -1,89 +1,115 @@
 {
-    "common": {
-        "name": "vis-jsontemplate",
-        "version": "4.0.0",
-        "news": {
-            "4.0.0": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
-            }
-        },
-        "titleLang": {
-            "en": "vis-jsontemplate",
-            "de": "vis-jsontemplate",
-            "ru": "vis-jsontemplate",
-            "pt": "vis-jsontemplate",
-            "nl": "vis-jsonsjabloon1",
-            "fr": "vis-jsontemplate",
-            "it": "vis-jsontemplate",
-            "es": "vis-jsontemplate",
-            "pl": "vis-jsontemplate",
-            "uk": "vis-jsontemplate",
-            "zh-cn": "vis-json模板1"
-        },
-        "desc": {
-            "en": "vis-jsontemplate",
-            "de": "vis-jsontemplate",
-            "ru": "vis-jsontemplate",
-            "pt": "vis-jsontemplate",
-            "nl": "vis-jsonsjabloon1",
-            "fr": "vis-jsontemplate",
-            "it": "vis-jsontemplate",
-            "es": "vis-jsontemplate",
-            "pl": "vis-jsontemplate",
-            "uk": "vis-jsontemplate",
-            "zh-cn": "vis-json模板1"
-        },
-        "authors": ["oweitman <oweitman@gmx.de>"],
-        "keywords": ["jsontemplate", "visualization", "widgets", "vis1", "vis2"],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "tier": 3,
-        "platform": "Javascript/Node.js",
-        "icon": "vis-jsontemplate.png",
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-jsontemplate/main/admin/vis-jsontemplate.png",
-        "enabled": true,
-        "readme": "https://github.com/oweitman/ioBroker.vis-jsontemplate/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "none",
-        "nogit": true,
-        "singleton": true,
-        "onlyWWW": true,
-        "adminUI": {
-            "config": "none"
-        },
-        "type": "visualization-widgets",
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "visWidgets": {
-            "vis2vis-jsonTemplateWidgets": {
-                "i18n": "component",
-                "name": "vis2vis-jsonTemplateWidgets",
-                "url": "vis2vis-jsontemplate/customWidgets.js",
-                "urlxx": "http://localhost:4173/customWidgets.js",
-                "bundlerType": "module",
-                "components": ["JSONTemplateWidget"]
-            }
-        },
-        "restartAdapters": ["vis", "vis-2"],
-        "dependencies": [
-            {
-                "js-controller": ">=5.0.19"
-            }
-        ]
+  "common": {
+    "name": "vis-jsontemplate",
+    "version": "4.0.1",
+    "news": {
+      "4.0.1": {
+        "en": "move vis1 and vis2 widgets to vis-jsontemplate adapter",
+        "de": "vis1 und vis2 widgets zu vis-jsontemplate adapter verschieben",
+        "ru": "переместить виджеты vis1 и vis2 в адаптер vis-jsontemplate",
+        "pt": "mover widgets vis1 e vis2 para o adaptador vis-jsontemplate",
+        "nl": "vis1 en vis2 widgets verplaatsen naar vis-jsentemplaatadapter",
+        "fr": "déplacer les widgets vis1 et vis2 vers l'adaptateur vis-jsontemplate",
+        "it": "spostare i widget vis1 e vis2 per l'adattatore vis-jsontemplate",
+        "es": "mover vis1 y vis2 widgets al adaptador vis-jsontemplate",
+        "pl": "przesuń widżety vis1 i vis2 do adaptera vis- jsonszablon",
+        "uk": "перемістіть віджети vis1 і vis2 до адаптера vis-jsontemplate",
+        "zh-cn": "将粘度1和粘度2的部件移动到粘度调试器上"
+      },
+      "4.0.0": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "uk": "Початкова версія",
+        "zh-cn": "首次出版"
+      }
     },
-    "native": {},
-    "objects": [],
-    "instanceObjects": []
+    "titleLang": {
+      "en": "vis-jsontemplate",
+      "de": "vis-jsontemplate",
+      "ru": "vis-jsontemplate",
+      "pt": "vis-jsontemplate",
+      "nl": "vis-jsonsjabloon1",
+      "fr": "vis-jsontemplate",
+      "it": "vis-jsontemplate",
+      "es": "vis-jsontemplate",
+      "pl": "vis-jsontemplate",
+      "uk": "vis-jsontemplate",
+      "zh-cn": "vis-json模板1"
+    },
+    "desc": {
+      "en": "vis-jsontemplate",
+      "de": "vis-jsontemplate",
+      "ru": "vis-jsontemplate",
+      "pt": "vis-jsontemplate",
+      "nl": "vis-jsonsjabloon1",
+      "fr": "vis-jsontemplate",
+      "it": "vis-jsontemplate",
+      "es": "vis-jsontemplate",
+      "pl": "vis-jsontemplate",
+      "uk": "vis-jsontemplate",
+      "zh-cn": "vis-json模板1"
+    },
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "jsontemplate",
+      "visualization",
+      "widgets",
+      "vis1",
+      "vis2"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "tier": 3,
+    "platform": "Javascript/Node.js",
+    "icon": "vis-jsontemplate.png",
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-jsontemplate/main/admin/vis-jsontemplate.png",
+    "enabled": true,
+    "readme": "https://github.com/oweitman/ioBroker.vis-jsontemplate/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "none",
+    "nogit": true,
+    "singleton": true,
+    "onlyWWW": true,
+    "adminUI": {
+      "config": "none"
+    },
+    "type": "visualization-widgets",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "visWidgets": {
+      "vis2vis-jsonTemplateWidgets": {
+        "i18n": "component",
+        "name": "vis2vis-jsonTemplateWidgets",
+        "url": "vis2vis-jsontemplate/customWidgets.js",
+        "urlxx": "http://localhost:4173/customWidgets.js",
+        "bundlerType": "module",
+        "components": [
+          "JSONTemplateWidget"
+        ]
+      }
+    },
+    "restartAdapters": [
+      "vis",
+      "vis-2"
+    ],
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.19"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }

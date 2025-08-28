@@ -507,10 +507,9 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 4.0.1 (2025-08-28)
 
-### **WORK IN PROGRESS**
-
-- move vis1 and vis2 widgets to jsontemplate adapter
+- move vis1 and vis2 widgets to vis-jsontemplate adapter
 
 ## License
 
