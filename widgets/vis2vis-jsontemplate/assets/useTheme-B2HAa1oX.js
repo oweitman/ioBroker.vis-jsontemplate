@@ -1,0 +1,1 @@
+import{v as s}from"./vis2visjsonTemplateWidgets__loadShare__react__loadShare__-DIw4pDHA.js";import{T as n,n as a,H as o,G as r}from"./defaultTheme-kbRG1RKh.js";function m(e){return Object.keys(e).length===0}function u(e=null){const t=s.useContext(n);return!t||m(t)?e:t}const c=a();function h(e=c){return u(e)}function _(){const e=h(r);return e[o]||e}export{u as a,_ as b,h as u};
