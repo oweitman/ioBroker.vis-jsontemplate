@@ -507,6 +507,11 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- rename widgetset of the vis2 widget
+
 ### 4.0.2 (2025-08-28)
 
 - remove v4.0.0 from io-package

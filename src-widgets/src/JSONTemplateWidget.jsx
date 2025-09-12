@@ -16,8 +16,8 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
     }
     static getWidgetInfo() {
         return {
-            id: 'tplJSONTemplateWidget4vis2',
-            visSet: 'jsontemplate',
+            id: 'tplJSONTemplate4',
+            visSet: 'vis-jsontemplate',
             visSetLabel: 'jsontemplate',
             visName: 'JSON Widget', // Name of widget
             visAttrs: [
