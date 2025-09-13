@@ -1,8 +1,34 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.0.2",
+    "version": "4.1.1",
     "news": {
+      "4.1.1": {
+        "en": "new try of publish",
+        "de": "neuer Versuch der Veröffentlichung",
+        "ru": "новая попытка публикации",
+        "pt": "nova tentativa de publicação",
+        "nl": "nieuwe poging tot publiceren",
+        "fr": "nouvel essai de publication",
+        "it": "nuovo tentativo di pubblicazione",
+        "es": "nuevo intento de publicar",
+        "pl": "nowa próba publikacji",
+        "uk": "нова спроба публікації",
+        "zh-cn": "new try of publish"
+      },
+      "4.1.0": {
+        "en": "rename widgetset of the vis2 widget",
+        "de": "Rename Widgetset des Vis2 Widgets",
+        "ru": "переименовать набор виджетов для виджета vis2",
+        "pt": "renomear widgetset do widget vis2",
+        "nl": "De widgetset van het vis2-widget hernoemen",
+        "fr": "renomer le widgetset du widget vis2",
+        "it": "rinominare il widgetset del widget vis2",
+        "es": "renombrar conjunto de widgets del widget vis2",
+        "pl": "Zmiana nazwy zestawu widżetów dla widżetu vis2",
+        "uk": "перейменувати набір віджетів віджету vis2",
+        "zh-cn": "重命名vis2小部件的widgetset"
+      },
       "4.0.2": {
         "en": "remove v4.0.0 from io-package",
         "de": "entfernen v4.0.0 von io-package",
