@@ -507,7 +507,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### 4.1.1 (2025-09-13)
+### 4.1.2 (2025-09-13)
 
 - new try of publish
 
