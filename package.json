@@ -32,7 +32,7 @@
         "@iobroker/adapter-dev": "^1.5.0",
         "@iobroker/testing": "^5.1.1",
         "@types/gulp": "^4.0.18",
-        "@types/node": "^24.9.1"
+        "@types/node": "^24.10.0"
     },
     "main": "widgets/vis2jsontemplate/customWidgets.js",
     "files": [
