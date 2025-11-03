@@ -1,115 +1,141 @@
 {
-    "common": {
-        "name": "vis-jsontemplate",
-        "version": "4.1.2",
-        "news": {
-            "4.1.2": {
-                "en": "new try of publish",
-                "de": "neuer Versuch der Veröffentlichung",
-                "ru": "новая попытка публикации",
-                "pt": "nova tentativa de publicação",
-                "nl": "nieuwe poging tot publiceren",
-                "fr": "nouvel essai de publication",
-                "it": "nuovo tentativo di pubblicazione",
-                "es": "nuevo intento de publicar",
-                "pl": "nowa próba publikacji",
-                "uk": "нова спроба публікації",
-                "zh-cn": "new try of publish"
-            },
-            "4.0.2": {
-                "en": "remove v4.0.0 from io-package",
-                "de": "entfernen v4.0.0 von io-package",
-                "ru": "удалить v4.0.0 из пакета io",
-                "pt": "remover v4.0.0 do pacote io",
-                "nl": "v4.0.0 uit io-package verwijderen",
-                "fr": "supprimer v4.0.0 du io-package",
-                "it": "rimuovere v4.0.0 da io-package",
-                "es": "quitar v4.0.0 de io-paquete",
-                "pl": "usunąć v4.0.0 z opakowania jo-",
-                "uk": "remove v4.0.0 від io-package",
-                "zh-cn": "从 io 包装中删除 v4. 0.0"
-            },
-            "4.0.1": {
-                "en": "move vis1 and vis2 widgets to vis-jsontemplate adapter",
-                "de": "vis1 und vis2 widgets zu vis-jsontemplate adapter verschieben",
-                "ru": "переместить виджеты vis1 и vis2 в адаптер vis-jsontemplate",
-                "pt": "mover widgets vis1 e vis2 para o adaptador vis-jsontemplate",
-                "nl": "vis1 en vis2 widgets verplaatsen naar vis-jsentemplaatadapter",
-                "fr": "déplacer les widgets vis1 et vis2 vers l'adaptateur vis-jsontemplate",
-                "it": "spostare i widget vis1 e vis2 per l'adattatore vis-jsontemplate",
-                "es": "mover vis1 y vis2 widgets al adaptador vis-jsontemplate",
-                "pl": "przesuń widżety vis1 i vis2 do adaptera vis- jsonszablon",
-                "uk": "перемістіть віджети vis1 і vis2 до адаптера vis-jsontemplate",
-                "zh-cn": "将粘度1和粘度2的部件移动到粘度调试器上"
-            }
-        },
-        "titleLang": {
-            "en": "vis-jsontemplate",
-            "de": "vis-jsontemplate",
-            "ru": "vis-jsontemplate",
-            "pt": "vis-jsontemplate",
-            "nl": "vis-jsonsjabloon1",
-            "fr": "vis-jsontemplate",
-            "it": "vis-jsontemplate",
-            "es": "vis-jsontemplate",
-            "pl": "vis-jsontemplate",
-            "uk": "vis-jsontemplate",
-            "zh-cn": "vis-json模板1"
-        },
-        "desc": {
-            "en": "vis-jsontemplate",
-            "de": "vis-jsontemplate",
-            "ru": "vis-jsontemplate",
-            "pt": "vis-jsontemplate",
-            "nl": "vis-jsonsjabloon1",
-            "fr": "vis-jsontemplate",
-            "it": "vis-jsontemplate",
-            "es": "vis-jsontemplate",
-            "pl": "vis-jsontemplate",
-            "uk": "vis-jsontemplate",
-            "zh-cn": "vis-json模板1"
-        },
-        "authors": ["oweitman <oweitman@gmx.de>"],
-        "keywords": ["jsontemplate", "visualization", "widgets", "vis1", "vis2"],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "tier": 3,
-        "platform": "Javascript/Node.js",
-        "icon": "vis-jsontemplate.png",
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-jsontemplate/main/admin/vis-jsontemplate.png",
-        "enabled": true,
-        "readme": "https://github.com/oweitman/ioBroker.vis-jsontemplate/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "none",
-        "nogit": true,
-        "singleton": true,
-        "onlyWWW": true,
-        "adminUI": {
-            "config": "none"
-        },
-        "type": "visualization-widgets",
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "visWidgets": {
-            "vis2vis-jsonTemplateWidgets": {
-                "i18n": "component",
-                "name": "vis2vis-jsonTemplateWidgets",
-                "url": "vis2vis-jsontemplate/customWidgets.js",
-                "urlxx": "http://localhost:4173/customWidgets.js",
-                "bundlerType": "module",
-                "components": ["JSONTemplateWidget"]
-            }
-        },
-        "restartAdapters": ["vis", "vis-2"],
-        "dependencies": [
-            {
-                "js-controller": ">=5.0.19"
-            }
-        ]
+  "common": {
+    "name": "vis-jsontemplate",
+    "version": "4.1.3",
+    "news": {
+      "4.1.3": {
+        "en": "fix race condition if more than one widget use the same datapoint\nswitch to trusted publishing",
+        "de": "fixe rassenbedingung, wenn mehr als ein widget den gleichen datenpunkt verwenden\nauf vertrauenswürdige veröffentlichung wechseln",
+        "ru": "исправить состояние гонки, если более чем один виджет использует одну и ту же точку данных\nпереход к доверенной публикации",
+        "pt": "corrigir a condição de corrida se mais de um elemento usar o mesmo ponto de dados\nmudar para publicação confiável",
+        "nl": "fix race conditie als meer dan één widget hetzelfde datapoint gebruiken\noverschakelen naar vertrouwde publicatie",
+        "fr": "fixer l'état de la course si plus d'un widget utilise le même point de données\npasser à une publication fiable",
+        "it": "correzione condizione di gara se più di un widget utilizzare lo stesso datapoint\npassare alla pubblicazione di fiducia",
+        "es": "arreglar la condición de carrera si más de un widget utiliza el mismo punto de datos\ncambio a la publicación de confianza",
+        "pl": "naprawić stan wyścigu, jeśli więcej niż jeden widget korzystać z tego samego punktu danych\nprzełączanie na zaufaną publikację",
+        "uk": "фіксувати стан забігу, якщо більше одного віджета використовувати однакову точку даних\nпереключення до перевіреного видання",
+        "zh-cn": "如果多个部件使用相同的数据点, 则固定种族条件\n切换到可信任的出版"
+      },
+      "4.1.2": {
+        "en": "new try of publish",
+        "de": "neuer Versuch der Veröffentlichung",
+        "ru": "новая попытка публикации",
+        "pt": "nova tentativa de publicação",
+        "nl": "nieuwe poging tot publiceren",
+        "fr": "nouvel essai de publication",
+        "it": "nuovo tentativo di pubblicazione",
+        "es": "nuevo intento de publicar",
+        "pl": "nowa próba publikacji",
+        "uk": "нова спроба публікації",
+        "zh-cn": "new try of publish"
+      },
+      "4.0.2": {
+        "en": "remove v4.0.0 from io-package",
+        "de": "entfernen v4.0.0 von io-package",
+        "ru": "удалить v4.0.0 из пакета io",
+        "pt": "remover v4.0.0 do pacote io",
+        "nl": "v4.0.0 uit io-package verwijderen",
+        "fr": "supprimer v4.0.0 du io-package",
+        "it": "rimuovere v4.0.0 da io-package",
+        "es": "quitar v4.0.0 de io-paquete",
+        "pl": "usunąć v4.0.0 z opakowania jo-",
+        "uk": "remove v4.0.0 від io-package",
+        "zh-cn": "从 io 包装中删除 v4. 0.0"
+      },
+      "4.0.1": {
+        "en": "move vis1 and vis2 widgets to vis-jsontemplate adapter",
+        "de": "vis1 und vis2 widgets zu vis-jsontemplate adapter verschieben",
+        "ru": "переместить виджеты vis1 и vis2 в адаптер vis-jsontemplate",
+        "pt": "mover widgets vis1 e vis2 para o adaptador vis-jsontemplate",
+        "nl": "vis1 en vis2 widgets verplaatsen naar vis-jsentemplaatadapter",
+        "fr": "déplacer les widgets vis1 et vis2 vers l'adaptateur vis-jsontemplate",
+        "it": "spostare i widget vis1 e vis2 per l'adattatore vis-jsontemplate",
+        "es": "mover vis1 y vis2 widgets al adaptador vis-jsontemplate",
+        "pl": "przesuń widżety vis1 i vis2 do adaptera vis- jsonszablon",
+        "uk": "перемістіть віджети vis1 і vis2 до адаптера vis-jsontemplate",
+        "zh-cn": "将粘度1和粘度2的部件移动到粘度调试器上"
+      }
     },
-    "native": {},
-    "objects": [],
-    "instanceObjects": []
+    "titleLang": {
+      "en": "vis-jsontemplate",
+      "de": "vis-jsontemplate",
+      "ru": "vis-jsontemplate",
+      "pt": "vis-jsontemplate",
+      "nl": "vis-jsonsjabloon1",
+      "fr": "vis-jsontemplate",
+      "it": "vis-jsontemplate",
+      "es": "vis-jsontemplate",
+      "pl": "vis-jsontemplate",
+      "uk": "vis-jsontemplate",
+      "zh-cn": "vis-json模板1"
+    },
+    "desc": {
+      "en": "vis-jsontemplate",
+      "de": "vis-jsontemplate",
+      "ru": "vis-jsontemplate",
+      "pt": "vis-jsontemplate",
+      "nl": "vis-jsonsjabloon1",
+      "fr": "vis-jsontemplate",
+      "it": "vis-jsontemplate",
+      "es": "vis-jsontemplate",
+      "pl": "vis-jsontemplate",
+      "uk": "vis-jsontemplate",
+      "zh-cn": "vis-json模板1"
+    },
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "jsontemplate",
+      "visualization",
+      "widgets",
+      "vis1",
+      "vis2"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "tier": 3,
+    "platform": "Javascript/Node.js",
+    "icon": "vis-jsontemplate.png",
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-jsontemplate/main/admin/vis-jsontemplate.png",
+    "enabled": true,
+    "readme": "https://github.com/oweitman/ioBroker.vis-jsontemplate/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "none",
+    "nogit": true,
+    "singleton": true,
+    "onlyWWW": true,
+    "adminUI": {
+      "config": "none"
+    },
+    "type": "visualization-widgets",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "visWidgets": {
+      "vis2vis-jsonTemplateWidgets": {
+        "i18n": "component",
+        "name": "vis2vis-jsonTemplateWidgets",
+        "url": "vis2vis-jsontemplate/customWidgets.js",
+        "urlxx": "http://localhost:4173/customWidgets.js",
+        "bundlerType": "module",
+        "components": [
+          "JSONTemplateWidget"
+        ]
+      }
+    },
+    "restartAdapters": [
+      "vis",
+      "vis-2"
+    ],
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.19"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }
