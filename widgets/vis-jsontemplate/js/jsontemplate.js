@@ -8,7 +8,6 @@
 /* globals $,window,document,systemDictionary,vis,ejs,ace,_ */
 
 // add translations for edit mode
-// add translations for edit mode
 import { version as pkgVersion } from '../../../package.json';
 
 fetch('widgets/vis-jsontemplate/i18n/words.json').then(async res => {
@@ -66,7 +65,7 @@ vis.binds['jsontemplate'] = {
             }
             %>
          */
-        createWidget: function (widgetID, view, data, style) {
+        createWidget: async function (widgetID, view, data, style) {
             const $div = $(`#${widgetID}`);
             // if nothing found => wait
             if (!$div.length) {
@@ -93,7 +92,7 @@ vis.binds['jsontemplate'] = {
 
             if (bound) {
                 if (!vis.editMode) {
-                    vis.binds['jsontemplate'].bindStates(
+                    await vis.binds['jsontemplate'].bindStatesAsync(
                         $div,
                         bound,
                         vis.binds['jsontemplate'].jsontemplate4.onChange.bind({
@@ -105,16 +104,7 @@ vis.binds['jsontemplate'] = {
                     );
                 }
             }
-            this.render(widgetID, view, data);
-            // let text = '';
-            // try {
-            //     text = ejs.render(template, { widgetID: widgetID, data: oiddata, dp: datapoints });
-            // } catch (e) {
-            //     text = vis.binds['jsontemplate'].escapeHTML(e.message).replace(/(?:\r\n|\r|\n)/g, '<br>');
-            //     text = text.replace(/ /gm, '&nbsp;');
-            //     text = `<code style="color:red;">${text}</code>`;
-            // }
-            // $(`#${widgetID}`).html(text);
+            await this.render(widgetID, view, data);
         },
 
         /**
@@ -202,6 +192,39 @@ vis.binds['jsontemplate'] = {
                 vis.updateStates(states);
             }.bind({ change_callback }),
         );
+    },
+    bindStatesAsync: async function (elem, bound, change_callback) {
+        return new Promise((resolve, reject) => {
+            try {
+                const $div = $(elem);
+                const boundstates = $div.data('bound');
+                if (boundstates) {
+                    for (let i = 0; i < boundstates.length; i++) {
+                        vis.states.unbind(boundstates[i], change_callback);
+                    }
+                }
+                $div.data('bound', null);
+                $div.data('bindHandler', null);
+
+                vis.conn.gettingStates = 0;
+                vis.conn.getStates(
+                    bound,
+                    function (error, states) {
+                        vis.conn.subscribe(bound);
+                        $div.data('bound', bound);
+                        $div.data('bindHandler', change_callback);
+                        for (let i = 0; i < bound.length; i++) {
+                            bound[i] = `${bound[i]}.val`;
+                            vis.states.bind(bound[i], change_callback);
+                        }
+                        vis.updateStates(states);
+                        resolve();
+                    }.bind({ change_callback }),
+                );
+            } catch (error) {
+                reject(error);
+            }
+        });
     },
     /**
      * Escapes HTML special characters in a given string.
@@ -337,10 +360,4 @@ str=str.replace(/<br>/gi, "\n");
 str=str.replace(/<p.*>/gi, "\n");
 str=str.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2 (Link->$1) ");
 str=str.replace(/<(?:.|\s)*?>/g, "");
-*/
-
-/*
-Remember JSON Path finder https://github.com/joebeachjoebeach/json-path-finder
-Remember JSON Formatter https://github.com/mohsen1/json-formatter-js
-
 */

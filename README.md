@@ -507,6 +507,11 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- fix race condition if more than one widget use the same datapoint
+
 ### 4.1.2 (2025-09-13)
 
 - new try of publish

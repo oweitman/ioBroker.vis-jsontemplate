@@ -120,39 +120,41 @@
               %>
            */
           createWidget: function(widgetID, view, data, style) {
-            const $div = $(`#${widgetID}`);
-            if (!$div.length) {
-              return setTimeout(function() {
-                vis.binds["jsontemplate"].jsontemplate4.createWidget(widgetID, view, data, style);
-              }, 100);
-            }
-            const bound = [];
-            if (data.json_oid) {
-              bound.push(data.json_oid);
-            }
-            const dpCount = data.json_dpCount ? data.json_dpCount : 1;
-            const datapoints = [];
-            for (let i = 1; i <= dpCount; i++) {
-              if (data[`json_dp${i}`]) {
-                datapoints[data[`json_dp${i}`]] = vis.states.attr(`${data[`json_dp${i}`]}.val`);
-                bound.push(data[`json_dp${i}`]);
+            return __async(this, null, function* () {
+              const $div = $(`#${widgetID}`);
+              if (!$div.length) {
+                return setTimeout(function() {
+                  vis.binds["jsontemplate"].jsontemplate4.createWidget(widgetID, view, data, style);
+                }, 100);
               }
-            }
-            if (bound) {
-              if (!vis.editMode) {
-                vis.binds["jsontemplate"].bindStates(
-                  $div,
-                  bound,
-                  vis.binds["jsontemplate"].jsontemplate4.onChange.bind({
-                    widgetID,
-                    view,
-                    data,
-                    style
-                  })
-                );
+              const bound = [];
+              if (data.json_oid) {
+                bound.push(data.json_oid);
               }
-            }
-            this.render(widgetID, view, data);
+              const dpCount = data.json_dpCount ? data.json_dpCount : 1;
+              const datapoints = [];
+              for (let i = 1; i <= dpCount; i++) {
+                if (data[`json_dp${i}`]) {
+                  datapoints[data[`json_dp${i}`]] = vis.states.attr(`${data[`json_dp${i}`]}.val`);
+                  bound.push(data[`json_dp${i}`]);
+                }
+              }
+              if (bound) {
+                if (!vis.editMode) {
+                  yield vis.binds["jsontemplate"].bindStatesAsync(
+                    $div,
+                    bound,
+                    vis.binds["jsontemplate"].jsontemplate4.onChange.bind({
+                      widgetID,
+                      view,
+                      data,
+                      style
+                    })
+                  );
+                }
+              }
+              yield this.render(widgetID, view, data);
+            });
           },
           /**
            * Will be called if the value of the bound data point changes.
@@ -238,6 +240,40 @@
               vis.updateStates(states);
             }.bind({ change_callback })
           );
+        },
+        bindStatesAsync: function(elem, bound, change_callback) {
+          return __async(this, null, function* () {
+            return new Promise((resolve, reject) => {
+              try {
+                const $div = $(elem);
+                const boundstates = $div.data("bound");
+                if (boundstates) {
+                  for (let i = 0; i < boundstates.length; i++) {
+                    vis.states.unbind(boundstates[i], change_callback);
+                  }
+                }
+                $div.data("bound", null);
+                $div.data("bindHandler", null);
+                vis.conn.gettingStates = 0;
+                vis.conn.getStates(
+                  bound,
+                  function(error, states) {
+                    vis.conn.subscribe(bound);
+                    $div.data("bound", bound);
+                    $div.data("bindHandler", change_callback);
+                    for (let i = 0; i < bound.length; i++) {
+                      bound[i] = `${bound[i]}.val`;
+                      vis.states.bind(bound[i], change_callback);
+                    }
+                    vis.updateStates(states);
+                    resolve();
+                  }.bind({ change_callback })
+                );
+              } catch (error) {
+                reject(error);
+              }
+            });
+          });
         },
         /**
          * Escapes HTML special characters in a given string.
@@ -386,7 +422,7 @@
         }
       })(function() {
         var define2, module2, exports2;
-        return (/* @__PURE__ */ function() {
+        return (/* @__PURE__ */ (function() {
           function e(t, n, r) {
             function s(o2, u) {
               if (!n[o2]) {
@@ -410,7 +446,7 @@
             return s;
           }
           return e;
-        }())({ 1: [function(require2, module3, exports3) {
+        })())({ 1: [function(require2, module3, exports3) {
           "use strict";
           var fs = require2("fs");
           var path = require2("path");
