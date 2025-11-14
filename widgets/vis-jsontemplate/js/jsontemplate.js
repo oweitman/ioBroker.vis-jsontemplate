@@ -104,7 +104,7 @@ vis.binds['jsontemplate'] = {
                     );
                 }
             }
-            await this.render(widgetID, view, data);
+            await this.render(widgetID, view, data, style);
         },
 
         /**
@@ -130,7 +130,7 @@ vis.binds['jsontemplate'] = {
          * It then uses EJS to render the template with the provided data and updates the widget's HTML content.
          * In case of an error during rendering, it escapes and formats the error message to display it in the widget.
          */
-        render: async function (widgetID, view, data) {
+        render: async function (widgetID, view, data, style) {
             const oiddata = data.json_oid ? JSON.parse(vis.states.attr(`${data.json_oid}.val`)) : {};
             const dpCount = data.json_dpCount ? data.json_dpCount : 1;
             const template = data.json_template ? data.json_template : '';
@@ -145,7 +145,7 @@ vis.binds['jsontemplate'] = {
             try {
                 text = await ejs.render(
                     template,
-                    { widgetID: widgetID, data: oiddata, dp: datapoints },
+                    { widgetID: widgetID, data: oiddata, dp: datapoints, widget: data, style: style },
                     { async: true },
                 );
             } catch (e) {
