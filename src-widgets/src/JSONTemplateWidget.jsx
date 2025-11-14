@@ -81,7 +81,7 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                     },
                     fields: [
                         {
-                            name: 'datapoint-oid',
+                            name: 'json_dp',
                             label: 'datapoints_oid:',
                             type: 'id',
                         },
