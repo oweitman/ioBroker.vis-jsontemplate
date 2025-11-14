@@ -194,7 +194,13 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
 
             template = data?.template || '';
             this.renderText =
-                ejs.render(template, { widgetid: props.id, data: oiddata, dp: datapoints, style: props.style }) + ' ';
+                ejs.render(template, {
+                    widgetid: props.id,
+                    data: oiddata,
+                    dp: datapoints,
+                    style: props.style,
+                    widget: data,
+                }) + ' ';
         } catch (e) {
             text = this.escapeHTML(e.message).replace(/(?:\r\n|\r|\n)/g, '<br>');
             text = text.replace(/ /gm, '&nbsp;');
