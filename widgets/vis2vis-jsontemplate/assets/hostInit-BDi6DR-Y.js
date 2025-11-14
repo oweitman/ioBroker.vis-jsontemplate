@@ -1,2 +1,2 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["../customWidgets.js","./vis2visjsonTemplateWidgets__mf_v__runtimeInit__mf_v__-Bg5OEhrp.js","./virtualExposes-WZb0uvBg.js","./preload-helper-4fGslNWJ.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["../customWidgets.js","./vis2visjsonTemplateWidgets__mf_v__runtimeInit__mf_v__-Bg5OEhrp.js","./virtualExposes-Bi3_CAvi.js","./preload-helper-4fGslNWJ.js"])))=>i.map(i=>d[i]);
 import{_ as i}from"./preload-helper-4fGslNWJ.js";const r=i(()=>import("../customWidgets.js"),__vite__mapDeps([0,1,2,3]),import.meta.url);Promise.resolve(r).then(e=>Promise.resolve(e.__tla).then(e.init).catch(e.init));

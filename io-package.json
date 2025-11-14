@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.1.3",
+    "version": "4.2.0",
     "news": {
+      "4.2.0": {
+        "en": "Improve documentation for the object notation in a template\nfix some translations\nalign attribute name to vis1\nadd widget data to the available template objects in vis2\nadd style and widget object to the available template objects in vis1\nimprove documentation",
+        "de": "Verbessern Sie die Dokumentation der Objektnotation in einer Vorlage\neinige übersetzungen beheben\nattributname auf vis1 ausrichten\nwidget-daten zu den verfügbaren vorlagenobjekten in vis2 hinzufügen\nstyle und widget-objekt zu den verfügbaren vorlagenobjekten in vis1 hinzufügen\nverbesserung der dokumentation",
+        "ru": "Улучшить документацию для обозначения объекта в шаблоне\nисправить некоторые переводы\nвыравнивание имени атрибута для vis1\nдобавить данные виджета в доступные объекты шаблона в vis2\nдобавить стиль и объект виджета к доступным объектам шаблона в vis1\nулучшить документацию",
+        "pt": "Melhorar a documentação para a notação do objeto em um modelo\ncorrigir algumas traduções\nalinhar o nome do atributo para vis1\nadicionar dados de widget aos objetos de modelo disponíveis em vis2\nadicionar estilo e objeto widget aos objetos de modelo disponíveis em vis1\nmelhorar a documentação",
+        "nl": "De documentatie voor de objectnotatie in een sjabloon verbeteren\nsommige vertalingen te herstellen\nuitlijnen attribuutnaam naar vis1\nwidgetgegevens toevoegen aan de beschikbare sjabloonobjecten in vis2\ntoevoegen van stijl en widget object aan de beschikbare sjabloon objecten in vis1\nde documentatie verbeteren",
+        "fr": "Améliorer la documentation pour la notation d'objet dans un modèle\ncorriger certaines traductions\naligner le nom d'attribut sur vis1\najouter des données de widget aux objets de gabarit disponibles dans vis2\najouter style et objet widget aux objets template disponibles dans vis1\naméliorer la documentation",
+        "it": "Migliorare la documentazione per la notazione degli oggetti in un modello\nfissare alcune traduzioni\nalign attributo name a vis1\naggiungere i dati dei widget agli oggetti di modello disponibili in vis2\naggiungere oggetto stile e widget agli oggetti template disponibili in vis1\nmigliorare la documentazione",
+        "es": "Mejorar la documentación para la notación de objetos en una plantilla\narreglar algunas traducciones\nnombre de atributo alineado a vis1\nañadir datos de widget a los objetos de plantilla disponibles en vis2\nañadir estilo y objeto widget a los objetos de plantilla disponibles en vis1\nmejorar la documentación",
+        "pl": "Popraw dokumentację zapisu obiektu w szablonie\nnaprawić niektóre tłumaczenia\nwyrównać nazwę atrybutu do vis1\ndodaj dane widget do dostępnych obiektów szablonu w vis2\ndodaj styl i obiekt widget do dostępnych obiektów szablonu w vis1\npoprawić dokumentację",
+        "uk": "Покращити документацію для позначення об'єкта в шаблоні\nвиправити деякі переклади\nalign name атрибута в vis1\nдодати дані віджету на доступні шаблонні об'єкти в vis2\nдодати стиль і віджет об'єкта в доступні шаблони об'єктів в vis1\nвдосконалення документації",
+        "zh-cn": "改进模板中对象标记的文档\n修复一些翻译\n将属性名称与 vis1 对齐\n在 vis2 中将部件数据添加到可用的模板对象\n在 vis1 中将样式和部件对象添加到可用的模板对象\n改进文件编制"
+      },
       "4.1.3": {
         "en": "fix race condition if more than one widget use the same datapoint\nswitch to trusted publishing",
         "de": "fixe rassenbedingung, wenn mehr als ein widget den gleichen datenpunkt verwenden\nauf vertrauenswürdige veröffentlichung wechseln",

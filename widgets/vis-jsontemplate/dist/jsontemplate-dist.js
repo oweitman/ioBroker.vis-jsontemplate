@@ -58,7 +58,7 @@
   var version;
   var init_package = __esm({
     "../package.json"() {
-      version = "4.1.3";
+      version = "4.2.0";
     }
   });
 
@@ -153,7 +153,7 @@
                   );
                 }
               }
-              yield this.render(widgetID, view, data);
+              yield this.render(widgetID, view, data, style);
             });
           },
           /**
@@ -178,7 +178,7 @@
            * It then uses EJS to render the template with the provided data and updates the widget's HTML content.
            * In case of an error during rendering, it escapes and formats the error message to display it in the widget.
            */
-          render: function(widgetID, view, data) {
+          render: function(widgetID, view, data, style) {
             return __async(this, null, function* () {
               const oiddata = data.json_oid ? JSON.parse(vis.states.attr(`${data.json_oid}.val`)) : {};
               const dpCount = data.json_dpCount ? data.json_dpCount : 1;
@@ -193,7 +193,7 @@
               try {
                 text = yield ejs.render(
                   template,
-                  { widgetID, data: oiddata, dp: datapoints },
+                  { widgetID, data: oiddata, dp: datapoints, widget: data, style },
                   { async: true }
                 );
               } catch (e) {
