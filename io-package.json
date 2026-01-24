@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.3.1",
+    "version": "4.3.2",
     "news": {
+      "4.3.2": {
+        "en": "update test and release script",
+        "de": "update-test und release-skript",
+        "ru": "обновить тест и выпустить скрипт",
+        "pt": "atualizar script de teste e lançamento",
+        "nl": "update test- en releasescript",
+        "fr": "mettre à jour le script test et release",
+        "it": "test di aggiornamento e script di rilascio",
+        "es": "actualización de prueba y script de liberación",
+        "pl": "aktualizacja skryptu testowego i wydania",
+        "uk": "скрипт тестування і реліз",
+        "zh-cn": "更新测试并发布脚本"
+      },
       "4.3.1": {
         "en": "try again to publish",
         "de": "versuchen, wieder zu veröffentlichen",
@@ -80,19 +93,6 @@
         "pl": "usunąć v4.0.0 z opakowania jo-",
         "uk": "remove v4.0.0 від io-package",
         "zh-cn": "从 io 包装中删除 v4. 0.0"
-      },
-      "4.0.1": {
-        "en": "move vis1 and vis2 widgets to vis-jsontemplate adapter",
-        "de": "vis1 und vis2 widgets zu vis-jsontemplate adapter verschieben",
-        "ru": "переместить виджеты vis1 и vis2 в адаптер vis-jsontemplate",
-        "pt": "mover widgets vis1 e vis2 para o adaptador vis-jsontemplate",
-        "nl": "vis1 en vis2 widgets verplaatsen naar vis-jsentemplaatadapter",
-        "fr": "déplacer les widgets vis1 et vis2 vers l'adaptateur vis-jsontemplate",
-        "it": "spostare i widget vis1 e vis2 per l'adattatore vis-jsontemplate",
-        "es": "mover vis1 y vis2 widgets al adaptador vis-jsontemplate",
-        "pl": "przesuń widżety vis1 i vis2 do adaptera vis- jsonszablon",
-        "uk": "перемістіть віджети vis1 і vis2 до адаптера vis-jsontemplate",
-        "zh-cn": "将粘度1和粘度2的部件移动到粘度调试器上"
       }
     },
     "titleLang": {
