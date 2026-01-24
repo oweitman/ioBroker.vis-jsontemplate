@@ -632,8 +632,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-**WORK IN PROGRESS**
+### 4.3.0 (2026-01-24)
 
 - The ability to load additional JavaScript and CSS files has been added.
   This is currently only available for vis1 for testing purposes.

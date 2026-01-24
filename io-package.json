@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.2.0",
+    "version": "4.3.0",
     "news": {
+      "4.3.0": {
+        "en": "- The ability to load additional JavaScript and CSS files has been added.\n  This is currently only available for vis1 for testing purposes.",
+        "de": "- Die Möglichkeit, zusätzliche JavaScript- und CSS-Dateien zu laden, wurde hinzugefügt.\nDies ist derzeit nur für vis1 für Testzwecke verfügbar.",
+        "ru": "Добавлена возможность загрузки дополнительных файлов JavaScript и CSS.\nВ настоящее время он доступен только для целей тестирования vis1.",
+        "pt": "- A capacidade de carregar arquivos adicionais de JavaScript e CSS foi adicionado.\nIsto está atualmente disponível apenas para vis1 para fins de teste.",
+        "nl": "- De mogelijkheid om extra JavaScript- en CSS-bestanden te laden is toegevoegd.\nDit is momenteel alleen beschikbaar voor vis1 voor testdoeleinden.",
+        "fr": "- La possibilité de charger des fichiers JavaScript et CSS supplémentaires a été ajoutée.\nCeci est actuellement disponible uniquement pour vis1 à des fins d'essai.",
+        "it": "- È stata aggiunta la capacità di caricare ulteriori file JavaScript e CSS.\nQuesto è attualmente disponibile solo per vis1 a fini di prova.",
+        "es": "- Se ha añadido la posibilidad de cargar archivos adicionales de JavaScript y CSS.\nActualmente solo está disponible para vis1 con fines de prueba.",
+        "pl": "- Dodano możliwość wczytania dodatkowych plików JavaScript i CSS.\nJest to obecnie dostępne tylko dla vis1 do celów testowych.",
+        "uk": "- Додано можливість завантажити додаткові JavaScript та CSS-файли.\nВ даний час ми використовуємо лише для цілей тестування.",
+        "zh-cn": "- 添加了加载额外的JavaScript和CSS文件的能力.\n目前仅供测试之用."
+      },
       "4.2.0": {
         "en": "Improve documentation for the object notation in a template\nfix some translations\nalign attribute name to vis1\nadd widget data to the available template objects in vis2\nadd style and widget object to the available template objects in vis1\nimprove documentation",
         "de": "Verbessern Sie die Dokumentation der Objektnotation in einer Vorlage\neinige übersetzungen beheben\nattributname auf vis1 ausrichten\nwidget-daten zu den verfügbaren vorlagenobjekten in vis2 hinzufügen\nstyle und widget-objekt zu den verfügbaren vorlagenobjekten in vis1 hinzufügen\nverbesserung der dokumentation",
