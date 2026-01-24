@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.3.8",
+    "version": "4.3.9",
     "news": {
+      "4.3.9": {
+        "en": "update test and release script",
+        "de": "update-test und release-skript",
+        "ru": "обновить тест и выпустить скрипт",
+        "pt": "atualizar script de teste e lançamento",
+        "nl": "update test- en releasescript",
+        "fr": "mettre à jour le script test et release",
+        "it": "test di aggiornamento e script di rilascio",
+        "es": "actualización de prueba y script de liberación",
+        "pl": "aktualizacja skryptu testowego i wydania",
+        "uk": "скрипт тестування і реліз",
+        "zh-cn": "更新测试并发布脚本"
+      },
       "4.3.8": {
         "en": "update test and release script",
         "de": "update-test und release-skript",
@@ -69,19 +82,6 @@
         "zh-cn": "更新测试并发布脚本"
       },
       "4.3.3": {
-        "en": "update test and release script",
-        "de": "update-test und release-skript",
-        "ru": "обновить тест и выпустить скрипт",
-        "pt": "atualizar script de teste e lançamento",
-        "nl": "update test- en releasescript",
-        "fr": "mettre à jour le script test et release",
-        "it": "test di aggiornamento e script di rilascio",
-        "es": "actualización de prueba y script de liberación",
-        "pl": "aktualizacja skryptu testowego i wydania",
-        "uk": "скрипт тестування і реліз",
-        "zh-cn": "更新测试并发布脚本"
-      },
-      "4.3.2": {
         "en": "update test and release script",
         "de": "update-test und release-skript",
         "ru": "обновить тест и выпустить скрипт",
