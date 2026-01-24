@@ -73,6 +73,8 @@
       }));
       vis.binds["jsontemplate"] = {
         version,
+        _assetCache: vis.binds["jsontemplate"] && vis.binds["jsontemplate"]._assetCache || /* @__PURE__ */ new Map(),
+        _widgetInit: vis.binds["jsontemplate"] && vis.binds["jsontemplate"]._widgetInit || /* @__PURE__ */ new Map(),
         /**
          * Log the version of jsontemplate and remove it.
          * Should be called from the main thread, as it logs to the console.
@@ -139,6 +141,20 @@
                   bound.push(data[`json_dp${i}`]);
                 }
               }
+              const scriptCount = data.json_scriptCount ? data.json_scriptCount : 1;
+              const scripts = [];
+              for (let i = 1; i <= scriptCount; i++) {
+                if (data[`json_script${i}`]) {
+                  scripts.push(data[`json_script${i}`]);
+                }
+              }
+              const cssCount = data.json_cssCount ? data.json_cssCount : 1;
+              const css = [];
+              for (let i = 1; i <= cssCount; i++) {
+                if (data[`json_css${i}`]) {
+                  css.push(data[`json_css${i}`]);
+                }
+              }
               if (bound) {
                 if (!vis.editMode) {
                   yield vis.binds["jsontemplate"].bindStatesAsync(
@@ -152,6 +168,14 @@
                     })
                   );
                 }
+              }
+              try {
+                yield vis.binds["jsontemplate"].initWidgetAssetsOnce(widgetID, scripts, css);
+              } catch (e) {
+                let msg = vis.binds["jsontemplate"].escapeHTML(e.message).replace(/(?:\r\n|\r|\n)/g, "<br>");
+                msg = msg.replace(/ /gm, "&nbsp;");
+                $div.html(`<code style="color:red;">${msg}</code>`);
+                return;
               }
               yield this.render(widgetID, view, data, style);
             });
@@ -393,6 +417,105 @@
             }
           };
           return line;
+        },
+        loadAsset: function(url, kind) {
+          const u = (url || "").trim();
+          if (!u) {
+            return Promise.resolve();
+          }
+          const cache = vis.binds["jsontemplate"]._assetCache;
+          if (cache.has(u)) {
+            return cache.get(u);
+          }
+          const p = new Promise((resolve, reject) => {
+            try {
+              const isCss = kind === "css" || u.toLowerCase().endsWith(".css");
+              const isJs = kind === "js" || u.toLowerCase().endsWith(".js") || !isCss;
+              if (isCss) {
+                const existing = document.querySelector(`link[rel="stylesheet"][href="${CSS.escape(u)}"]`);
+                if (existing) {
+                  return resolve();
+                }
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = u;
+                link.onload = () => resolve();
+                link.onerror = () => reject(new Error(`CSS konnte nicht geladen werden: ${u}`));
+                document.head.appendChild(link);
+                return;
+              }
+              if (isJs) {
+                const existing = document.querySelector(`script[src="${CSS.escape(u)}"]`);
+                if (existing) {
+                  return resolve();
+                }
+                const s = document.createElement("script");
+                s.src = u;
+                s.async = false;
+                s.defer = false;
+                s.onload = () => resolve();
+                s.onerror = () => reject(new Error(`Script konnte nicht geladen werden: ${u}`));
+                document.head.appendChild(s);
+                return;
+              }
+              resolve();
+            } catch (err) {
+              reject(err);
+            }
+          });
+          cache.set(u, p);
+          return p;
+        },
+        loadAssetsInOrder: function(assets) {
+          return __async(this, null, function* () {
+            if (!assets || !assets.length) {
+              return;
+            }
+            for (const a of assets) {
+              if (!a) {
+                continue;
+              }
+              if (typeof a === "string") {
+                yield vis.binds["jsontemplate"].loadAsset(a);
+              } else {
+                yield vis.binds["jsontemplate"].loadAsset(a.url, a.kind);
+              }
+            }
+          });
+        },
+        /**
+         * Lädt CSS und Scripts (einmalig) in definierter Reihenfolge:
+         * 1) CSS (Reihenfolge beibehalten, relevant für Overrides)
+         * 2) JS  (sequentiell, relevant für Abhängigkeiten)
+         */
+        loadScriptsAndCssOnce: function(scripts, css) {
+          return __async(this, null, function* () {
+            if (Array.isArray(css) && css.length) {
+              const cssAssets = css.map((u) => (u || "").trim()).filter(Boolean).map((u) => ({ url: u, kind: "css" }));
+              yield vis.binds["jsontemplate"].loadAssetsInOrder(cssAssets);
+            }
+            if (Array.isArray(scripts) && scripts.length) {
+              const scriptAssets = scripts.map((u) => (u || "").trim()).filter(Boolean).map((u) => ({ url: u, kind: "js" }));
+              yield vis.binds["jsontemplate"].loadAssetsInOrder(scriptAssets);
+            }
+          });
+        },
+        /**
+         * Einmalige Initialisierung pro WidgetID + Asset-Set.
+         * Dadurch wird bei render()-Aufrufen (State changes) nicht erneut geladen.
+         * Wenn sich Assets in den Properties ändern, erzeugt der Key ein neues Init-Promise.
+         */
+        initWidgetAssetsOnce: function(widgetID, scripts, css) {
+          const initMap = vis.binds["jsontemplate"]._widgetInit;
+          const key = `${widgetID}::css=${(css || []).map((s) => String(s).trim()).filter(Boolean).join("|")}::js=${(scripts || []).map((s) => String(s).trim()).filter(Boolean).join("|")}`;
+          if (initMap.has(key)) {
+            return initMap.get(key);
+          }
+          const p = (() => __async(null, null, function* () {
+            yield vis.binds["jsontemplate"].loadScriptsAndCssOnce(scripts, css);
+          }))();
+          initMap.set(key, p);
+          return p;
         }
       };
       vis.binds["jsontemplate"].showVersion();
