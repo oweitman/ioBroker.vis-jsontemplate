@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-jsontemplate",
-  "version": "4.3.7",
+  "version": "4.3.8",
   "description": "vis-jsontemplate",
   "author": {
     "name": "oweitman",
@@ -43,6 +43,7 @@
   "scripts": {
     "test:package": "mocha test/package --exit",
     "test:widgets": "mocha ./test/*.test.js",
+    "test:integration": "mocha test/package --exit",
     "test": "npm run test:package && npm run test:widgets",
     "prepublishOnly": "npm run build-vis1widgets && npm run build-vis2widgets",
     "lint": "npm run lint-adapter && npm run lint-vis1widgets && npm run lint-vis2widgets",

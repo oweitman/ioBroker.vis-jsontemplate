@@ -632,7 +632,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### 4.3.7 (2026-01-24)
+### 4.3.8 (2026-01-24)
 
 - update test and release script
 
