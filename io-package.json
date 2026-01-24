@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.3.0",
+    "version": "4.3.1",
     "news": {
+      "4.3.1": {
+        "en": "try again to publish",
+        "de": "versuchen, wieder zu veröffentlichen",
+        "ru": "попробуйте еще раз опубликовать",
+        "pt": "tentar novamente publicar",
+        "nl": "opnieuw proberen te publiceren",
+        "fr": "essayer de nouveau de publier",
+        "it": "riprovare a pubblicare",
+        "es": "intentar de nuevo publicar",
+        "pl": "spróbuj ponownie opublikować",
+        "uk": "намагатися знову публікувати",
+        "zh-cn": "再次尝试发布"
+      },
       "4.3.0": {
         "en": "- The ability to load additional JavaScript and CSS files has been added.\n  This is currently only available for vis1 for testing purposes.",
         "de": "- Die Möglichkeit, zusätzliche JavaScript- und CSS-Dateien zu laden, wurde hinzugefügt.\nDies ist derzeit nur für vis1 für Testzwecke verfügbar.",
