@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.3.3",
+    "version": "4.3.4",
     "news": {
+      "4.3.4": {
+        "en": "update test and release script",
+        "de": "update-test und release-skript",
+        "ru": "обновить тест и выпустить скрипт",
+        "pt": "atualizar script de teste e lançamento",
+        "nl": "update test- en releasescript",
+        "fr": "mettre à jour le script test et release",
+        "it": "test di aggiornamento e script di rilascio",
+        "es": "actualización de prueba y script de liberación",
+        "pl": "aktualizacja skryptu testowego i wydania",
+        "uk": "скрипт тестування і реліз",
+        "zh-cn": "更新测试并发布脚本"
+      },
       "4.3.3": {
         "en": "update test and release script",
         "de": "update-test und release-skript",
@@ -80,19 +93,6 @@
         "pl": "naprawić stan wyścigu, jeśli więcej niż jeden widget korzystać z tego samego punktu danych\nprzełączanie na zaufaną publikację",
         "uk": "фіксувати стан забігу, якщо більше одного віджета використовувати однакову точку даних\nпереключення до перевіреного видання",
         "zh-cn": "如果多个部件使用相同的数据点, 则固定种族条件\n切换到可信任的出版"
-      },
-      "4.1.2": {
-        "en": "new try of publish",
-        "de": "neuer Versuch der Veröffentlichung",
-        "ru": "новая попытка публикации",
-        "pt": "nova tentativa de publicação",
-        "nl": "nieuwe poging tot publiceren",
-        "fr": "nouvel essai de publication",
-        "it": "nuovo tentativo di pubblicazione",
-        "es": "nuevo intento de publicar",
-        "pl": "nowa próba publikacji",
-        "uk": "нова спроба публікації",
-        "zh-cn": "new try of publish"
       }
     },
     "titleLang": {
