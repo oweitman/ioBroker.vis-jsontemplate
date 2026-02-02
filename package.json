@@ -31,7 +31,7 @@
     "@iobroker/build-tools": "^2.0.15",
     "@iobroker/vis-2-widgets-react-dev": "^4.0.4",
     "@iobroker/vis-2-widgets-testing": "^1.0.6",
-    "@types/node": "^24.10.1"
+    "@types/node": "^25.2.0"
   },
   "main": "widgets/vis2jsontemplate/customWidgets.js",
   "files": [
