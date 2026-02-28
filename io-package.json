@@ -1,180 +1,102 @@
 {
-  "common": {
-    "name": "vis-jsontemplate",
-    "version": "4.3.11",
-    "news": {
-      "4.3.11": {
-        "en": "check test release workflow",
-        "de": "testfreigabe workflow",
-        "ru": "проверка рабочего процесса выпуска",
-        "pt": "verificar o fluxo de trabalho de lançamento do teste",
-        "nl": "test-ontgrendelingsworkflow controleren",
-        "fr": "vérifier le déroulement du test de libération",
-        "it": "controllo del flusso di lavoro di rilascio del test",
-        "es": "check test de liberación flujo de trabajo",
-        "pl": "sprawdzić przepływ pracy uwalniania próby",
-        "uk": "контрольний процес тестування",
-        "zh-cn": "检查测试发布工作流程"
-      },
-      "4.3.10": {
-        "en": "update test and release script",
-        "de": "update-test und release-skript",
-        "ru": "обновить тест и выпустить скрипт",
-        "pt": "atualizar script de teste e lançamento",
-        "nl": "update test- en releasescript",
-        "fr": "mettre à jour le script test et release",
-        "it": "test di aggiornamento e script di rilascio",
-        "es": "actualización de prueba y script de liberación",
-        "pl": "aktualizacja skryptu testowego i wydania",
-        "uk": "скрипт тестування і реліз",
-        "zh-cn": "更新测试并发布脚本"
-      },
-      "4.3.9": {
-        "en": "update test and release script",
-        "de": "update-test und release-skript",
-        "ru": "обновить тест и выпустить скрипт",
-        "pt": "atualizar script de teste e lançamento",
-        "nl": "update test- en releasescript",
-        "fr": "mettre à jour le script test et release",
-        "it": "test di aggiornamento e script di rilascio",
-        "es": "actualización de prueba y script de liberación",
-        "pl": "aktualizacja skryptu testowego i wydania",
-        "uk": "скрипт тестування і реліз",
-        "zh-cn": "更新测试并发布脚本"
-      },
-      "4.3.8": {
-        "en": "update test and release script",
-        "de": "update-test und release-skript",
-        "ru": "обновить тест и выпустить скрипт",
-        "pt": "atualizar script de teste e lançamento",
-        "nl": "update test- en releasescript",
-        "fr": "mettre à jour le script test et release",
-        "it": "test di aggiornamento e script di rilascio",
-        "es": "actualización de prueba y script de liberación",
-        "pl": "aktualizacja skryptu testowego i wydania",
-        "uk": "скрипт тестування і реліз",
-        "zh-cn": "更新测试并发布脚本"
-      },
-      "4.3.7": {
-        "en": "update test and release script",
-        "de": "update-test und release-skript",
-        "ru": "обновить тест и выпустить скрипт",
-        "pt": "atualizar script de teste e lançamento",
-        "nl": "update test- en releasescript",
-        "fr": "mettre à jour le script test et release",
-        "it": "test di aggiornamento e script di rilascio",
-        "es": "actualización de prueba y script de liberación",
-        "pl": "aktualizacja skryptu testowego i wydania",
-        "uk": "скрипт тестування і реліз",
-        "zh-cn": "更新测试并发布脚本"
-      },
-      "4.3.6": {
-        "en": "update test and release script",
-        "de": "update-test und release-skript",
-        "ru": "обновить тест и выпустить скрипт",
-        "pt": "atualizar script de teste e lançamento",
-        "nl": "update test- en releasescript",
-        "fr": "mettre à jour le script test et release",
-        "it": "test di aggiornamento e script di rilascio",
-        "es": "actualización de prueba y script de liberación",
-        "pl": "aktualizacja skryptu testowego i wydania",
-        "uk": "скрипт тестування і реліз",
-        "zh-cn": "更新测试并发布脚本"
-      },
-      "4.3.5": {
-        "en": "update test and release script",
-        "de": "update-test und release-skript",
-        "ru": "обновить тест и выпустить скрипт",
-        "pt": "atualizar script de teste e lançamento",
-        "nl": "update test- en releasescript",
-        "fr": "mettre à jour le script test et release",
-        "it": "test di aggiornamento e script di rilascio",
-        "es": "actualización de prueba y script de liberación",
-        "pl": "aktualizacja skryptu testowego i wydania",
-        "uk": "скрипт тестування і реліз",
-        "zh-cn": "更新测试并发布脚本"
-      }
-    },
-    "titleLang": {
-      "en": "vis-jsontemplate",
-      "de": "vis-jsontemplate",
-      "ru": "vis-jsontemplate",
-      "pt": "vis-jsontemplate",
-      "nl": "vis-jsonsjabloon1",
-      "fr": "vis-jsontemplate",
-      "it": "vis-jsontemplate",
-      "es": "vis-jsontemplate",
-      "pl": "vis-jsontemplate",
-      "uk": "vis-jsontemplate",
-      "zh-cn": "vis-json模板1"
-    },
-    "desc": {
-      "en": "vis-jsontemplate",
-      "de": "vis-jsontemplate",
-      "ru": "vis-jsontemplate",
-      "pt": "vis-jsontemplate",
-      "nl": "vis-jsonsjabloon1",
-      "fr": "vis-jsontemplate",
-      "it": "vis-jsontemplate",
-      "es": "vis-jsontemplate",
-      "pl": "vis-jsontemplate",
-      "uk": "vis-jsontemplate",
-      "zh-cn": "vis-json模板1"
-    },
-    "authors": [
-      "oweitman <oweitman@gmx.de>"
-    ],
-    "keywords": [
-      "jsontemplate",
-      "visualization",
-      "widgets",
-      "vis1",
-      "vis2"
-    ],
-    "licenseInformation": {
-      "type": "free",
-      "license": "MIT"
-    },
-    "tier": 3,
-    "platform": "Javascript/Node.js",
-    "icon": "vis-jsontemplate.png",
-    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-jsontemplate/main/admin/vis-jsontemplate.png",
-    "enabled": true,
-    "readme": "https://github.com/oweitman/ioBroker.vis-jsontemplate/blob/main/README.md",
-    "loglevel": "info",
-    "mode": "none",
-    "nogit": true,
-    "singleton": true,
-    "onlyWWW": true,
-    "adminUI": {
-      "config": "none"
-    },
-    "type": "visualization-widgets",
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "visWidgets": {
-      "vis2vis-jsonTemplateWidgets": {
-        "i18n": "component",
-        "name": "vis2vis-jsonTemplateWidgets",
-        "url": "vis2vis-jsontemplate/customWidgets.js",
-        "urlxx": "http://localhost:4173/customWidgets.js",
-        "bundlerType": "module",
-        "components": [
-          "JSONTemplateWidget"
+    "common": {
+        "name": "vis-jsontemplate",
+        "version": "4.3.11",
+        "news": {
+            "4.3.11": {
+                "en": "check test release workflow",
+                "de": "testfreigabe workflow",
+                "ru": "проверка рабочего процесса выпуска",
+                "pt": "verificar o fluxo de trabalho de lançamento do teste",
+                "nl": "test-ontgrendelingsworkflow controleren",
+                "fr": "vérifier le déroulement du test de libération",
+                "it": "controllo del flusso di lavoro di rilascio del test",
+                "es": "check test de liberación flujo de trabajo",
+                "pl": "sprawdzić przepływ pracy uwalniania próby",
+                "uk": "контрольний процес тестування",
+                "zh-cn": "检查测试发布工作流程"
+            },
+            "4.3.10": {
+                "en": "update test and release script",
+                "de": "update-test und release-skript",
+                "ru": "обновить тест и выпустить скрипт",
+                "pt": "atualizar script de teste e lançamento",
+                "nl": "update test- en releasescript",
+                "fr": "mettre à jour le script test et release",
+                "it": "test di aggiornamento e script di rilascio",
+                "es": "actualización de prueba y script de liberación",
+                "pl": "aktualizacja skryptu testowego i wydania",
+                "uk": "скрипт тестування і реліз",
+                "zh-cn": "更新测试并发布脚本"
+            }
+        },
+        "titleLang": {
+            "en": "vis-jsontemplate",
+            "de": "vis-jsontemplate",
+            "ru": "vis-jsontemplate",
+            "pt": "vis-jsontemplate",
+            "nl": "vis-jsonsjabloon1",
+            "fr": "vis-jsontemplate",
+            "it": "vis-jsontemplate",
+            "es": "vis-jsontemplate",
+            "pl": "vis-jsontemplate",
+            "uk": "vis-jsontemplate",
+            "zh-cn": "vis-json模板1"
+        },
+        "desc": {
+            "en": "vis-jsontemplate",
+            "de": "vis-jsontemplate",
+            "ru": "vis-jsontemplate",
+            "pt": "vis-jsontemplate",
+            "nl": "vis-jsonsjabloon1",
+            "fr": "vis-jsontemplate",
+            "it": "vis-jsontemplate",
+            "es": "vis-jsontemplate",
+            "pl": "vis-jsontemplate",
+            "uk": "vis-jsontemplate",
+            "zh-cn": "vis-json模板1"
+        },
+        "authors": ["oweitman <oweitman@gmx.de>"],
+        "keywords": ["jsontemplate", "visualization", "widgets", "vis1", "vis2"],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "tier": 3,
+        "platform": "Javascript/Node.js",
+        "icon": "vis-jsontemplate.png",
+        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-jsontemplate/main/admin/vis-jsontemplate.png",
+        "enabled": true,
+        "readme": "https://github.com/oweitman/ioBroker.vis-jsontemplate/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "none",
+        "nogit": true,
+        "singleton": true,
+        "onlyWWW": true,
+        "adminUI": {
+            "config": "none"
+        },
+        "type": "visualization-widgets",
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "visWidgets": {
+            "vis2vis-jsonTemplateWidgets": {
+                "i18n": "component",
+                "name": "vis2vis-jsonTemplateWidgets",
+                "url": "vis2vis-jsontemplate/customWidgets.js",
+                "urlxx": "http://localhost:4173/customWidgets.js",
+                "bundlerType": "module",
+                "components": ["JSONTemplateWidget"]
+            }
+        },
+        "restartAdapters": ["vis", "vis-2"],
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
         ]
-      }
     },
-    "restartAdapters": [
-      "vis",
-      "vis-2"
-    ],
-    "dependencies": [
-      {
-        "js-controller": ">=5.0.19"
-      }
-    ]
-  },
-  "native": {},
-  "objects": [],
-  "instanceObjects": []
+    "native": {},
+    "objects": [],
+    "instanceObjects": []
 }
