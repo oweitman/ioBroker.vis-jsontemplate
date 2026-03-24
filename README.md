@@ -634,8 +634,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 4.4.0 (2026-03-24)
 
 - optimize lib size
 - The ability to load additional JavaScript and CSS files

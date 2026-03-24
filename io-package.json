@@ -1,102 +1,128 @@
 {
-    "common": {
-        "name": "vis-jsontemplate",
-        "version": "4.3.11",
-        "news": {
-            "4.3.11": {
-                "en": "check test release workflow",
-                "de": "testfreigabe workflow",
-                "ru": "проверка рабочего процесса выпуска",
-                "pt": "verificar o fluxo de trabalho de lançamento do teste",
-                "nl": "test-ontgrendelingsworkflow controleren",
-                "fr": "vérifier le déroulement du test de libération",
-                "it": "controllo del flusso di lavoro di rilascio del test",
-                "es": "check test de liberación flujo de trabajo",
-                "pl": "sprawdzić przepływ pracy uwalniania próby",
-                "uk": "контрольний процес тестування",
-                "zh-cn": "检查测试发布工作流程"
-            },
-            "4.3.10": {
-                "en": "update test and release script",
-                "de": "update-test und release-skript",
-                "ru": "обновить тест и выпустить скрипт",
-                "pt": "atualizar script de teste e lançamento",
-                "nl": "update test- en releasescript",
-                "fr": "mettre à jour le script test et release",
-                "it": "test di aggiornamento e script di rilascio",
-                "es": "actualización de prueba y script de liberación",
-                "pl": "aktualizacja skryptu testowego i wydania",
-                "uk": "скрипт тестування і реліз",
-                "zh-cn": "更新测试并发布脚本"
-            }
-        },
-        "titleLang": {
-            "en": "vis-jsontemplate",
-            "de": "vis-jsontemplate",
-            "ru": "vis-jsontemplate",
-            "pt": "vis-jsontemplate",
-            "nl": "vis-jsonsjabloon1",
-            "fr": "vis-jsontemplate",
-            "it": "vis-jsontemplate",
-            "es": "vis-jsontemplate",
-            "pl": "vis-jsontemplate",
-            "uk": "vis-jsontemplate",
-            "zh-cn": "vis-json模板1"
-        },
-        "desc": {
-            "en": "vis-jsontemplate",
-            "de": "vis-jsontemplate",
-            "ru": "vis-jsontemplate",
-            "pt": "vis-jsontemplate",
-            "nl": "vis-jsonsjabloon1",
-            "fr": "vis-jsontemplate",
-            "it": "vis-jsontemplate",
-            "es": "vis-jsontemplate",
-            "pl": "vis-jsontemplate",
-            "uk": "vis-jsontemplate",
-            "zh-cn": "vis-json模板1"
-        },
-        "authors": ["oweitman <oweitman@gmx.de>"],
-        "keywords": ["jsontemplate", "visualization", "widgets", "vis1", "vis2"],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "tier": 3,
-        "platform": "Javascript/Node.js",
-        "icon": "vis-jsontemplate.png",
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-jsontemplate/main/admin/vis-jsontemplate.png",
-        "enabled": true,
-        "readme": "https://github.com/oweitman/ioBroker.vis-jsontemplate/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "none",
-        "nogit": true,
-        "singleton": true,
-        "onlyWWW": true,
-        "adminUI": {
-            "config": "none"
-        },
-        "type": "visualization-widgets",
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "visWidgets": {
-            "vis2vis-jsonTemplateWidgets": {
-                "i18n": "component",
-                "name": "vis2vis-jsonTemplateWidgets",
-                "url": "vis2vis-jsontemplate/customWidgets.js",
-                "urlxx": "http://localhost:4173/customWidgets.js",
-                "bundlerType": "module",
-                "components": ["JSONTemplateWidget"]
-            }
-        },
-        "restartAdapters": ["vis", "vis-2"],
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ]
+  "common": {
+    "name": "vis-jsontemplate",
+    "version": "4.4.0",
+    "news": {
+      "4.4.0": {
+        "en": "- optimize lib size\n- The ability to load additional JavaScript and CSS files\n  has been added (also for vis2).\n- Improve react components\n- align translation for vis2 widget",
+        "de": "- optimierung der lib-größe\n- Die Möglichkeit, zusätzliche JavaScript- und CSS-Dateien zu laden\nwurde hinzugefügt (auch für vis2).\n- Reaktionskomponenten verbessern\n- übersetzung ausrichten für vis2 widget",
+        "ru": "оптимизируйте размер lib\nВозможность загрузки дополнительных файлов JavaScript и CSS\nдобавлено (также для vis2).\nУлучшение компонентов реакции\nперевод для vis2 widget",
+        "pt": "- otimizar o tamanho da lib\n- A capacidade de carregar arquivos adicionais de JavaScript e CSS\nfoi adicionado (também para vis2).\n- Melhorar os componentes de reacção\n- alinhar a tradução para o widget vis2",
+        "nl": "- optimalisatie van de grootte van de lib\n- De mogelijkheid om extra JavaScript- en CSS-bestanden te laden\nis toegevoegd (ook voor vis2).\n- Verbeter reactiecomponenten\n- align vertaling voor vis2 widget",
+        "fr": "- optimiser la taille de la lib\n- La possibilité de charger des fichiers supplémentaires JavaScript et CSS\na été ajouté (également pour vis2).\n- Améliorer les composants de réaction\n- traduction alignée pour le widget vis2",
+        "it": "- ottimizza la dimensione lib\n- La capacità di caricare ulteriori file JavaScript e CSS\nè stato aggiunto (anche per vis2).\n- Migliorare i componenti reattivi\n- traduzione allineare per widget vis2",
+        "es": "- optimizar el tamaño de la lib\n- La capacidad de cargar archivos adicionales JavaScript y CSS\nse ha añadido (también para vis2).\n- Mejorar los componentes de reacción\n- traducción alineada para vis2 widget",
+        "pl": "- optymalizacja rozmiaru lib\n- Możliwość wczytania dodatkowych plików JavaScript i CSS\nzostał dodany (także dla vis2).\n- Poprawa składników reakcji\n- tłumaczenie wyrównawcze dla vis2 widget",
+        "uk": "- оптимізація розміру lib\n- Можливість завантаження додаткових файлів JavaScript та CSS\nдодано (також для vis2).\n- Покращити компоненти реакції\n- вирівняти переклад для віджету vis2",
+        "zh-cn": "- 优化自由体积\n- 装入额外的 JavaScript 和 CSS 文件的能力\n已添加(也用于对比2).\n- 改进反应组件\n- 对齐粘合元件的翻译"
+      },
+      "4.3.11": {
+        "en": "check test release workflow",
+        "de": "testfreigabe workflow",
+        "ru": "проверка рабочего процесса выпуска",
+        "pt": "verificar o fluxo de trabalho de lançamento do teste",
+        "nl": "test-ontgrendelingsworkflow controleren",
+        "fr": "vérifier le déroulement du test de libération",
+        "it": "controllo del flusso di lavoro di rilascio del test",
+        "es": "check test de liberación flujo de trabajo",
+        "pl": "sprawdzić przepływ pracy uwalniania próby",
+        "uk": "контрольний процес тестування",
+        "zh-cn": "检查测试发布工作流程"
+      },
+      "4.3.10": {
+        "en": "update test and release script",
+        "de": "update-test und release-skript",
+        "ru": "обновить тест и выпустить скрипт",
+        "pt": "atualizar script de teste e lançamento",
+        "nl": "update test- en releasescript",
+        "fr": "mettre à jour le script test et release",
+        "it": "test di aggiornamento e script di rilascio",
+        "es": "actualización de prueba y script de liberación",
+        "pl": "aktualizacja skryptu testowego i wydania",
+        "uk": "скрипт тестування і реліз",
+        "zh-cn": "更新测试并发布脚本"
+      }
     },
-    "native": {},
-    "objects": [],
-    "instanceObjects": []
+    "titleLang": {
+      "en": "vis-jsontemplate",
+      "de": "vis-jsontemplate",
+      "ru": "vis-jsontemplate",
+      "pt": "vis-jsontemplate",
+      "nl": "vis-jsonsjabloon1",
+      "fr": "vis-jsontemplate",
+      "it": "vis-jsontemplate",
+      "es": "vis-jsontemplate",
+      "pl": "vis-jsontemplate",
+      "uk": "vis-jsontemplate",
+      "zh-cn": "vis-json模板1"
+    },
+    "desc": {
+      "en": "vis-jsontemplate",
+      "de": "vis-jsontemplate",
+      "ru": "vis-jsontemplate",
+      "pt": "vis-jsontemplate",
+      "nl": "vis-jsonsjabloon1",
+      "fr": "vis-jsontemplate",
+      "it": "vis-jsontemplate",
+      "es": "vis-jsontemplate",
+      "pl": "vis-jsontemplate",
+      "uk": "vis-jsontemplate",
+      "zh-cn": "vis-json模板1"
+    },
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "jsontemplate",
+      "visualization",
+      "widgets",
+      "vis1",
+      "vis2"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "tier": 3,
+    "platform": "Javascript/Node.js",
+    "icon": "vis-jsontemplate.png",
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-jsontemplate/main/admin/vis-jsontemplate.png",
+    "enabled": true,
+    "readme": "https://github.com/oweitman/ioBroker.vis-jsontemplate/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "none",
+    "nogit": true,
+    "singleton": true,
+    "onlyWWW": true,
+    "adminUI": {
+      "config": "none"
+    },
+    "type": "visualization-widgets",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "visWidgets": {
+      "vis2vis-jsonTemplateWidgets": {
+        "i18n": "component",
+        "name": "vis2vis-jsonTemplateWidgets",
+        "url": "vis2vis-jsontemplate/customWidgets.js",
+        "urlxx": "http://localhost:4173/customWidgets.js",
+        "bundlerType": "module",
+        "components": [
+          "JSONTemplateWidget"
+        ]
+      }
+    },
+    "restartAdapters": [
+      "vis",
+      "vis-2"
+    ],
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }
