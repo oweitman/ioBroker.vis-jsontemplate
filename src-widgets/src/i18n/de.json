@@ -1,10 +1,16 @@
 {
-    "jsontemplate": "JSON-Vorlage",
-    "dialog_title": "Vorlage",
-    "dialog_save": "Speichern",
-    "oid": "Datenpunkt:",
-    "template:": "Vorlage:",
-    "dpcount:": "Anzahl der Datenpunkte:",
-    "datapointsgroup": "Datenpunkte:",
-    "datapoints_oid:": "Datenpunkt-ID:"
+    "json_jsontemplate": "JSON template",
+    "json_dialog_title": "Vorlage",
+    "json_dialog_save": "Speichern Sie",
+    "json_oid": "Datenpunkt:",
+    "json_template": "Vorlage:",
+    "json_dpcount": "Anzahl der Datenpunkte:",
+    "json_datapoints_oid": "Datenpunkt-ID:",
+    "json_datapointsgroup": "Datenpunkte:",
+    "json_scriptcount": "Anzahl der Skripte:",
+    "json_csscount": "CSS-Anzahl:",
+    "json_scriptsgroup": "Javascripts:",
+    "json_scriptfile": "Javascript-Link:",
+    "json_cssgroup": "CSS:",
+    "json_cssfile": "CSS-Link:"
 }

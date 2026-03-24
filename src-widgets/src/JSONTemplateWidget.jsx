@@ -1,49 +1,44 @@
 import React from 'react';
-import {} from '@mui/material';
 import PropTypes from 'prop-types';
 
 import { I18n } from '@iobroker/adapter-react-v5';
 import { VisRxWidget } from '@iobroker/vis-2-widgets-react-dev';
-import VisEJSAttributeField from './Components/VisEJSAttributeField.tsx';
-import InnerHtml from './Components/InnerHTML.jsx';
+import VisEJSAttributeField from './Components/VisEJSAttributeField';
+import InnerHtml from './Components/InnerHTML';
 
 const ejs = require('ejs');
 
 class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
+    static assetPromises = new Map();
+
     constructor(props) {
         super(props);
         this.renderText = ' ';
+        this._currentAssetKey = '';
+        this._assetsReady = false;
+        this._renderSeq = 0;
     }
+
     static getWidgetInfo() {
         return {
             id: 'tplJSONTemplate4',
             visSet: 'vis-jsontemplate',
-            visSetLabel: 'jsontemplate',
-            visName: 'JSON Widget', // Name of widget
+            visSetLabel: 'json_jsontemplate',
+            visName: 'JSON Widget',
             visAttrs: [
                 {
-                    name: 'common', // group name
+                    name: 'common',
                     fields: [
                         {
-                            name: 'oid', // name in data structure
+                            name: 'oid',
                             type: 'id',
-                            label: 'oid', // translated field label
+                            label: 'json_oid',
                         },
                         {
-                            name: 'template', // name in data structure
+                            name: 'template',
                             type: 'custom',
-                            label: 'template:', // translated field label
-                            component: (
-                                // important
-                                field, // field properties: {name, label, type, set, singleName, component,...}
-                                data, // widget data
-                                onDataChange, // function to call, when data changed
-                                props, // additional properties : {socket, projectName, instance, adapterName, selectedView, selectedWidgets, project, widgetID}
-                                // socket,      // socket object
-                                // widgetID,    // widget ID or widgets IDs. If selecteld more than one widget, it is array of IDs
-                                // view,        // view name
-                                // project,      // project object: {VIEWS..., [view]: {widgets: {[widgetID]: {tpl, data, style}}, settings, parentId, rerender, filterList, activeWidgets}, __settings: {}}
-                            ) => (
+                            label: 'json_template',
+                            component: (field, data, onDataChange, props) => (
                                 <VisEJSAttributeField
                                     visSocket={props.context.socket}
                                     field={field}
@@ -54,17 +49,49 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                             ),
                         },
                         {
-                            name: 'dpcount', // name in data structure
+                            name: 'dpcount',
                             type: 'number',
                             default: 1,
                             min: 1,
                             max: Number.MAX_VALUE,
                             step: 1,
-                            label: 'dpcount:', // translated field label
+                            label: 'json_dpcount',
                             onChange: async (field, data, changeData) => {
-                                const { dpcount } = data;
-                                for (let i = 0; i <= dpcount; i++) {
+                                const dpcount = Number(data.dpcount || 1);
+                                for (let i = 1; i <= dpcount; i++) {
                                     data[`g_datapoints-${i}`] = true;
+                                }
+                                changeData(data);
+                            },
+                        },
+                        {
+                            name: 'scriptcount',
+                            type: 'number',
+                            default: 1,
+                            min: 1,
+                            max: Number.MAX_VALUE,
+                            step: 1,
+                            label: 'json_scriptcount',
+                            onChange: async (field, data, changeData) => {
+                                const scriptcount = Number(data.scriptcount || 1);
+                                for (let i = 1; i <= scriptcount; i++) {
+                                    data[`g_scriptfiles-${i}`] = true;
+                                }
+                                changeData(data);
+                            },
+                        },
+                        {
+                            name: 'csscount',
+                            type: 'number',
+                            default: 1,
+                            min: 1,
+                            max: Number.MAX_VALUE,
+                            step: 1,
+                            label: 'json_csscount',
+                            onChange: async (field, data, changeData) => {
+                                const csscount = Number(data.csscount || 1);
+                                for (let i = 1; i <= csscount; i++) {
+                                    data[`g_cssfiles-${i}`] = true;
                                 }
                                 changeData(data);
                             },
@@ -72,8 +99,8 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                     ],
                 },
                 {
-                    name: 'datapoints', // group name
-                    label: 'datapointsgroup', // translated group label
+                    name: 'datapoints',
+                    label: 'json_datapointsgroup',
                     indexFrom: 1,
                     indexTo: 'dpcount',
                     onChange: async (field, data, changeData) => {
@@ -82,15 +109,45 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                     fields: [
                         {
                             name: 'json_dp',
-                            label: 'datapoints_oid:',
+                            label: 'json_datapoints_oid',
                             type: 'id',
                         },
                     ],
                 },
-                // check here all possible types https://github.com/ioBroker/ioBroker.vis/blob/react/src/src/Attributes/Widget/SCHEMA.md
+                {
+                    name: 'scriptfiles',
+                    label: 'json_scriptsgroup',
+                    indexFrom: 1,
+                    indexTo: 'scriptcount',
+                    onChange: async (field, data, changeData) => {
+                        changeData(data);
+                    },
+                    fields: [
+                        {
+                            name: 'scriptfile',
+                            label: 'json_scriptfile',
+                            type: 'text',
+                        },
+                    ],
+                },
+                {
+                    name: 'cssfiles',
+                    label: 'json_cssgroup',
+                    indexFrom: 1,
+                    indexTo: 'csscount',
+                    onChange: async (field, data, changeData) => {
+                        changeData(data);
+                    },
+                    fields: [
+                        {
+                            name: 'cssfile',
+                            label: 'json_cssfile',
+                            type: 'text',
+                        },
+                    ],
+                },
             ],
             visDefaultStyle: {
-                // default style
                 width: 300,
                 height: 300,
             },
@@ -98,122 +155,268 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
         };
     }
 
-    // eslint-disable-next-line class-methods-use-this
-    async propertiesUpdate() {
-        // Widget has 3 important states
-        // 1. this.state.values - contains all state values, that are used in widget (automatically collected from widget info).
-        //                        So you can use `this.state.values[this.state.rxData.oid + '.val']` to get value of state with id this.state.rxData.oid
-        // 2. this.state.rxData - contains all widget data with replaced bindings. E.g. if this.state.data.type is `{system.adapter.admin.0.alive}`,
-        //                        then this.state.rxData.type will have state value of `system.adapter.admin.0.alive`
-        // 3. this.state.rxStyle - contains all widget styles with replaced bindings. E.g. if this.state.styles.width is `{javascript.0.width}px`,
-        //                        then this.state.rxData.type will have state value of `javascript.0.width` + 'px
-        let oiddata, data, datapoints, template, dpCount;
-        try {
-            oiddata = JSON.parse(this.state.values[`${this.state.rxData.oid}.val`] || '{}');
-            data = this.state.data || {};
-            datapoints = [];
-            dpCount = data.dpcount ? data.dpcount : 1;
-            for (let i = 1; i <= dpCount; i++) {
-                if (data['datapoint-oid' + i]) {
-                    datapoints[data['datapoint-oid' + i]] = this.state.values[`${data['datapoint-oid' + i]}.val`];
-                }
-            }
-
-            template = data?.template || '';
-            this.renderText =
-                (await ejs.render(
-                    template,
-                    {
-                        widgetid: this.props.id,
-                        data: oiddata,
-                        dp: datapoints,
-                        style: this.props.style,
-                    },
-                    { async: true },
-                )) + ' ';
-        } catch (e) {
-            this.renderText = this.escapeHTML(e.message).replace(/(?:\r\n|\r|\n)/g, '<br>');
-            this.renderText = this.renderText.replace(/ /gm, '&nbsp;');
-            this.renderText = `<code style="color:red;">${this.renderText}</code>`;
-        }
-    }
-
     componentDidMount() {
         super.componentDidMount();
-
-        // Update data
         this.propertiesUpdate();
     }
 
-    // Do not delete this method. It is used by vis to read the widget configuration.
-    // eslint-disable-next-line class-methods-use-this
     getWidgetInfo() {
         return JSONTemplateWidget.getWidgetInfo();
     }
-    // If the "prefix" attribute in translations.ts is true or string, you must implement this function.
-    // If true, the adapter name + _ is used.
-    // If string, then this function must return exactly that string
+
     static getI18nPrefix() {
-        return `${JSONTemplateWidget.adapter}_`;
+        return 'vis-jsontemplate_';
+        // return `${JSONTemplateWidget.adapter}_`;
     }
-    // This function is called every time when rxData is changed
+
     onRxDataChanged() {
         this.propertiesUpdate();
     }
 
-    // This function is called every time when rxStyle is changed
-    // eslint-disable-next-line class-methods-use-this
-    onRxStyleChanged() {}
+    onRxStyleChanged() {
+        this.propertiesUpdate();
+    }
 
-    // This function is called every time when some Object State updated, but all changes lands into this.state.values too
-    // eslint-disable-next-line class-methods-use-this, no-unused-vars
-    onStateUpdated(id, state) {}
+    onStateUpdated() {
+        this.propertiesUpdate();
+    }
 
     escapeHTML(html) {
         let escapeEl = document.createElement('textarea');
         escapeEl.textContent = html;
         const ret = escapeEl.innerHTML;
-        escapeEl = null;
         return ret;
     }
 
-    renderWidgetBody(props) {
-        super.renderWidgetBody(props);
-        let oiddata, data, datapoints, template, dpCount;
-        let text;
+    getAssetLists(data) {
+        const scripts = [];
+        const css = [];
+
+        const scriptcount = Number(data?.scriptcount || 0);
+        for (let i = 1; i <= scriptcount; i++) {
+            const url = (data[`scriptfile${i}`] || '').trim();
+            if (url) {
+                scripts.push(url);
+            }
+        }
+
+        const csscount = Number(data?.csscount || 0);
+        for (let i = 1; i <= csscount; i++) {
+            const url = (data[`cssfile${i}`] || '').trim();
+            if (url) {
+                css.push(url);
+            }
+        }
+
+        return { scripts, css };
+    }
+
+    buildAssetKey(scripts, css) {
+        return `css=${css.join('|')}::js=${scripts.join('|')}`;
+    }
+
+    loadCssOnce(url) {
+        const u = (url || '').trim();
+        if (!u) {
+            return Promise.resolve();
+        }
+
+        const key = `css:${u}`;
+        const cache = JSONTemplateWidget.assetPromises;
+
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+
+        const p = new Promise((resolve, reject) => {
+            try {
+                const existing = Array.from(
+                    /** @type {NodeListOf<HTMLLinkElement>} */ (
+                        document.querySelectorAll('link[rel="stylesheet"][href]')
+                    ),
+                ).find(el => el.href === u || el.getAttribute('href') === u);
+
+                if (existing) {
+                    resolve(existing);
+                    return;
+                }
+
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = u;
+                link.dataset.visJsontemplateAsset = 'css';
+                link.onload = () => resolve(link);
+                link.onerror = () => reject(new Error(`CSS konnte nicht geladen werden: ${u}`));
+                document.head.appendChild(link);
+            } catch (err) {
+                reject(err);
+            }
+        });
+
+        cache.set(key, p);
+        return p;
+    }
+
+    loadScriptOnce(url) {
+        const u = (url || '').trim();
+        if (!u) {
+            return Promise.resolve();
+        }
+
+        const key = `js:${u}`;
+        const cache = JSONTemplateWidget.assetPromises;
+
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+
+        const p = new Promise((resolve, reject) => {
+            try {
+                const existing = Array.from(
+                    /** @type {NodeListOf<HTMLScriptElement>} */ (document.querySelectorAll('script[src]')),
+                ).find(el => el.src === u || el.getAttribute('src') === u);
+
+                if (existing) {
+                    resolve(existing);
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = u;
+                script.async = false;
+                script.defer = false;
+                script.dataset.visJsontemplateAsset = 'js';
+                script.onload = () => resolve(script);
+                script.onerror = () => reject(new Error(`Script konnte nicht geladen werden: ${u}`));
+                document.head.appendChild(script);
+            } catch (err) {
+                reject(err);
+            }
+        });
+
+        cache.set(key, p);
+        return p;
+    }
+
+    async loadAssetsInOrder(scripts, css) {
+        for (const url of css) {
+            await this.loadCssOnce(url);
+        }
+
+        for (const url of scripts) {
+            await this.loadScriptOnce(url);
+        }
+    }
+
+    async ensureAssetsLoaded(data) {
+        const { scripts, css } = this.getAssetLists(data);
+        const assetKey = this.buildAssetKey(scripts, css);
+
+        if (this._currentAssetKey === assetKey && this._assetsReady) {
+            return;
+        }
+
+        this._currentAssetKey = assetKey;
+        this._assetsReady = false;
+
+        const requestedKey = assetKey;
+        await this.loadAssetsInOrder(scripts, css);
+
+        if (this._currentAssetKey !== requestedKey) {
+            return;
+        }
+
+        this._assetsReady = true;
+    }
+
+    buildDatapoints(data) {
+        const datapoints = {};
+        const dpCount = Number(data?.dpcount || 1);
+
+        for (let i = 1; i <= dpCount; i++) {
+            const oid = data[`json_dp${i}`] || data[`json_dp-${i}`] || data[`datapoint-oid${i}`];
+            if (oid) {
+                datapoints[oid] = this.state.values?.[`${oid}.val`];
+            }
+        }
+
+        return datapoints;
+    }
+
+    async propertiesUpdate() {
+        const seq = ++this._renderSeq;
+
         try {
-            oiddata = JSON.parse(this.state.values[`${this.state.rxData.oid}.val`] || '{}');
-            data = props.widget.data || {};
-            datapoints = [];
-            dpCount = data.dpcount ? data.dpcount : 1;
-            for (let i = 1; i <= dpCount; i++) {
-                if (data['datapoint-oid' + i]) {
-                    datapoints[data['datapoint-oid' + i]] = this.state.values[`${data['datapoint-oid' + i]}.val`];
+            const data = this.state.data || {};
+            const rxData = this.state.rxData || data;
+
+            await this.ensureAssetsLoaded(data);
+            if (seq !== this._renderSeq) {
+                return;
+            }
+            let oiddata = {};
+
+            const mainOid = rxData?.oid || data?.oid;
+            const rawValue = this.state.values?.[`${mainOid}.val`];
+            if (mainOid && rawValue) {
+                try {
+                    oiddata = JSON.parse(rawValue);
+                } catch {
+                    oiddata = {};
                 }
             }
 
-            template = data?.template || '';
-            this.renderText =
-                ejs.render(template, {
-                    widgetid: props.id,
+            const datapoints = this.buildDatapoints(data);
+            const template = data?.template || '';
+
+            const html = await ejs.render(
+                template,
+                {
+                    widgetid: this.props.id,
                     data: oiddata,
                     dp: datapoints,
-                    style: props.style,
+                    style: this.props.style,
                     widget: data,
-                }) + ' ';
+                    I18n,
+                },
+                { async: true },
+            );
+
+            if (seq !== this._renderSeq) {
+                return;
+            }
+
+            this.renderText = `${html} `;
+            this.forceUpdate();
         } catch (e) {
-            text = this.escapeHTML(e.message).replace(/(?:\r\n|\r|\n)/g, '<br>');
+            if (seq !== this._renderSeq) {
+                return;
+            }
+
+            const errorMessage = e instanceof Error ? e.message : String(e);
+            let text = this.escapeHTML(errorMessage).replace(/(?:\r\n|\r|\n)/g, '<br>');
             text = text.replace(/ /gm, '&nbsp;');
             this.renderText = `<code style="color:red;">${text}</code>`;
+            this.forceUpdate();
         }
-        return <InnerHtml html={this.renderText || ' '} />;
+    }
+
+    renderWidgetBody() {
+        return (
+            <InnerHtml
+                html={this.renderText || ' '}
+                allowRerender={new Date().getTime()}
+            />
+        );
     }
 }
+
 JSONTemplateWidget.propTypes = {
     systemConfig: PropTypes.object,
     socket: PropTypes.object,
     style: PropTypes.object,
     data: PropTypes.object,
+    id: PropTypes.string,
 };
 
 export default JSONTemplateWidget;
@@ -235,7 +438,7 @@ dp1 <%= dp["0_userdata.0.dp2"] %><br>
 /*
 Async test
            <%
-         
+
             debugger;
             req = await sendToAsync("admin.0","selectSendTo");
             console.log(JSON.stringify(req));

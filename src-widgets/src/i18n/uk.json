@@ -1,10 +1,16 @@
 {
-    "jsontemplate": "Шаблон JSON",
-    "dialog_title": "Шаблон",
-    "dialog_save": "Зберегти",
-    "oid": "Точка збору даних:",
-    "template:": "Шаблон:",
-    "dpcount:": "Підрахунок точок даних:",
-    "datapointsgroup": "Точки даних:",
-    "datapoints_oid:": "Ідентифікатор точки доступу:"
+    "json_jsontemplate": "Шаблон JSON",
+    "json_dialog_title": "Шаблон",
+    "json_dialog_save": "Зберегти",
+    "json_oid": "Точка збору даних:",
+    "json_template": "Шаблон:",
+    "json_dpcount": "Підрахунок точок даних:",
+    "json_datapoints_oid": "Ідентифікатор точки доступу:",
+    "json_datapointsgroup": "Точки даних:",
+    "json_scriptcount": "Підрахунок сценаріїв:",
+    "json_csscount": "Підрахунок ССС:",
+    "json_scriptsgroup": "Javascripts:",
+    "json_scriptfile": "Посилання на Javascript:",
+    "json_cssgroup": "CSS:",
+    "json_cssfile": "Посилання на CSS:"
 }

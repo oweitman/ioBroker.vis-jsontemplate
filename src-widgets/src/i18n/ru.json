@@ -1,10 +1,16 @@
 {
-    "jsontemplate": "JSON-шаблон",
-    "dialog_title": "Шаблон",
-    "dialog_save": "Сохранить",
-    "oid": "Датапоинт:",
-    "template:": "Шаблон:",
-    "dpcount:": "Количество точек данных:",
-    "datapointsgroup": "Датапоинты:",
-    "datapoints_oid:": "Идентификатор точки данных:"
+    "json_jsontemplate": "JSON-шаблон",
+    "json_dialog_title": "Шаблон",
+    "json_dialog_save": "Сохранить",
+    "json_oid": "Датапоинт:",
+    "json_template": "Шаблон:",
+    "json_dpcount": "Количество точек данных:",
+    "json_datapoints_oid": "Идентификатор точки данных:",
+    "json_datapointsgroup": "Датапоинты:",
+    "json_scriptcount": "Количество сценариев:",
+    "json_csscount": "Счетчик CSS:",
+    "json_scriptsgroup": "Javascripts:",
+    "json_scriptfile": "Javascript link:",
+    "json_cssgroup": "CSS:",
+    "json_cssfile": "Ссылка на CSS:"
 }

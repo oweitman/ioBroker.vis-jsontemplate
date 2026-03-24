@@ -1,11 +1,16 @@
 {
-    "jsontemplate": "Modello JSON",
-    "dialog_title": "Modello",
-    "dialog_save": "Risparmiare",
-    "oid": "Datapoint:",
-    "template:": "Modello:",
-    "dpcount:": "Conteggio dei punti dati:",
-
-    "datapointsgroup": "Punti di riferimento:",
-    "datapoints_oid:": "ID del punto dati:"
+    "json_jsontemplate": "Modello JSON",
+    "json_dialog_title": "Modello",
+    "json_dialog_save": "Risparmiare",
+    "json_oid": "Datapoint:",
+    "json_template": "Modello:",
+    "json_dpcount": "Conteggio dei punti dati:",
+    "json_datapoints_oid": "ID del punto dati:",
+    "json_datapointsgroup": "Datapoints:",
+    "json_scriptcount": "Conteggio degli script:",
+    "json_csscount": "Conteggio dei CSS:",
+    "json_scriptsgroup": "Javascript:",
+    "json_scriptfile": "Collegamento Javascript:",
+    "json_cssgroup": "CSS:",
+    "json_cssfile": "Collegamento CSS:"
 }

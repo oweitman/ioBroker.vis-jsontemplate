@@ -1,16 +1,12 @@
-// CustomAceEditor
 import React, { type RefObject, useEffect, useRef } from 'react';
 import AceEditor from 'react-ace';
-//import Ace from 'ace-builds';
 
-import 'ace-builds';
-import 'ace-builds/esm-resolver';
+import 'ace-builds/src-noconflict/ace';
 import 'ace-builds/src-noconflict/mode-ejs';
-import 'ace-builds/src-noconflict/theme-monokai';
 import 'ace-builds/src-noconflict/theme-clouds_midnight';
 import 'ace-builds/src-noconflict/theme-chrome';
 import 'ace-builds/src-noconflict/snippets/ejs';
-import 'ace-builds/src-noconflict/ext-language_tools'; // autocomplete
+import 'ace-builds/src-noconflict/ext-language_tools';
 
 import { I18n } from '@iobroker/adapter-react-v5';
 
@@ -20,7 +16,7 @@ interface EJSAceEditorProps {
     readOnly?: boolean;
     height?: number | string;
     width?: number | string;
-    refEditor?: (editor: AceEditor) => void;
+    refEditor?: React.Ref<any>;
     error?: boolean;
     focus?: boolean;
     themeType: string;
@@ -28,52 +24,64 @@ interface EJSAceEditorProps {
 
 export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
     const refEditor: RefObject<HTMLDivElement | null> = useRef(null);
+
     useEffect(() => {
         let content: HTMLInputElement | null = null;
-        let timer: ReturnType<typeof setTimeout>;
+        let intervalTimer: ReturnType<typeof setInterval> | null = null;
+        let initTimer: ReturnType<typeof setTimeout> | null = null;
+
         const keyDown = (e: KeyboardEvent): void => {
             if (e.key === 'f' && e.ctrlKey) {
-                // make translations
-                timer = setInterval(() => {
+                intervalTimer = setInterval(() => {
                     if (!content) {
                         return;
                     }
+
                     const parent = content.parentNode;
                     if (!parent) {
                         return;
                     }
-                    let el: HTMLInputElement | null = parent.querySelector('.ace_search_field') as HTMLInputElement;
-                    if (el) {
-                        clearInterval(timer);
-                        // @ts-expect-error
-                        timer = null;
+
+                    const searchField = parent.querySelector<HTMLInputElement>('.ace_search_field');
+                    if (searchField) {
+                        if (intervalTimer) {
+                            clearInterval(intervalTimer);
+                            intervalTimer = null;
+                        }
                     }
-                    if (el?.placeholder === 'Search for') {
-                        el.placeholder = I18n.t('ace_Search for');
+
+                    if (searchField?.placeholder === 'Search for') {
+                        searchField.placeholder = I18n.t('ace_Search for');
                     }
-                    el = parent.querySelector('.ace_searchbtn[action="findAll"]');
-                    if (el?.innerHTML === 'All') {
-                        el.innerHTML = I18n.t('ace_All');
+
+                    const findAllBtn = parent.querySelector<HTMLElement>('.ace_searchbtn[action="findAll"]');
+                    if (findAllBtn?.innerHTML === 'All') {
+                        findAllBtn.innerHTML = I18n.t('ace_All');
                     }
-                    el = parent.querySelector('.ace_button[action="toggleRegexpMode"]');
-                    if (el?.title === 'RegExp Search') {
-                        el.title = I18n.t('ace_RegExp Search');
+
+                    const regexpBtn = parent.querySelector<HTMLElement>('.ace_button[action="toggleRegexpMode"]');
+                    if (regexpBtn?.title === 'RegExp Search') {
+                        regexpBtn.title = I18n.t('ace_RegExp Search');
                     }
-                    el = parent.querySelector('.ace_button[action="toggleCaseSensitive"]');
-                    if (el?.title === 'CaseSensitive Search') {
-                        el.title = I18n.t('ace_CaseSensitive Search');
+
+                    const caseBtn = parent.querySelector<HTMLElement>('.ace_button[action="toggleCaseSensitive"]');
+                    if (caseBtn?.title === 'CaseSensitive Search') {
+                        caseBtn.title = I18n.t('ace_CaseSensitive Search');
                     }
-                    el = parent.querySelector('.ace_button[action="toggleWholeWords"]');
-                    if (el?.title === 'Whole Word Search') {
-                        el.title = I18n.t('ace_Whole Word Search');
+
+                    const wholeWordBtn = parent.querySelector<HTMLElement>('.ace_button[action="toggleWholeWords"]');
+                    if (wholeWordBtn?.title === 'Whole Word Search') {
+                        wholeWordBtn.title = I18n.t('ace_Whole Word Search');
                     }
-                    el = parent.querySelector('.ace_button[action="searchInSelection"]');
-                    if (el?.title === 'Search In Selection') {
-                        el.title = I18n.t('ace_Search In Selection');
+
+                    const selectionBtn = parent.querySelector<HTMLElement>('.ace_button[action="searchInSelection"]');
+                    if (selectionBtn?.title === 'Search In Selection') {
+                        selectionBtn.title = I18n.t('ace_Search In Selection');
                     }
-                    el = parent.querySelector('.ace_button[action="toggleReplace"]');
-                    if (el?.title === 'Toggle Replace mode') {
-                        el.title = I18n.t('ace_Toggle Replace mode');
+
+                    const replaceBtn = parent.querySelector<HTMLElement>('.ace_button[action="toggleReplace"]');
+                    if (replaceBtn?.title === 'Toggle Replace mode') {
+                        replaceBtn.title = I18n.t('ace_Toggle Replace mode');
                     }
 
                     content?.removeEventListener('keydown', keyDown);
@@ -83,20 +91,24 @@ export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
         };
 
         if (I18n.getLanguage() !== 'en') {
-            setTimeout(() => {
-                content = window.document.querySelector('.ace_text-input');
+            initTimer = setTimeout(() => {
+                content = window.document.querySelector<HTMLInputElement>('.ace_text-input');
                 content?.addEventListener('keydown', keyDown);
             }, 200);
         }
 
         return () => {
-            timer && clearTimeout(timer);
-            // @ts-expect-error
-            timer = null;
+            if (initTimer) {
+                clearTimeout(initTimer);
+            }
+            if (intervalTimer) {
+                clearInterval(intervalTimer);
+            }
             content?.removeEventListener('keydown', keyDown);
             content = null;
         };
     }, []);
+
     return (
         <div
             style={{
@@ -112,8 +124,7 @@ export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
                 width="100%"
                 height="100%"
                 value={props.value}
-                // @ts-expect-error
-                onChange={newValue => props.onChange(newValue)}
+                onChange={newValue => props.onChange?.(newValue)}
                 readOnly={props.readOnly || false}
                 focus={props.focus}
                 ref={props.refEditor}
@@ -121,6 +132,9 @@ export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
                 enableBasicAutocompletion
                 enableLiveAutocompletion
                 enableSnippets
+                setOptions={{
+                    useWorker: false,
+                }}
             />
         </div>
     );

@@ -1,10 +1,16 @@
 {
-    "jsontemplate": "Szablon JSON",
-    "dialog_title": "Szablon",
-    "dialog_save": "Zapisz",
-    "oid": "Punkt danych:",
-    "template:": "Szablon:",
-    "dpcount:": "Liczba punktów danych:",
-    "datapointsgroup": "Punkty danych:",
-    "datapoints_oid:": "Identyfikator punktu danych:"
+    "json_jsontemplate": "Szablon JSON",
+    "json_dialog_title": "Szablon",
+    "json_dialog_save": "Zapisz",
+    "json_oid": "Punkt danych:",
+    "json_template": "Szablon:",
+    "json_dpcount": "Liczba punktów danych:",
+    "json_datapoints_oid": "Identyfikator punktu danych:",
+    "json_datapointsgroup": "Punkty danych:",
+    "json_scriptcount": "Liczba skryptów:",
+    "json_csscount": "Liczba CSS:",
+    "json_scriptsgroup": "Javascripty:",
+    "json_scriptfile": "Łącze Javascript:",
+    "json_cssgroup": "CSS:",
+    "json_cssfile": "Łącze CSS:"
 }

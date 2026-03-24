@@ -18,6 +18,7 @@ interface VisEJSAttributeFieldProps {
     data: any;
     onDataChange: (data: any) => void;
     props: any;
+    visSocket: any;
 }
 const VisEJSAttributeField = ({
     field, // field properties: {name, label, type, set, singleName, component,...}

@@ -1,10 +1,16 @@
 {
-    "jsontemplate": "Plantilla JSON",
-    "dialog_title": "Plantilla",
-    "dialog_save": "Guardar",
-    "oid": "Dato:",
-    "template:": "Plantilla:",
-    "dpcount:": "Recuento de puntos de datos:",
-    "datapointsgroup": "Puntos de datos:",
-    "datapoints_oid:": "ID del punto de datos:"
+    "json_jsontemplate": "Plantilla JSON",
+    "json_dialog_title": "Plantilla",
+    "json_dialog_save": "Guardar",
+    "json_oid": "Dato:",
+    "json_template": "Plantilla:",
+    "json_dpcount": "Recuento de puntos de datos:",
+    "json_datapoints_oid": "ID del punto de datos:",
+    "json_datapointsgroup": "Datapoints:",
+    "json_scriptcount": "Recuento de guiones:",
+    "json_csscount": "Recuento de CSS:",
+    "json_scriptsgroup": "Javascripts:",
+    "json_scriptfile": "Enlace Javascript:",
+    "json_cssgroup": "CSS:",
+    "json_cssfile": "Enlace CSS:"
 }

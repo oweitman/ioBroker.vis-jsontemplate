@@ -1,10 +1,16 @@
 {
-    "jsontemplate": "JSON template",
-    "dialog_title": "Template",
-    "dialog_save": "Save",
-    "oid": "Datapoint:",
-    "template:": "Template:",
-    "dpcount:": "Datapoint count:",
-    "datapointsgroup": "Datapoints:",
-    "datapoints_oid:": "Datapoint ID:"
+    "json_jsontemplate": "JSON template",
+    "json_dialog_title": "Template",
+    "json_dialog_save": "Save",
+    "json_oid": "Datapoint:",
+    "json_template": "Template:",
+    "json_dpcount": "Datapoint count:",
+    "json_datapoints_oid": "Datapoint ID:",
+    "json_datapointsgroup": "Datapoints:",
+    "json_scriptcount": "Script count:",
+    "json_csscount": "CSS count:",
+    "json_scriptsgroup": "Javascripts:",
+    "json_scriptfile": "Javascript link:",
+    "json_cssgroup": "CSS:",
+    "json_cssfile": "CSS link:"
 }

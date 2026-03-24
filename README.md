@@ -423,9 +423,11 @@ as `local_?` data points are processed internally within VIS (see `vis` document
 
 ## Important note for the template system in vis
 
-In vis, all object notations in the following form are recognized and replaced as bindings.
+In vis, all object notations in the following form are recognized
+and replaced as bindings.
 
-Therefore, the opening and closing brackets of all object notations must be placed on separate lines:
+Therefore, the opening and closing brackets of all object notations must
+be placed on separate lines:
 
 Incorrect:
 
@@ -632,6 +634,15 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- optimize lib size
+- The ability to load additional JavaScript and CSS files
+  has been added (also for vis2).
+- Improve react components
+- align translation for vis2 widget
+
 ### 4.3.11 (2026-01-25)
 
 - check test release workflow

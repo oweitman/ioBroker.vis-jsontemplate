@@ -1,10 +1,16 @@
 {
-    "jsontemplate": "JSON-sjabloon",
-    "dialog_title": "Sjabloon",
-    "dialog_save": "Sla",
-    "oid": "Datapunt:",
-    "template:": "Sjabloon:",
-    "dpcount:": "Aantal datapunten:",
-    "datapointsgroup": "Datapunten:",
-    "datapoints_oid:": "Datapunt ID:"
+    "json_jsontemplate": "JSON-sjabloon",
+    "json_dialog_title": "Sjabloon",
+    "json_dialog_save": "Sla",
+    "json_oid": "Datapunt:",
+    "json_template": "Sjabloon:",
+    "json_dpcount": "Aantal datapunten:",
+    "json_datapoints_oid": "Datapunt ID:",
+    "json_datapointsgroup": "Datapunten:",
+    "json_scriptcount": "Aantal scripts:",
+    "json_csscount": "CSS tellen:",
+    "json_scriptsgroup": "Javascripts:",
+    "json_scriptfile": "Javascript link:",
+    "json_cssgroup": "CSS:",
+    "json_cssfile": "CSS-link:"
 }

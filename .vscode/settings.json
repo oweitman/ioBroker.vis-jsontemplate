@@ -2,9 +2,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "json.schemas": [
         {
-            "fileMatch": [
-                "io-package.json"
-            ],
+            "fileMatch": ["io-package.json"],
             "url": "https://raw.githubusercontent.com/ioBroker/ioBroker.js-controller/master/schemas/io-package.json"
         },
         {
@@ -21,5 +19,6 @@
     ],
     "[markdown]": {
         "editor.wordWrap": "off"
-    }
+    },
+    "js/ts.tsdk.path": "node_modules\\typescript\\lib"
 }
