@@ -58,7 +58,7 @@
         "npm": "npm i -f && cd src-widgets && npm i -f && cd ..",
         "debug": "npx dev-server watch --noStart --doNotWatch widgets/vis2vis-jsontemplate/**",
         "repocheckerx": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.vis-jsontemplate --local",
-        "repocheckerx2": "npx @iobroker/repochecker https://github.com/oweitman/ioBroker.vis-jsontemplate --local",
+        "repocheckerx2": "npx @iobroker/repochecker https://github.com/oweitman/ioBroker.vis-jsontemplate",
         "translate": "translate-adapter",
         "translate-widgets-vis2": "node ./bin/translate.js --source src-widgets/src/i18n/",
         "translate-widgets-vis1": "node ./bin/translate.js --source widgets/vis-jsontemplate/i18n/en.json --format single",
