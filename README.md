@@ -16,6 +16,9 @@
 Adapter to visualize JSON data and other data in Vis/Vis2.
 You can customize the output of the data with a template system.
 In the templates you can include HTML, CSS and Javascript.
+The template system used was `ejs`.
+You can try out the basic features here in the online playground.
+<https://ionicabizau.github.io/ejs-playground>
 
 The jsontemplate widget was previously available in the rssfeed (for vis1) and
 vis-2-widgets-ovarious adapters. The widgets will be removed from these
