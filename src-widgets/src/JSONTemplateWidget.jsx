@@ -349,6 +349,7 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
         try {
             const data = this.state.data || {};
             const rxData = this.state.rxData || data;
+            const style = this.state.style;
 
             await this.ensureAssetsLoaded(data);
             if (seq !== this._renderSeq) {
@@ -375,7 +376,7 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                     widgetid: this.props.id,
                     data: oiddata,
                     dp: datapoints,
-                    style: this.props.style,
+                    style: style,
                     widget: data,
                     I18n,
                 },
