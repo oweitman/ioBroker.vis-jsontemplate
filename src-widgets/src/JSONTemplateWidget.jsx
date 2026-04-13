@@ -402,7 +402,8 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
         }
     }
 
-    renderWidgetBody() {
+    renderWidgetBody(props) {
+        super.renderWidgetBody(props);
         return (
             <InnerHtml
                 html={this.renderText || ' '}
