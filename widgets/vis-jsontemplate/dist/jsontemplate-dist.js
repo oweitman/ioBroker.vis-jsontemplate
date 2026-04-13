@@ -58,7 +58,7 @@
   var version;
   var init_package = __esm({
     "../package.json"() {
-      version = "4.4.0";
+      version = "4.4.1";
     }
   });
 
@@ -571,8 +571,8 @@
           return e;
         })())({ 1: [function(require2, module3, exports3) {
           "use strict";
-          var fs = require2("fs");
-          var path = require2("path");
+          var fs = require2("node:fs");
+          var path = require2("node:path");
           var utils = require2("./utils");
           var scopeOptionWarned = false;
           var _VERSION_STRING = require2("../package.json").version;

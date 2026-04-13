@@ -363,6 +363,10 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 4.4.1 (2026-04-13)
+
+- fix regression
+- update packages
 
 ### 4.4.0 (2026-03-24)
 

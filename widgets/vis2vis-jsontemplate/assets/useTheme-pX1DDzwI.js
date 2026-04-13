@@ -1,0 +1,1 @@
+import{q as n}from"./vis2visjsonTemplateWidgets__loadShare__react__loadShare__.js-Dt3Fjk3e.js";import{T as s,l as m,A as u,z as o}from"./defaultTheme-C7WubneG.js";function r(e){return Object.keys(e).length===0}function a(e=null){const t=n(s);return!t||r(t)?e:t}const c=m();function h(e=c){return a(e)}function i(){const e=h(o);return e[u]||e}export{h as a,a as b,i as u};

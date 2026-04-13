@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.4.0",
+    "version": "4.4.1",
     "news": {
+      "4.4.1": {
+        "en": "fix regression\nupdate packages",
+        "de": "regression\nupdate-pakete",
+        "ru": "фиксировать регрессию\nобновление пакетов",
+        "pt": "corrigir regressão\natualizar pacotes",
+        "nl": "repareren regressie\npakketten bijwerken",
+        "fr": "fixer la régression\nmettre à jour les paquets",
+        "it": "correzione della regressione\npacchetti di aggiornamento",
+        "es": "regreso\nactualizar paquetes",
+        "pl": "naprawić regresję\naktualizacja pakietów",
+        "uk": "фіксація регресія\nоновлення пакетів",
+        "zh-cn": "修复回归\n更新软件包"
+      },
       "4.4.0": {
         "en": "- optimize lib size\n- The ability to load additional JavaScript and CSS files\n  has been added (also for vis2).\n- Improve react components\n- align translation for vis2 widget",
         "de": "- optimierung der lib-größe\n- Die Möglichkeit, zusätzliche JavaScript- und CSS-Dateien zu laden\nwurde hinzugefügt (auch für vis2).\n- Reaktionskomponenten verbessern\n- übersetzung ausrichten für vis2 widget",
