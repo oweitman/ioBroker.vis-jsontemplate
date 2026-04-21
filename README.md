@@ -364,6 +364,10 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 4.4.3 (2026-04-21)
+
+- revert repochecker warning about fs/node:fs and path/node:path
+  because of error loading ejs
 
 ### 4.4.2 (2026-04-13)
 

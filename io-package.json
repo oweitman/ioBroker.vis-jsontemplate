@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.4.2",
+    "version": "4.4.3",
     "news": {
+      "4.4.3": {
+        "en": "- revert repochecker warning about fs/node:fs and path/node:path\n  because of error loading ejs",
+        "de": "- revert repochecker warnung über fs/node:fs und pfad/node:path\naufgrund der fehlerbelastung ejs",
+        "ru": "- повторное предупреждение о репочекере fs/node:fs и path/node:path\nиз-за ошибки загрузки ejs",
+        "pt": "- reverter o aviso de repochecker sobre fs/node:fs e caminho/node:path\ndevido ao erro ao carregar ejs",
+        "nl": "- return repochecker waarschuwing over fs/node:fs en pad/node:path\nvanwege fout bij het laden van ejs",
+        "fr": "- retourner l'avertissement de repochecker sur fs/node:fs et chemin/node:path\nen raison d'une erreur de chargement ejs",
+        "it": "- reverte l'avvertimento del repochecker su fs/node:fs e percorso/nodo:path\na causa di errori di caricamento ejs",
+        "es": "- revertir la advertencia de repochecker sobre fs/node:fs and path/node:path\npor error carga ejs",
+        "pl": "- revert repochecker warning about fs / node: fs and path / node: path\nz powodu błędu wczytywania dżinsów",
+        "uk": "- перевернути повторне попередження про fs/node:fs і шлях/node:path\nчерез завантаження помилок",
+        "zh-cn": "- 恢复关于fs/节点:fs和路径/节点:路径的重新检查器警告\n因为装入 ejs 出错"
+      },
       "4.4.2": {
         "en": "fix runtime",
         "de": "die laufzeit",
