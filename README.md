@@ -147,6 +147,7 @@ a specific layout. Here is an example:
 - [Use Case Async calls](documentation/usecase-asynccall.md)
 - [Use Case loading scripts](documentation/usecase-loadingscripts.md)
 - [Use Case Tasklist](documentation/usecase-tasklist.md)
+- [Use Case public-transport](documentation/usecase-public-transport.md)
 
 ## Templatesystem
 
@@ -363,6 +364,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
 ### 4.4.2 (2026-04-13)
 
 - fix runtime
