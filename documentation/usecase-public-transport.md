@@ -1,5 +1,7 @@
 #### Use case for a database-independent public transport widget
 
+![Widget](img/public-transport-renderresult.png)
+
 ##### **Introduction**
 
 This use case describes how to visualize real-time public transport
@@ -78,6 +80,8 @@ We place a `JSONTemplate` widget and configure:
     ```text
     public-transport.0.Journeys.journey_0.json
     ```
+
+![Settings](img/public-transport-vis-setting.png)
 
 - **Template:**
 
