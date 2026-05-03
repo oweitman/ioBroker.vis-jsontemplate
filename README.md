@@ -433,6 +433,8 @@ Loop over the attributes of an object
 
 - move vis1 and vis2 widgets to vis-jsontemplate adapter
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 MIT License
