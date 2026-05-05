@@ -79,7 +79,7 @@ Available data objects in the template:
 
 | object/variable | description                                                              |
 | --------------- | ------------------------------------------------------------------------ |
-| widgetID        | widgetID of the widget.                                                  |
+| widgetid        | widgetid of the widget.                                                  |
 | data            | JSON object referenced by the datapoint in json_oid.                     |
 | dp              | Array of the datapoint data, referenced by the additional datapoints     |
 | widget          | internal widget data. object with all available widget settings          |
@@ -364,6 +364,11 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- change documentation that in the template the widgetid is available and not widgetID
+
 ### 4.4.3 (2026-04-21)
 
 - revert repochecker warning about fs/node:fs and path/node:path
