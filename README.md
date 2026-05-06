@@ -148,6 +148,7 @@ a specific layout. Here is an example:
 - [Use Case loading scripts](documentation/usecase-loadingscripts.md)
 - [Use Case Tasklist](documentation/usecase-tasklist.md)
 - [Use Case public-transport](documentation/usecase-public-transport.md)
+- [Use Case simple gauge](documentation/usecase-simplegauge.md)
 
 ## Templatesystem
 
@@ -368,6 +369,7 @@ Loop over the attributes of an object
 ### **WORK IN PROGRESS**
 
 - change documentation that in the template the widgetid is available and not widgetID
+- add documentation for the usecase simple gauge
 
 ### 4.4.3 (2026-04-21)
 
