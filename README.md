@@ -24,7 +24,7 @@ The jsontemplate widget was previously available in the rssfeed (for vis1) and
 vis-2-widgets-ovarious adapters. The widgets will be removed from these
 adapters in the near future.
 
-## Inhaltsverzeichnis
+## Table of Contents
 
 - [Overview](#overview)
 - [Installation](#installation)
