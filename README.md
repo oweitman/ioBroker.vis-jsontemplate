@@ -24,6 +24,28 @@ The jsontemplate widget was previously available in the rssfeed (for vis1) and
 vis-2-widgets-ovarious adapters. The widgets will be removed from these
 adapters in the near future.
 
+## Inhaltsverzeichnis
+
+- [Overview](#overview)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [vis and widgets](#vis-and-widgets)
+    - [JSON Template](#json-template)
+    - [Advanced use case](#advanced-use-case)
+    - [More Use Cases](#more-use-cases)
+- [Templatesystem](#templatesystem)
+    - [Very Important Note for use in vis / vis-2](#very-important-note-for-use-in-vis--vis-2)
+    - [Curly braces in CSS and JSON](#curly-braces-in-css-and-json)
+    - [Use of setInterval](#use-of-setinterval)
+- [Tags](#tags)
+- [Example object](#example-object)
+- [Development and Debugging](#development-and-debugging)
+    - [Vis1 Widgets](#vis1-widgets)
+    - [Vis2 Widgets](#vis2-widgets)
+- [Todo](#todo)
+- [Changelog](#changelog)
+- [License](#license)
+
 ## Installation
 
 Install the adapter as normal from the stable repository.
