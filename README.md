@@ -152,28 +152,39 @@ a specific layout. Here is an example:
 
 ## Templatesystem
 
-## Important note for the template system in vis
+### Very Important Note for use in vis / vis-2
 
-In vis, all object notations in the following form are recognized
-and replaced as bindings.
+#### Curly braces in CSS and JSON
 
-Therefore, the opening and closing brackets of all object notations must
-be placed on separate lines:
+The binding mechanism in vis / vis-2 uses the pattern `{ ... }`
+to detect binding expressions within HTML.
+For this reason, when specifying CSS or JSON, the curly braces must
+always be placed on separate lines. Otherwise, the content of
+the vis widget will be overwritten with `undefined`.
 
-Incorrect:
+##### Example
 
-```json
-{ "a": 1, "b": 2 }
+```text
+#w_id_<%- widgetid %> { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
 ```
 
-Correct
+must be written as follows:
 
-```json
-{
-    "a": 1,
-    "b": 2
+```text
+#w_id_<%- widgetid %> {
+    height: 100%; display: flex; flex-direction: column; overflow: hidden;
 }
 ```
+
+#### Use of setInterval
+
+Please do not use `setInterval`. Since the template is re-invoked
+every time a data point changes, any existing `setInterval` calls
+cannot be properly cleared. Consequently, an increasing number
+of overlapping `setInterval` calls accumulate over time; this consumes RAM and
+can lead to unpredictable side effects. While reloading the page can resolve
+this issue, the code should not be implemented in this manner.
+As an alternative, such scenarios should be implemented using `setTimeout`.
 
 ## Tags
 
