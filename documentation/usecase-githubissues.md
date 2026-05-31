@@ -41,6 +41,9 @@ const repos = ['oweitman/ioBroker.vis-jsontemplate', 'oweitman/ioBroker.mytime',
 
 // refresh interval in minutes
 const refreshMinutes = 60;
+
+//optional github token
+const token = '';
 ```
 
 </details>
@@ -492,11 +495,23 @@ Example request:
 https://api.github.com/search/issues?q=repo:oweitman/ioBroker.pi-hole2+type:issue+state:open
 ```
 
-No GitHub token is required for public repositories.
+Normaly no GitHub token is required for public repositories.
 
 Please note that for public API access, the number of requests per hour
 is limited to 60. The template requires 2 API requests per repository.
 For more extensive queries, authentication should be added.
+
+To get a github access token follow the steps here:
+
+1. Sign in to GitHub
+2. Click your profile picture in the top right → **Settings**
+3. Scroll down on the left → **Developer settings**
+4. Open **Personal access tokens**
+5. Choose **Tokens (classic)**
+6. Click **Generate new token**
+7. Select an expiration date
+8. Configure the required permissions: public_repo
+9. Generate the token and copy it immediately (it will only be shown once)
 
 ---
 
