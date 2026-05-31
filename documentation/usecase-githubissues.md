@@ -68,6 +68,10 @@ const repos = [
 // Aktualisierung alle X Minuten
 const refreshMinutes = 1;
 
+//optional github token
+// beginnt mit ghp_
+const token = "";
+
 %>
 
 <style>
@@ -195,6 +199,8 @@ const repos =
 const refreshIntervalMs =
     <%= refreshMinutes %> * 60 * 1000;
 
+const token = "<%= token %>"
+
 const tableBody =
     document.getElementById(
         "ghRepoTableBody"
@@ -223,16 +229,25 @@ async function getCount(
         type +
         " state:open";
 
+    const headers =
+    {
+        Accept:
+            "application/vnd.github+json"
+    };
+
+    if (token) {
+        headers.Authorization =
+            `Bearer ${
+                token
+            }`;
+    }
+
     const response =
         await fetch(
             "https://api.github.com/search/issues?q=" +
             encodeURIComponent(query),
             {
-                headers:
-                {
-                    Accept:
-                        "application/vnd.github+json"
-                }
+                headers
             }
         );
 
