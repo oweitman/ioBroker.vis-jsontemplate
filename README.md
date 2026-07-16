@@ -172,6 +172,7 @@ a specific layout. Here is an example:
 - [Use Case public-transport](documentation/usecase-public-transport.md)
 - [Use Case simple gauge](documentation/usecase-simplegauge.md)
 - [Use Case Github Issues and PRs](documentation/usecase-githubissues.md)
+- [Use Case FRITZ!Box call list](documentation/usecase-fritzbox-call-list.md)
 
 ## Templatesystem
 
@@ -404,6 +405,7 @@ Loop over the attributes of an object
 
 - change documentation that in the template the widgetid is available and not widgetID
 - add documentation for the usecase simple gauge
+- add documentation for a responsive FRITZ!Box call list
 
 ### 4.4.3 (2026-04-21)
 
