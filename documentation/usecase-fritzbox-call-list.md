@@ -7,6 +7,7 @@ This use case describes how to display a FRITZ!Box call list in
 
 **Dark**
 ![fritzbox-call-list dark](fritbox-call-list-dark.png)
+
 **Light**
 ![fritzbox-call-list light](fritbox-call-list-light.png)
 
