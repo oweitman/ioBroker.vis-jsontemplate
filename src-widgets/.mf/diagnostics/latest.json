@@ -1,0 +1,10 @@
+{
+  "latestErrorEvent": {
+    "code": "TYPE-001",
+    "message": "Failed to generate type declaration. Execute the below cmd to reproduce and fix the error. #TYPE-001\nargs: {\"cmd\":\"C:\\\\Users\\\\oweit\\\\AppData\\\\Local\\\\fnm_multishells\\\\37068_1784753968289\\\\node.exe C:\\\\Users\\\\oweit\\\\vscode\\\\iobroker\\\\ioBroker.vis-jsontemplate\\\\src-widgets\\\\node_modules\\\\typescript\\\\bin\\\\tsc --project C:\\\\Users\\\\oweit\\\\vscode\\\\iobroker\\\\ioBroker.vis-jsontemplate\\\\src-widgets\\\\node_modules\\\\.federation\\\\tsconfig.5fa38153cf945d3e482b6ad0079c0d1b.json\"}\nView the docs to see how to solve: https://module-federation.io/guide/troubleshooting/type#type-001",
+    "args": {
+      "cmd": "C:\\Users\\oweit\\AppData\\Local\\fnm_multishells\\37068_1784753968289\\node.exe C:\\Users\\oweit\\vscode\\iobroker\\ioBroker.vis-jsontemplate\\src-widgets\\node_modules\\typescript\\bin\\tsc --project C:\\Users\\oweit\\vscode\\iobroker\\ioBroker.vis-jsontemplate\\src-widgets\\node_modules\\.federation\\tsconfig.5fa38153cf945d3e482b6ad0079c0d1b.json"
+    },
+    "timestamp": 1784758985412
+  }
+}

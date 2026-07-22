@@ -402,6 +402,10 @@ Loop over the attributes of an object
   ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- fix packages for vis-2
+
 ### 4.4.4 (2026-07-22)
 
 - some changes. see readme/below

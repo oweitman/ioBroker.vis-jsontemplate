@@ -3,6 +3,19 @@
         "name": "vis-jsontemplate",
         "version": "4.4.4",
         "news": {
+            "4.4.5": {
+                "en": "fix packages for vis-2",
+                "de": "Pakete für vis-2 korrigieren",
+                "ru": "исправить пакеты для vis-2",
+                "pt": "corrigir pacotes para o vis-2",
+                "nl": "pakketten voor vis-2 repareren",
+                "fr": "corriger les paquets pour vis-2",
+                "it": "corregere i pacchetti per vis-2",
+                "es": "Corregir los paquetes para vis-2",
+                "pl": "poprawki do pakietów dla vis-2",
+                "uk": "виправити пакети для vis-2",
+                "zh-cn": "vis-2 的修复包"
+            },
             "4.4.4": {
                 "en": "some changes. see readme",
                 "de": "einige änderungen. siehe readme",
