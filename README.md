@@ -401,14 +401,9 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 4.4.4 (2026-07-22)
 
-### **WORK IN PROGRESS**
-
-- change documentation that in the template the widgetid is available and not widgetID
-- add documentation for the usecase simple gauge
-- add documentation for a responsive FRITZ!Box call list
-- Due to an inconsistency between the vis1 and vis2 widgets,
-  both `widgetid` and `widgetID` are now passed to the template.
+- some changes. see readme
 
 ### 4.4.3 (2026-04-21)
 

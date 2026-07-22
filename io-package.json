@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.4.3",
+    "version": "4.4.4",
     "news": {
+      "4.4.4": {
+        "en": "some changes. see readme",
+        "de": "einige änderungen. siehe readme",
+        "ru": "некоторые изменения. см. readme",
+        "pt": "algumas mudanças. ver lerme",
+        "nl": "wat veranderingen. zie readme",
+        "fr": "quelques changements. voir lecture",
+        "it": "alcuni cambiamenti. vedi leggere",
+        "es": "algunos cambios. ver readme",
+        "pl": "kilka zmian. patrz readme",
+        "uk": "деякі зміни. переглянути файл",
+        "zh-cn": "一些变化。 参见readme"
+      },
       "4.4.3": {
         "en": "- revert repochecker warning about fs/node:fs and path/node:path\n  because of error loading ejs",
         "de": "- revert repochecker warnung über fs/node:fs und pfad/node:path\naufgrund der fehlerbelastung ejs",
