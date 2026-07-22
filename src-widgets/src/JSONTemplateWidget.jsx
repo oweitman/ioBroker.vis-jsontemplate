@@ -374,6 +374,7 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                 template,
                 {
                     widgetid: this.props.id,
+                    widgetID: this.props.id,
                     data: oiddata,
                     dp: datapoints,
                     style: style,

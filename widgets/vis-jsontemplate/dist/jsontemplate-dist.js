@@ -217,7 +217,14 @@
               try {
                 text = yield ejs.render(
                   template,
-                  { widgetID, data: oiddata, dp: datapoints, widget: data, style },
+                  {
+                    widgetID,
+                    widgetid: widgetID,
+                    data: oiddata,
+                    dp: datapoints,
+                    widget: data,
+                    style
+                  },
                   { async: true }
                 );
               } catch (e) {

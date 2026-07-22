@@ -102,6 +102,7 @@ Available data objects in the template:
 | object/variable | description                                                              |
 | --------------- | ------------------------------------------------------------------------ |
 | widgetid        | widgetid of the widget.                                                  |
+| widgetID        | widgetid of the widget.                                                  |
 | data            | JSON object referenced by the datapoint in json_oid.                     |
 | dp              | Array of the datapoint data, referenced by the additional datapoints     |
 | widget          | internal widget data. object with all available widget settings          |
@@ -406,6 +407,8 @@ Loop over the attributes of an object
 - change documentation that in the template the widgetid is available and not widgetID
 - add documentation for the usecase simple gauge
 - add documentation for a responsive FRITZ!Box call list
+- Due to an inconsistency between the vis1 and vis2 widgets,
+  both `widgetid` and `widgetID` are now passed to the template.
 
 ### 4.4.3 (2026-04-21)
 

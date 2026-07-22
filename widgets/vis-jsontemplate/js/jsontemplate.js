@@ -174,7 +174,14 @@ vis.binds['jsontemplate'] = {
             try {
                 text = await ejs.render(
                     template,
-                    { widgetID: widgetID, data: oiddata, dp: datapoints, widget: data, style: style },
+                    {
+                        widgetID: widgetID,
+                        widgetid: widgetID,
+                        data: oiddata,
+                        dp: datapoints,
+                        widget: data,
+                        style: style,
+                    },
                     { async: true },
                 );
             } catch (e) {
