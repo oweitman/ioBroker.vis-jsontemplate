@@ -95,7 +95,6 @@ in the template.
 
 ```ejs
 <%
-<%
 /*
 * ioBroker.vis-jsontemplate
 * Responsive Anrufliste
