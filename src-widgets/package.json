@@ -1,7 +1,7 @@
 {
     "name": "iobroker.vis2-widget-jsontemplate",
     "private": true,
-    "version": "4.4.4",
+    "version": "4.4.5",
     "type": "module",
     "dependencies": {
         "@emotion/react": "^11.14.0",
