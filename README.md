@@ -401,6 +401,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
 ### 4.4.4 (2026-07-22)
 
 - some changes. see readme
@@ -473,6 +474,8 @@ Loop over the attributes of an object
 ### 4.0.1 (2025-08-28)
 
 - move vis1 and vis2 widgets to vis-jsontemplate adapter
+
+[Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
 

@@ -11,7 +11,8 @@ tmp/
 .vscode/info.txt
 .vscode/secrets.txt
 
-widgets/vis-jsontemplate/i18n/en.json
+widgets/vis-jsontemplate/myi18n/en.json
 
 #ignore .commitinfo created by ioBroker release script
 .commitinfo
+.env

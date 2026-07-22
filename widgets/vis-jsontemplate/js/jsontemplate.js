@@ -10,7 +10,7 @@
 // add translations for edit mode
 import { version as pkgVersion } from '../../../package.json';
 
-fetch('widgets/vis-jsontemplate/i18n/words.json').then(async res => {
+fetch('widgets/vis-jsontemplate/myi18n/words.json').then(async res => {
     const i18n = await res.json();
 
     $.extend(true, systemDictionary, i18n);

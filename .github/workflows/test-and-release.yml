@@ -29,11 +29,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: ioBroker/testing-action-check@v2.0.0
+            - uses: ioBroker/testing-action-check@v2
               with:
-                  node-version: '24.x'
-                  # Uncomment the following line if your adapter cannot be installed using 'npm ci'
-                  # install-command: 'npm install'
+                  node-version: 24.15.0
+                  install-command: 'npm ci && cd src-widgets && npm ci'
                   lint: true
 
     # Runs adapter tests on all supported node versions and OSes
@@ -43,16 +42,15 @@ jobs:
         needs: [check-and-lint]
 
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [20.x, 22.x, 24.x]
 
         steps:
-            - uses: ioBroker/testing-action-adapter@v1.1.1
+            - uses: ioBroker/testing-action-adapter@v1
               with:
                   build: true
+                  install-command: 'npm ci && cd src-widgets && npm ci'
                   os: 'ubuntu-latest'
-                  node-version: ${{ matrix.node-version }}
+                  node-version: 24.15.0
+                  screenshots-path: tmp/screenshots/**/*.png
 
     # Deploys the final package to NPM
     deploy:
@@ -72,11 +70,9 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: ioBroker/testing-action-deploy@v1.5.2
+            - uses: ioBroker/testing-action-deploy@v1
               with:
                   node-version: '24.x'
                   build: true
-                  # Uncomment the following line if your adapter cannot be installed using 'npm ci'
-                  # install-command: 'npm install'
-                  # npm-token: ${{ secrets.NPM_TOKEN }}
+                  install-command: 'npm install'
                   github-token: ${{ secrets.GITHUB_TOKEN }}

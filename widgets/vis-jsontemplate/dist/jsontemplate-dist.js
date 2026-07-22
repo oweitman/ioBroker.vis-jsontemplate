@@ -67,7 +67,7 @@
     "vis-jsontemplate/js/jsontemplate.js"(exports) {
       "use strict";
       init_package();
-      fetch("widgets/vis-jsontemplate/i18n/words.json").then((res) => __async(null, null, function* () {
+      fetch("widgets/vis-jsontemplate/myi18n/words.json").then((res) => __async(null, null, function* () {
         const i18n = yield res.json();
         $.extend(true, systemDictionary, i18n);
       }));

@@ -80,6 +80,15 @@
             "name": "vis-2 runtime",
             "url": "http://localhost:3000/?main#test",
             "webRoot": "${workspaceFolder}/src-widgets"
+        },
+        {
+            "name": "repochecker local",
+            "program": "../iobroker.repochecker/index.js",
+            "args": ["https://github.com/oweitman/ioBroker.vis-jsontemplate", "--local"],
+            "request": "launch",
+            "stopOnEntry": false,
+            "skipFiles": ["<node_internals>/**"],
+            "type": "node"
         }
     ]
 }
