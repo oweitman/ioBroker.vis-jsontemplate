@@ -37,6 +37,7 @@ adapters in the near future.
     - [Very Important Note for use in vis / vis-2](#very-important-note-for-use-in-vis--vis-2)
     - [Curly braces in CSS and JSON](#curly-braces-in-css-and-json)
     - [Use of setInterval](#use-of-setinterval)
+    - [Developing templates with AI](#developing-templates-with-ai)
 - [Tags](#tags)
 - [Example object](#example-object)
 - [Development and Debugging](#development-and-debugging)
@@ -190,13 +191,13 @@ the vis widget will be overwritten with `undefined`.
 ##### Example
 
 ```text
-#w_id_<%- widgetid %> { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+#<%- widgetid %> { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
 ```
 
 must be written as follows:
 
 ```text
-#w_id_<%- widgetid %> {
+#<%- widgetid %> {
     height: 100%; display: flex; flex-direction: column; overflow: hidden;
 }
 ```
@@ -210,6 +211,14 @@ of overlapping `setInterval` calls accumulate over time; this consumes RAM and
 can lead to unpredictable side effects. While reloading the page can resolve
 this issue, the code should not be implemented in this manner.
 As an alternative, such scenarios should be implemented using `setTimeout`.
+
+#### Developing templates with AI
+
+To simplify the process of creating templates for everyone,
+I have prepared detailed documentation including prompts and descriptions:
+
+- [English](documentation/AI-EN.md)
+- [German](documentation/KI-DE.md)
 
 ## Tags
 
@@ -401,6 +410,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
 ### 4.4.5 (2026-07-22)
 
 - fix packages for vis-2
