@@ -76,6 +76,10 @@ The AI ​​should observe the following rules:
 - `setInterval()` must not be used.
 - Use `setTimeout()` instead for repetitive processes.
 - The result must be directly copyable into the `json_template` field.
+- If you need to pass data from an ejs-template to the browser-side JavaScript,
+  do not serialize the data; instead, use a global variable within
+  the `window` namespace. Choose a highly unique variable name to avoid
+  interference from other scripts.
 
 ## Template for an AI Prompt
 
@@ -112,6 +116,10 @@ TECHNICAL SPECIFICATIONS
 - Limit CSS and JavaScript to this widget. Use the widget ID
   `#<%- widgetid %>` for this purpose.
 - The result must be directly insertable into the `json_template` field.
+- If you need to pass data from an ejs-template to the browser-side JavaScript,
+  do not serialize the data; instead, use a global variable within
+  the `window` namespace. Choose a highly unique variable name to avoid
+  interference from other scripts.
 
 OUTPUT FORMAT
 
@@ -171,6 +179,10 @@ Display only.
 - Place opening and closing CSS braces on their own lines.
 - Scope the CSS to `#<%- widgetid %>`.
 - The result must be suitable for direct insertion into the `json_template` field.
+- If you need to pass data from an ejs-template to the browser-side JavaScript,
+  do not serialize the data; instead, use a global variable within
+  the `window` namespace. Choose a highly unique variable name to avoid
+  interference from other scripts.
 
 ### OUTPUT FORMAT
 

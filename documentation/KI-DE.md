@@ -77,6 +77,11 @@ Die KI sollte folgende Regeln beachten:
 - setInterval() darf nicht verwendet werden.
 - Bei wiederholten Abläufen soll stattdessen setTimeout() eingesetzt werden.
 - Das Ergebnis soll direkt in das Feld json_template kopierbar sein.
+- Wenn Daten von einem EJS-Template an das clientseitige JavaScript übergeben
+  werden sollen, sollten die Daten nicht serialisiert werden;
+  verwende stattdessen eine globale Variable im `window`-Namensraum.
+  Wähle einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen
+  Skripten zu vermeiden.
 
 ## Vorlage für einen KI-Prompt
 
@@ -114,6 +119,11 @@ TECHNISCHE VORGABEN
 - Begrenze CSS und JavaScript auf dieses Widget. Nutze dazu die Widget-ID
   `#<%- widgetid %>`.
 - Das Ergebnis muss direkt in das Feld `json_template` eingefügt werden können.
+- Wenn Daten von einem EJS-Template an das clientseitige JavaScript übergeben
+  werden sollen, sollten die Daten nicht serialisiert werden;
+  verwende stattdessen eine globale Variable im `window`-Namensraum.
+  Wähle einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen
+  Skripten zu vermeiden.
 
 AUSGABEFORMAT
 
@@ -174,6 +184,11 @@ Nur Anzeige.
 - Schreibe öffnende und schließende CSS-Klammern jeweils in eigene Zeilen.
 - Begrenze das CSS auf `#<%- widgetid %>`.
 - Das Ergebnis muss direkt in das Feld `json_template` eingefügt werden können.
+- Wenn Daten von einem EJS-Template an das clientseitige JavaScript übergeben
+  werden sollen, sollten die Daten nicht serialisiert werden;
+  verwende stattdessen eine globale Variable im `window`-Namensraum.
+  Wähle einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen
+  Skripten zu vermeiden.
 
 ### AUSGABEFORMAT
 
