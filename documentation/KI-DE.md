@@ -69,19 +69,28 @@ Beispiele:
 Die KI sollte folgende Regeln beachten:
 
 - Das Template verwendet EJS.
-- Der JSON-Inhalt steht in der Variable data.
-- Zusätzliche Datenpunkte stehen in dp.
-- JavaScript-Ausgaben erfolgen beispielsweise mit <%- data.value %>.
-- Schleifen und Bedingungen stehen in <% ... %>.
-- CSS-Klammern müssen in VIS auf getrennten Zeilen stehen.
-- setInterval() darf nicht verwendet werden.
-- Bei wiederholten Abläufen soll stattdessen setTimeout() eingesetzt werden.
-- Das Ergebnis soll direkt in das Feld json_template kopierbar sein.
+- Der JSON-Inhalt steht in der Variable `data`.
+- Zusätzliche Datenpunkte stehen in `dp`.
+- JavaScript-Ausgaben erfolgen beispielsweise mit `<%- data.value %>`.
+- Schleifen und Bedingungen stehen in `<% ... %>`.
+- Prüfe vor dem Zugriff, ob optionale Werte oder Arrays vorhanden sind.
+- VIS interpretiert `{...}` innerhalb einer Zeile als Datenpunkt-Binding.
+  Deshalb dürfen öffnende und schließende geschweifte Klammern mit beliebigem
+  Inhalt dazwischen niemals in derselben Zeile stehen. Schreibe sie immer in
+  getrennte Zeilen. Leere Klammern (`{}`) sind erlaubt.
+- Verwende keine Regex-Quantifizierer wie `{2}`, `{1,2}` oder `{4}`.
+  Schreibe sie stattdessen ohne geschweifte Klammern, z. B.
+  `\d{2}` → `\d\d`,
+  `\d{1,2}` → `\d\d?`,
+  `\d{4}` → `\d\d\d\d`.
+- `setInterval()` darf nicht verwendet werden.
+- Bei wiederholten Abläufen soll stattdessen `setTimeout()` eingesetzt werden.
+- Das Ergebnis soll direkt in das Feld `json_template` kopierbar sein.
 - Wenn Daten von einem EJS-Template an das clientseitige JavaScript übergeben
-  werden sollen, sollten die Daten nicht serialisiert werden;
-  verwende stattdessen eine globale Variable im `window`-Namensraum.
-  Wähle einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen
-  Skripten zu vermeiden.
+  werden sollen, sollten die Daten nicht serialisiert werden.
+  Verwende stattdessen eine globale Variable im `window`-Namensraum und wähle
+  einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen Skripten
+  zu vermeiden.
 
 ## Vorlage für einen KI-Prompt
 
@@ -106,7 +115,7 @@ FUNKTIONEN
 [Beschreibe Filter, Sortierung, Schaltflächen oder andere Funktionen.
 Falls keine Interaktion erforderlich ist, schreibe: Nur Anzeige.]
 
-TECHNISCHE VORGABEN
+### TECHNISCHE VORGABEN
 
 - Verwende HTML, CSS, JavaScript und EJS nur soweit erforderlich.
 - Die JSON-Daten befinden sich in der Variable `data`.
@@ -115,15 +124,23 @@ TECHNISCHE VORGABEN
 - Prüfe vor dem Zugriff, ob optionale Werte oder Arrays vorhanden sind.
 - Verwende keine externen Bibliotheken.
 - Verwende kein `setInterval()`.
-- Schreibe öffnende und schließende CSS-Klammern jeweils in eigene Zeilen.
+- VIS interpretiert `{...}` innerhalb einer Zeile als Datenpunkt-Binding.
+  Deshalb dürfen öffnende und schließende geschweifte Klammern mit beliebigem
+  Inhalt dazwischen niemals in derselben Zeile stehen. Schreibe sie immer in
+  getrennte Zeilen. Leere Klammern (`{}`) sind erlaubt.
+- Verwende keine Regex-Quantifizierer wie `{2}`, `{1,2}` oder `{4}`.
+  Schreibe sie stattdessen ohne geschweifte Klammern, z. B.
+  `\d{2}` → `\d\d`,
+  `\d{1,2}` → `\d\d?`,
+  `\d{4}` → `\d\d\d\d`.
 - Begrenze CSS und JavaScript auf dieses Widget. Nutze dazu die Widget-ID
   `#<%- widgetid %>`.
 - Das Ergebnis muss direkt in das Feld `json_template` eingefügt werden können.
 - Wenn Daten von einem EJS-Template an das clientseitige JavaScript übergeben
-  werden sollen, sollten die Daten nicht serialisiert werden;
-  verwende stattdessen eine globale Variable im `window`-Namensraum.
-  Wähle einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen
-  Skripten zu vermeiden.
+  werden sollen, sollten die Daten nicht serialisiert werden.
+  Verwende stattdessen eine globale Variable im `window`-Namensraum und wähle
+  einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen Skripten
+  zu vermeiden.
 
 AUSGABEFORMAT
 
@@ -181,14 +198,22 @@ Nur Anzeige.
 - Zeige bei fehlenden Daten den Text „Keine Gerätedaten vorhanden“.
 - Verwende keine externen Bibliotheken.
 - Verwende kein `setInterval()`.
-- Schreibe öffnende und schließende CSS-Klammern jeweils in eigene Zeilen.
+- VIS interpretiert `{...}` innerhalb einer Zeile als Datenpunkt-Binding.
+  Deshalb dürfen öffnende und schließende geschweifte Klammern mit beliebigem
+  Inhalt dazwischen niemals in derselben Zeile stehen. Schreibe sie immer in
+  getrennte Zeilen. Leere Klammern (`{}`) sind erlaubt.
+- Verwende keine Regex-Quantifizierer wie `{2}`, `{1,2}` oder `{4}`.
+  Schreibe sie stattdessen ohne geschweifte Klammern, z. B.
+  `\d{2}` → `\d\d`,
+  `\d{1,2}` → `\d\d?`,
+  `\d{4}` → `\d\d\d\d`.
 - Begrenze das CSS auf `#<%- widgetid %>`.
 - Das Ergebnis muss direkt in das Feld `json_template` eingefügt werden können.
 - Wenn Daten von einem EJS-Template an das clientseitige JavaScript übergeben
-  werden sollen, sollten die Daten nicht serialisiert werden;
-  verwende stattdessen eine globale Variable im `window`-Namensraum.
-  Wähle einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen
-  Skripten zu vermeiden.
+  werden sollen, sollten die Daten nicht serialisiert werden.
+  Verwende stattdessen eine globale Variable im `window`-Namensraum und wähle
+  einen möglichst eindeutigen Variablennamen, um Konflikte mit anderen Skripten
+  zu vermeiden.
 
 ### AUSGABEFORMAT
 

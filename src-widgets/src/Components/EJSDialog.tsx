@@ -1,5 +1,5 @@
 // TextDialog
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import type { JSX } from 'react';
 
 import { I18n } from '@iobroker/adapter-react-v5';
@@ -16,6 +16,10 @@ interface EJSDialogProps {
 
 const EJSDialog = (props: EJSDialogProps): JSX.Element | null => {
     const [value, changeValue] = useState('');
+    const editorRef = useRef<any>(null);
+
+    const resizeEditor = useCallback(() => editorRef.current?.editor?.resize(), []);
+    const openSearch = useCallback(() => editorRef.current?.editor?.execCommand('find'), []);
 
     useEffect(() => {
         changeValue(props.value);
@@ -31,13 +35,17 @@ const EJSDialog = (props: EJSDialogProps): JSX.Element | null => {
             onClose={props.onClose}
             minWidth={800}
             actionDisabled={value === props.value}
+            onResize={resizeEditor}
+            onSearch={openSearch}
+            resizable
         >
             <Suspense fallback={null}>
                 <EJSAceEditor
                     value={value}
                     focus
-                    height={400}
+                    height="100%"
                     onChange={newValue => changeValue(newValue)}
+                    refEditor={editorRef}
                     themeType={props.themeType}
                 />
             </Suspense>

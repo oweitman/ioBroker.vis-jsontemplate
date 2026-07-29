@@ -8,6 +8,7 @@ import 'ace-builds/src-noconflict/theme-chrome';
 import 'ace-builds/src-noconflict/snippets/ejs';
 import 'ace-builds/src-noconflict/snippets/html';
 import 'ace-builds/src-noconflict/ext-language_tools';
+import 'ace-builds/src-noconflict/ext-searchbox';
 
 import { I18n } from '@iobroker/adapter-react-v5';
 

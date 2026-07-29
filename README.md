@@ -411,6 +411,12 @@ Loop over the attributes of an object
   ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- repair widget rendering
+- add search and fullscreen to ejs-edit for vis-2 widget
+- improve ki documentation for regex expressions
+
 ### 4.4.5 (2026-07-22)
 
 - fix packages for vis-2
