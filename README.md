@@ -416,6 +416,7 @@ Loop over the attributes of an object
 - repair widget rendering
 - add search and fullscreen to ejs-edit for vis-2 widget
 - improve ki documentation for regex expressions
+- improve vis-2 ejs edit theme for dark mode
 
 ### 4.4.5 (2026-07-22)
 

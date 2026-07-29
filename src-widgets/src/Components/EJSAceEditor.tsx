@@ -3,7 +3,7 @@ import AceEditor from 'react-ace';
 
 import 'ace-builds/src-noconflict/ace';
 import 'ace-builds/src-noconflict/mode-ejs';
-import 'ace-builds/src-noconflict/theme-clouds_midnight';
+import 'ace-builds/src-noconflict/theme-tomorrow_night_bright';
 import 'ace-builds/src-noconflict/theme-chrome';
 import 'ace-builds/src-noconflict/snippets/ejs';
 import 'ace-builds/src-noconflict/snippets/html';
@@ -122,7 +122,7 @@ export const EJSAceEditor = (props: EJSAceEditorProps): JSX.Element => {
         >
             <AceEditor
                 mode="ejs"
-                theme={props.themeType === 'dark' ? 'clouds_midnight' : 'chrome'}
+                theme={props.themeType === 'dark' ? 'tomorrow_night_bright' : 'chrome'}
                 width="100%"
                 height="100%"
                 value={props.value}
