@@ -35,6 +35,11 @@ export default [
         rules: {
             'jsdoc/require-jsdoc': 'off',
             'jsdoc/require-param': 'off',
+            'jsdoc/require-param-description': 'off',
+            'jsdoc/require-returns-description': 'off',
+            'jsdoc/check-tag-names': 'off',
+            'react/jsx-uses-react': 'off',
+            'react/react-in-jsx-scope': 'off',
         },
     },
 ];

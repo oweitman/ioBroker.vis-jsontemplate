@@ -1,5 +1,5 @@
 // IODialog
-import React from 'react';
+import type { JSX, ReactNode } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import type { Breakpoint } from '@mui/system';
 
@@ -14,10 +14,10 @@ interface JSONTemplateDialogProps {
     actionDisabled?: boolean;
     actionNoClose?: boolean;
     actionTitle?: string;
-    children?: any;
+    children?: ReactNode;
     closeTitle?: string;
     closeDisabled?: boolean;
-    dialogActions?: any;
+    dialogActions?: ReactNode;
     keyboardDisabled?: boolean;
     onClose: () => void;
     open: boolean;
@@ -28,12 +28,11 @@ interface JSONTemplateDialogProps {
     noTranslation?: boolean;
 }
 
-const JSONTemplateDialog = (props: JSONTemplateDialogProps): React.JSX.Element | null =>
+const JSONTemplateDialog = (props: JSONTemplateDialogProps): JSX.Element | null =>
     props.open ? (
         <Dialog
-            // @ts-expect-error
-            onClose={props.closeDisabled ? null : props.onClose}
-            open={!0}
+            onClose={props.closeDisabled ? undefined : props.onClose}
+            open
             fullScreen={!!props.fullScreen}
             maxWidth={props.maxWidth || 'md'}
         >

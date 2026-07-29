@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { JSX } from 'react';
 
 import { TextField, Button } from '@mui/material';
 import { Edit as EditIcon } from '@mui/icons-material';
@@ -25,7 +26,7 @@ const VisEJSAttributeField = ({
     data, // widget data
     onDataChange, // project object: {VIEWS..., [view]: {widgets: {[widgetID]: {tpl, data, style}}, settings, parentId, rerender, filterList, activeWidgets}, __settings: {}}
     props,
-}: VisEJSAttributeFieldProps): React.JSX.Element => {
+}: VisEJSAttributeFieldProps): JSX.Element => {
     const error = '';
 
     const [idDialog, setIdDialog] = useState(false);
@@ -41,7 +42,7 @@ const VisEJSAttributeField = ({
                 size="small"
                 // placeholder={isDifferent ? t('different') : null}
                 variant="standard"
-                value={data && data[field.name]}
+                value={data?.[field.name] ?? ''}
                 fullWidth
                 error={!!error}
                 helperText={typeof error === 'string' ? I18n.t(error) : null}
@@ -51,22 +52,25 @@ const VisEJSAttributeField = ({
                     }); // returns all changed field as object.
                     // If some propertiy is null, so it will be deleted from data
                 }}
-                InputProps={{
-                    endAdornment: (
-                        <Button
-                            size="small"
-                            onClick={() => setIdDialog(true)}
-                        >
-                            <EditIcon />
-                        </Button>
-                    ),
+                slotProps={{
+                    input: {
+                        endAdornment: (
+                            <Button
+                                size="small"
+                                aria-label={I18n.t('vis-jsontemplate_json_dialog_title')}
+                                onClick={() => setIdDialog(true)}
+                            >
+                                <EditIcon />
+                            </Button>
+                        ),
+                    },
                 }}
                 rows={2}
             />
             {idDialog ? (
                 <EJSDialog
-                    open={!0}
-                    value={data[field.name]}
+                    open
+                    value={data?.[field.name] ?? ''}
                     onChange={newValue => onDataChange({ [field.name]: newValue })}
                     onClose={() => setIdDialog(false)}
                     themeType={props.context.theme.name}

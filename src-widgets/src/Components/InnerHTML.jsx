@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-
+import '@vitejs/plugin-react/preamble';
+import { useEffect, useRef } from 'react';
 /**
  * @typedef {Object.<string, (() => void)>} CleanupStore
  */
@@ -165,10 +165,10 @@ function runRegisteredCleanup(cleanupKey) {
 /**
  * @param {{
  *   html: string,
- *   allowRerender?: any
+ *   renderVersion: number
  * } & React.HTMLAttributes<HTMLDivElement>} props
  */
-function InnerHTML({ html, allowRerender, ...rest }) {
+function InnerHTML({ html, renderVersion, ...rest }) {
     /** @type {React.RefObject<HTMLDivElement | null>} */
     const divRef = useRef(null);
     const instanceIdRef = useRef(`vis-json-template-${Math.random().toString(36).slice(2)}`);
@@ -206,7 +206,7 @@ function InnerHTML({ html, allowRerender, ...rest }) {
             container.innerHTML = '';
             delete container.dataset.cleanupKey;
         };
-    }, [html, allowRerender]);
+    }, [html, renderVersion]);
 
     return (
         <div

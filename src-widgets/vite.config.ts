@@ -5,7 +5,9 @@ import vitetsConfigPaths from 'vite-tsconfig-paths';
 import { federation } from '@module-federation/vite';
 import { moduleFederationShared } from '@iobroker/types-vis-2/modulefederation.vis.config';
 import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 const pack = JSON.parse(readFileSync('./package.json').toString());
+const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 const config = {
     plugins: [
@@ -54,8 +56,8 @@ const config = {
     },
     resolve: {
         alias: {
-            fs: path.resolve(__dirname, 'src/empty.js'),
-            path: path.resolve(__dirname, 'src/empty.js'),
+            fs: path.resolve(sourceDirectory, 'src/empty.js'),
+            path: path.resolve(sourceDirectory, 'src/empty.js'),
         },
     },
 };

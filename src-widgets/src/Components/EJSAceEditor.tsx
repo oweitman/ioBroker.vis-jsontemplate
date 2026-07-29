@@ -1,4 +1,4 @@
-import React, { type RefObject, useEffect, useRef } from 'react';
+import { type JSX, type Ref, type RefObject, useEffect, useRef } from 'react';
 import AceEditor from 'react-ace';
 
 import 'ace-builds/src-noconflict/ace';
@@ -6,6 +6,7 @@ import 'ace-builds/src-noconflict/mode-ejs';
 import 'ace-builds/src-noconflict/theme-clouds_midnight';
 import 'ace-builds/src-noconflict/theme-chrome';
 import 'ace-builds/src-noconflict/snippets/ejs';
+import 'ace-builds/src-noconflict/snippets/html';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
 import { I18n } from '@iobroker/adapter-react-v5';
@@ -16,13 +17,13 @@ interface EJSAceEditorProps {
     readOnly?: boolean;
     height?: number | string;
     width?: number | string;
-    refEditor?: React.Ref<any>;
+    refEditor?: Ref<any>;
     error?: boolean;
     focus?: boolean;
     themeType: string;
 }
 
-export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
+export const EJSAceEditor = (props: EJSAceEditorProps): JSX.Element => {
     const refEditor: RefObject<HTMLDivElement | null> = useRef(null);
 
     useEffect(() => {
@@ -92,7 +93,7 @@ export const EJSAceEditor = (props: EJSAceEditorProps): React.JSX.Element => {
 
         if (I18n.getLanguage() !== 'en') {
             initTimer = setTimeout(() => {
-                content = window.document.querySelector<HTMLInputElement>('.ace_text-input');
+                content = refEditor.current?.querySelector<HTMLInputElement>('.ace_text-input') || null;
                 content?.addEventListener('keydown', keyDown);
             }, 200);
         }
