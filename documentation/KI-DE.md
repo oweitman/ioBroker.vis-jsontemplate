@@ -153,6 +153,10 @@ AUSGABEFORMAT
 
 ## Beispielprompt
 
+Beispiele verschiedener KI-Anbieter:
+
+![KI Beispiele](ai-examples.png)
+
 ```text
 Erstelle ein vollständiges Template für das ioBroker-Widget
 „JSON Template“ aus dem Adapter vis-jsontemplate.

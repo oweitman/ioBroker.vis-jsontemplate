@@ -145,6 +145,10 @@ OUTPUT FORMAT
 
 ## Example Prompt
 
+Examples of various AI providers:
+
+![KI Beispiele](ai-examples.png)
+
 ```text
 
 Create a complete template for the ioBroker widget
