@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.4.5",
+    "version": "4.5.0",
     "news": {
+      "4.5.0": {
+        "en": "- some changes. see readme/below\n\n#### Changes 2026-07-29\n\n- repair widget rendering\n- add search and fullscreen to ejs-edit for vis-2 widget\n- improve ki documentation for regex expressions\n- improve vis-2 ejs edit theme for dark mode",
+        "de": "- einige änderungen. siehe readme/unten\n\nÄnderungen 2026-07-29\n\n- reparatur widget rendering\n- hinzufügen von suche und vollbild zu ejs-edit für vis-2 widget\n- verbesserung der ki-dokumentation für regex-ausdrücke\n- verbesserung von vis-2 ejs edit theme für den dunklen modus",
+        "ru": "- некоторые изменения. см. readme/low\n\n#### Изменения 2026-07-29\n\n- реконструкция виджета\n- добавить поиск и полноэкранный редактор для виджета vis-2\n- улучшить документацию ки для выражений регекса\nулучшение темы редактирования vis-2 ejs в темном режиме",
+        "pt": "- algumas mudanças. ver lerme/abaixo\n\n### # Mudanças 2026-07-29\n\n- renderização de widget de reparação\n- adicionar pesquisa e tela cheia ao ejs-edit para widget vis-2\n- melhorar a documentação ki para expressões regex\n- melhorar o tema de edição vis-2 ejs para o modo escuro",
+        "nl": "- wat veranderingen. zie readme/onder\n\nVeranderingen 2026-07-29\n\n- repareren widget rendering\n- zoekopdracht en volledig scherm toevoegen aan ejs-edit voor vis-2 widget\n- verbetering van ki documentatie voor regex expressies\n- vis-2 ejs bewerken thema voor donkere modus",
+        "fr": "- quelques changements. voir lecture/ci-dessous\n\nChangements 2026-07-29\n\n- rendu de widget de réparation\n- ajouter recherche et plein écran à ejs-edit pour vis-2 widget\n- améliorer la documentation ki pour les expressions regex\n- améliorer le thème d'édition vis-2 ejs pour mode sombre",
+        "it": "- qualche cambiamento. vedi readme/below\n\n##### Changes 2026-07-29\n\n- riparazione widget rendering\n- aggiungere ricerca e schermo intero a ejs-edit per widget vis-2\n- migliorare la documentazione ki per le espressioni regex\n- migliorare il tema vis-2 ejs edit per la modalità dark",
+        "es": "- algunos cambios. ver readme/below\n\n### Cambios 2026-07-29\n\n- reparación de widget rendering\n- añadir búsqueda y pantalla completa a ejs-edit para vis-2 widget\n- mejorar la documentación de ki para expresiones regex\n- mejorar vis-2 ejs tema de edición para modo oscuro",
+        "pl": "- kilka zmian. patrz readme / poniżej\n\nZmiana 2026- 07- 29\n\n- renderowanie widżetu naprawy\n- dodaj wyszukiwanie i pełnoekranowy do ejs- edit dla vis-2 widget\n- ulepszenie dokumentacji ki dla wyrażeń regex\n- poprawić vis-2 ejs edycji tematu dla trybu ciemnego",
+        "uk": "- деякі зміни. переглянути файл\n\n##### Зміни 2026-07-29\n\n- відремонтування віджету\n- додати пошук і повноекранний до ejs-edit для віджету vis-2\n- покращувати ki документацію для виразів regex\n- поліпшуйте вік-2 ejs редагування теми для темного режиму",
+        "zh-cn": "- 一些变化。 见readme/以下\n\n* 变动 2026-07-29\n\n- 修理部件渲染\n- 在 ejs 编辑器中添加搜索和全屏,以显示相对于 2 部件\n- 改进用于regex表达式的 ki 文档\n- 改进对-2 ejs 为暗模式编辑主题"
+      },
       "4.4.5": {
         "en": "fix packages for vis-2",
         "de": "Pakete für vis-2 korrigieren",
@@ -80,19 +93,6 @@
         "pl": "- optymalizacja rozmiaru lib\n- Możliwość wczytania dodatkowych plików JavaScript i CSS\nzostał dodany (także dla vis2).\n- Poprawa składników reakcji\n- tłumaczenie wyrównawcze dla vis2 widget",
         "uk": "- оптимізація розміру lib\n- Можливість завантаження додаткових файлів JavaScript та CSS\nдодано (також для vis2).\n- Покращити компоненти реакції\n- вирівняти переклад для віджету vis2",
         "zh-cn": "- 优化自由体积\n- 装入额外的 JavaScript 和 CSS 文件的能力\n已添加(也用于对比2).\n- 改进反应组件\n- 对齐粘合元件的翻译"
-      },
-      "4.3.11": {
-        "en": "check test release workflow",
-        "de": "testfreigabe workflow",
-        "ru": "проверка рабочего процесса выпуска",
-        "pt": "verificar o fluxo de trabalho de lançamento do teste",
-        "nl": "test-ontgrendelingsworkflow controleren",
-        "fr": "vérifier le déroulement du test de libération",
-        "it": "controllo del flusso di lavoro di rilascio del test",
-        "es": "check test de liberación flujo de trabajo",
-        "pl": "sprawdzić przepływ pracy uwalniania próby",
-        "uk": "контрольний процес тестування",
-        "zh-cn": "检查测试发布工作流程"
       }
     },
     "titleLang": {

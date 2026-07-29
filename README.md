@@ -410,8 +410,11 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 4.5.0 (2026-07-29)
 
-### **WORK IN PROGRESS**
+- some changes. see readme/below
+
+#### Changes 2026-07-29
 
 - repair widget rendering
 - add search and fullscreen to ejs-edit for vis-2 widget
@@ -442,11 +445,6 @@ Loop over the attributes of an object
 ### 4.4.2 (2026-04-13)
 
 - fix runtime
-
-### 4.4.1 (2026-04-13)
-
-- fix regression
-- update packages
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
