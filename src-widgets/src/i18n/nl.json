@@ -6,6 +6,8 @@
     "json_template": "Sjabloon:",
     "json_dpcount": "Aantal datapunten:",
     "json_datapoints_oid": "Datapunt ID:",
+    "json_datapoints_variable": "Variabelenaam:",
+    "json_datapoints_variable_tooltip": "Optionele JavaScript-variabelenaam voor dit datapunt",
     "json_datapointsgroup": "Datapunten:",
     "json_scriptcount": "Aantal scripts:",
     "json_csscount": "CSS tellen:",

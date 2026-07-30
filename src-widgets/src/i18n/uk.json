@@ -6,6 +6,8 @@
     "json_template": "Шаблон:",
     "json_dpcount": "Підрахунок точок даних:",
     "json_datapoints_oid": "Ідентифікатор точки доступу:",
+    "json_datapoints_variable": "Ім'я змінної:",
+    "json_datapoints_variable_tooltip": "Необов'язкове ім'я змінної JavaScript для цієї точки даних",
     "json_datapointsgroup": "Точки даних:",
     "json_scriptcount": "Підрахунок сценаріїв:",
     "json_csscount": "Підрахунок ССС:",

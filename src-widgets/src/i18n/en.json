@@ -6,6 +6,8 @@
     "json_template": "Template:",
     "json_dpcount": "Datapoint count:",
     "json_datapoints_oid": "Datapoint ID:",
+    "json_datapoints_variable": "Variable name:",
+    "json_datapoints_variable_tooltip": "Optional JavaScript variable name: name contains the datapoint ID, name_value contains its value",
     "json_datapointsgroup": "Datapoints:",
     "json_scriptcount": "Script count:",
     "json_csscount": "CSS count:",

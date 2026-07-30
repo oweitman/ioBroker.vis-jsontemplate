@@ -1,10 +1,27 @@
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
+  var __defProps = Object.defineProperties;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
   var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __propIsEnum = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __spreadValues = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    if (__getOwnPropSymbols)
+      for (var prop of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop))
+          __defNormalProp(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
   var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
     get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
   }) : x)(function(x) {
@@ -71,6 +88,104 @@
         const i18n = yield res.json();
         $.extend(true, systemDictionary, i18n);
       }));
+      var EJS_CONTEXT_NAMES = /* @__PURE__ */ new Set(["widgetid", "widgetID", "data", "dp", "style", "widget", "I18n"]);
+      var RESERVED_WORDS = /* @__PURE__ */ new Set([
+        "await",
+        "break",
+        "case",
+        "catch",
+        "class",
+        "const",
+        "continue",
+        "debugger",
+        "default",
+        "delete",
+        "do",
+        "else",
+        "enum",
+        "export",
+        "extends",
+        "false",
+        "finally",
+        "for",
+        "function",
+        "if",
+        "implements",
+        "import",
+        "in",
+        "instanceof",
+        "interface",
+        "let",
+        "new",
+        "null",
+        "package",
+        "private",
+        "protected",
+        "public",
+        "return",
+        "static",
+        "super",
+        "switch",
+        "this",
+        "throw",
+        "true",
+        "try",
+        "typeof",
+        "var",
+        "void",
+        "while",
+        "with",
+        "yield"
+      ]);
+      function isValidJavaScriptIdentifier(value) {
+        if (typeof value !== "string" || !value) {
+          return false;
+        }
+        return /^[$_\p{ID_Start}][$\u200C\u200D_\p{ID_Continue}]*$/u.test(value) && !RESERVED_WORDS.has(value);
+      }
+      function getDatapointVariableName(data, index) {
+        var _a, _b;
+        const value = (_b = (_a = data == null ? void 0 : data[`json_dp_variable${index}`]) != null ? _a : data == null ? void 0 : data[`json_dp_variable-${index}`]) != null ? _b : "";
+        return typeof value === "string" ? value.trim() : "";
+      }
+      function buildDatapointVariables(data, dpCount) {
+        const variables = {};
+        const usedNames = /* @__PURE__ */ new Set();
+        for (let i = 1; i <= dpCount; i++) {
+          const name = getDatapointVariableName(data, i);
+          if (!name) {
+            continue;
+          }
+          if (!isValidJavaScriptIdentifier(name)) {
+            throw new Error(`Invalid JavaScript variable name: ${name}`);
+          }
+          const valueName = `${name}_value`;
+          if (EJS_CONTEXT_NAMES.has(name) || EJS_CONTEXT_NAMES.has(valueName)) {
+            throw new Error(`Variable name is already used by the template context: ${name}`);
+          }
+          if (usedNames.has(name) || usedNames.has(valueName)) {
+            throw new Error(`Variable name is used more than once: ${name}`);
+          }
+          usedNames.add(name);
+          usedNames.add(valueName);
+          const oid = data[`json_dp${i}`];
+          if (oid) {
+            Object.defineProperty(variables, name, {
+              value: oid,
+              enumerable: true,
+              configurable: true,
+              writable: true
+            });
+            Object.defineProperty(variables, valueName, {
+              value: vis.states.attr(`${oid}.val`),
+              enumerable: true,
+              configurable: true,
+              writable: true
+            });
+          }
+        }
+        return variables;
+      }
       vis.binds["jsontemplate"] = {
         version,
         _assetCache: vis.binds["jsontemplate"] && vis.binds["jsontemplate"]._assetCache || /* @__PURE__ */ new Map(),
@@ -215,16 +330,17 @@
               }
               let text = "";
               try {
+                const datapointVariables = buildDatapointVariables(data, dpCount);
                 text = yield ejs.render(
                   template,
-                  {
+                  __spreadProps(__spreadValues({}, datapointVariables), {
                     widgetID,
                     widgetid: widgetID,
                     data: oiddata,
                     dp: datapoints,
                     widget: data,
                     style
-                  },
+                  }),
                   { async: true }
                 );
               } catch (e) {

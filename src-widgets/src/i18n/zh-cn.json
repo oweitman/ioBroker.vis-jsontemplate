@@ -6,6 +6,8 @@
     "json_template": "Template:",
     "json_dpcount": "Datapoint count:",
     "json_datapoints_oid": "Datapoint ID:",
+    "json_datapoints_variable": "变量名：",
+    "json_datapoints_variable_tooltip": "此数据点的可选 JavaScript 变量名",
     "json_datapointsgroup": "Datapoints:",
     "json_scriptcount": "Script count:",
     "json_csscount": "CSS count:",

@@ -6,6 +6,8 @@
     "json_template": "Modelo:",
     "json_dpcount": "Contagem de pontos de dados:",
     "json_datapoints_oid": "ID do ponto de dados:",
+    "json_datapoints_variable": "Nome da variável:",
+    "json_datapoints_variable_tooltip": "Nome de variável JavaScript opcional para este ponto de dados",
     "json_datapointsgroup": "Pontos de dados:",
     "json_scriptcount": "Contagem de scripts:",
     "json_csscount": "Contagem de CSS:",

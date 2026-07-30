@@ -5,7 +5,14 @@ import { VisRxWidget } from '@iobroker/vis-2-widgets-react-dev';
 import VisEJSAttributeField from './Components/VisEJSAttributeField';
 import JSONTemplateRenderer from './Components/JSONTemplateRenderer';
 import { buildAssetKey, getAssetLists, loadAssetsInOrder } from './assetLoader';
-import { buildDatapoints, escapeHtml, parseJsonValue, renderEjsTemplate } from './templateUtils';
+import {
+    buildDatapoints,
+    buildDatapointVariables,
+    escapeHtml,
+    hasInvalidDatapointVariable,
+    parseJsonValue,
+    renderEjsTemplate,
+} from './templateUtils';
 
 class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
     constructor(props) {
@@ -118,6 +125,14 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
                             label: 'json_datapoints_oid',
                             type: 'id',
                         },
+                        {
+                            name: 'json_dp_variable',
+                            label: 'json_datapoints_variable',
+                            tooltip: 'json_datapoints_variable_tooltip',
+                            type: 'text',
+                            noBinding: true,
+                            error: (data, index) => hasInvalidDatapointVariable(data, index),
+                        },
                     ],
                 },
                 {
@@ -228,11 +243,13 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
             const rawValue = mainOid ? values?.[`${mainOid}.val`] : undefined;
             const oiddata = parseJsonValue(rawValue);
             const datapoints = buildDatapoints(data, values);
+            const datapointVariables = buildDatapointVariables(data, values);
             const template = data?.template || '';
 
             const html = await renderEjsTemplate(
                 template,
                 {
+                    ...datapointVariables,
                     widgetid: this.props.id,
                     widgetID: this.props.id,
                     data: oiddata,

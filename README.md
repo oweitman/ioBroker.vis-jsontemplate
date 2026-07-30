@@ -91,6 +91,7 @@ JSONTemplate now supports async calls with await.
 | json_oid         | Selection of the data point with the corresponding JSON data.                                                                                                                                                                                                                     |
 | json_dpCount     | Number of data points to be made available in the template.                                                                                                                                                                                                                       |
 | json_dp          | Datapoint ID to be made available.                                                                                                                                                                                                                                                |
+| json_dp_variable | Optional JavaScript variable name. The variable contains the datapoint ID; the same name with `_value` appended contains its current value.                                                                                                                                       |
 | json_scriptCount | Number of JavaScript URLs to be loaded                                                                                                                                                                                                                                            |
 | json_script[]    | JavaScript URL to be loaded. See example below.                                                                                                                                                                                                                                   |
 | json_cssCount    | Number of CSS URLs to be loaded.                                                                                                                                                                                                                                                  |
@@ -122,6 +123,15 @@ B) Indexnumber of the datapoint (the number always start with 0)
 ```javascript
 <%- dp[Object.keys(dp)[0]] %>
 <%- dp[Object.keys(dp)[1]] %>
+```
+
+C) An optional variable name configured for the datapoint. For a datapoint
+`0_userdata.0.selectwrite`, variable name `dpwrite`, and value `abc`:
+
+```javascript
+<%- dpwrite %>          <!-- 0_userdata.0.selectwrite -->
+<%- dpwrite_value %>    <!-- abc -->
+<%- dp[dpwrite] %>      <!-- abc -->
 ```
 
 Example output of data, widget and style in the template
@@ -410,6 +420,11 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- add optional variable names to extra datapoints
+
 ### 4.5.0 (2026-07-29)
 
 - some changes. see readme/below

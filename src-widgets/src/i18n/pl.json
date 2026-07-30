@@ -6,6 +6,8 @@
     "json_template": "Szablon:",
     "json_dpcount": "Liczba punktów danych:",
     "json_datapoints_oid": "Identyfikator punktu danych:",
+    "json_datapoints_variable": "Nazwa zmiennej:",
+    "json_datapoints_variable_tooltip": "Opcjonalna nazwa zmiennej JavaScript dla tego punktu danych",
     "json_datapointsgroup": "Punkty danych:",
     "json_scriptcount": "Liczba skryptów:",
     "json_csscount": "Liczba CSS:",

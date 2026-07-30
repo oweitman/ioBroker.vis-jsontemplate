@@ -6,6 +6,8 @@
     "json_template": "Vorlage:",
     "json_dpcount": "Anzahl der Datenpunkte:",
     "json_datapoints_oid": "Datenpunkt-ID:",
+    "json_datapoints_variable": "Variablenname:",
+    "json_datapoints_variable_tooltip": "Optionaler JavaScript-Variablenname: Der Name enthält die Datenpunkt-ID, Name_value enthält den Wert",
     "json_datapointsgroup": "Datenpunkte:",
     "json_scriptcount": "Anzahl der Skripte:",
     "json_csscount": "CSS-Anzahl:",

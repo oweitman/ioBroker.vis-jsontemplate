@@ -16,6 +16,114 @@ fetch('widgets/vis-jsontemplate/myi18n/words.json').then(async res => {
     $.extend(true, systemDictionary, i18n);
 });
 
+const EJS_CONTEXT_NAMES = new Set(['widgetid', 'widgetID', 'data', 'dp', 'style', 'widget', 'I18n']);
+const RESERVED_WORDS = new Set([
+    'await',
+    'break',
+    'case',
+    'catch',
+    'class',
+    'const',
+    'continue',
+    'debugger',
+    'default',
+    'delete',
+    'do',
+    'else',
+    'enum',
+    'export',
+    'extends',
+    'false',
+    'finally',
+    'for',
+    'function',
+    'if',
+    'implements',
+    'import',
+    'in',
+    'instanceof',
+    'interface',
+    'let',
+    'new',
+    'null',
+    'package',
+    'private',
+    'protected',
+    'public',
+    'return',
+    'static',
+    'super',
+    'switch',
+    'this',
+    'throw',
+    'true',
+    'try',
+    'typeof',
+    'var',
+    'void',
+    'while',
+    'with',
+    'yield',
+]);
+
+function isValidJavaScriptIdentifier(value) {
+    if (typeof value !== 'string' || !value) {
+        return false;
+    }
+
+    // ZWNJ and ZWJ are explicitly permitted after the first character by ECMAScript.
+    // eslint-disable-next-line no-misleading-character-class
+    return /^[$_\p{ID_Start}][$\u200C\u200D_\p{ID_Continue}]*$/u.test(value) && !RESERVED_WORDS.has(value);
+}
+
+function getDatapointVariableName(data, index) {
+    const value = data?.[`json_dp_variable${index}`] ?? data?.[`json_dp_variable-${index}`] ?? '';
+    return typeof value === 'string' ? value.trim() : '';
+}
+
+function buildDatapointVariables(data, dpCount) {
+    const variables = {};
+    const usedNames = new Set();
+
+    for (let i = 1; i <= dpCount; i++) {
+        const name = getDatapointVariableName(data, i);
+        if (!name) {
+            continue;
+        }
+        if (!isValidJavaScriptIdentifier(name)) {
+            throw new Error(`Invalid JavaScript variable name: ${name}`);
+        }
+
+        const valueName = `${name}_value`;
+        if (EJS_CONTEXT_NAMES.has(name) || EJS_CONTEXT_NAMES.has(valueName)) {
+            throw new Error(`Variable name is already used by the template context: ${name}`);
+        }
+        if (usedNames.has(name) || usedNames.has(valueName)) {
+            throw new Error(`Variable name is used more than once: ${name}`);
+        }
+        usedNames.add(name);
+        usedNames.add(valueName);
+
+        const oid = data[`json_dp${i}`];
+        if (oid) {
+            Object.defineProperty(variables, name, {
+                value: oid,
+                enumerable: true,
+                configurable: true,
+                writable: true,
+            });
+            Object.defineProperty(variables, valueName, {
+                value: vis.states.attr(`${oid}.val`),
+                enumerable: true,
+                configurable: true,
+                writable: true,
+            });
+        }
+    }
+
+    return variables;
+}
+
 // this code can be placed directly in jsontemplate.html
 vis.binds['jsontemplate'] = {
     version: pkgVersion,
@@ -172,9 +280,11 @@ vis.binds['jsontemplate'] = {
             }
             let text = '';
             try {
+                const datapointVariables = buildDatapointVariables(data, dpCount);
                 text = await ejs.render(
                     template,
                     {
+                        ...datapointVariables,
                         widgetID: widgetID,
                         widgetid: widgetID,
                         data: oiddata,

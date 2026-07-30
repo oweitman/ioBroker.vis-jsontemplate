@@ -6,6 +6,8 @@
     "json_template": "Шаблон:",
     "json_dpcount": "Количество точек данных:",
     "json_datapoints_oid": "Идентификатор точки данных:",
+    "json_datapoints_variable": "Имя переменной:",
+    "json_datapoints_variable_tooltip": "Необязательное имя переменной JavaScript для этой точки данных",
     "json_datapointsgroup": "Датапоинты:",
     "json_scriptcount": "Количество сценариев:",
     "json_csscount": "Счетчик CSS:",

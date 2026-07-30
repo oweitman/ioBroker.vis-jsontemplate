@@ -12,6 +12,19 @@
         "uk": "точка даних",
         "zh-cn": "data point"
     },
+    "json_dp_variable": {
+        "en": "Variable name",
+        "de": "Variablenname",
+        "ru": "Имя переменной",
+        "pt": "Nome da variável",
+        "nl": "Variabelenaam",
+        "fr": "Nom de variable",
+        "it": "Nome variabile",
+        "es": "Nombre de variable",
+        "pl": "Nazwa zmiennej",
+        "uk": "Ім'я змінної",
+        "zh-cn": "变量名"
+    },
     "json_dpCount": {
         "en": "Additional datapoint Count",
         "de": "Zusätzlicher Datenpunkt Anzahl",
