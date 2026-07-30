@@ -420,8 +420,11 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 4.6.0 (2026-07-30)
 
-### **WORK IN PROGRESS**
+- some changes. see readme/below
+
+#### Changes 2026-07-30
 
 - add optional variable names to extra datapoints
 
@@ -456,10 +459,6 @@ Loop over the attributes of an object
 
 - revert repochecker warning about fs/node:fs and path/node:path
   because of error loading ejs
-
-### 4.4.2 (2026-04-13)
-
-- fix runtime
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
