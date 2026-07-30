@@ -1,0 +1,1262 @@
+<%
+/*
+ * Standalone calendar for ioBroker.vis-jsontemplate
+ *
+ * Change the values in calendarConfig to customize the widget.
+ */
+var calendarConfig = {
+    initialView: "month",
+    theme: "dark",
+    locale: "en-US",
+    firstDayOfWeek: 1,
+    weekdays: [1, 2, 3, 4, 5, 6, 0],
+    showWeekNumbers: true,
+    showControlLabels: true,
+    monthClickView: "week",
+    weekClickView: "day",
+    dayClickView: "week",
+    timeAxisStartHour: 0,
+    timeAxisEndHour: 24,
+    intervalMinutes: 60,
+    intervalHeight: 48,
+    eventMinHeight: 22
+};
+
+var calendarThemes = {
+    dark: {
+        background: "#151922",
+        panel: "#1d2330",
+        panelElevated: "#252c3b",
+        border: "#343d50",
+        text: "#f4f7fb",
+        muted: "#9ca8ba",
+        outside: "#11151d",
+        today: "#3b82f6",
+        todayText: "#ffffff",
+        hover: "#2d3748",
+        weekend: "rgba(255, 255, 255, 0.025)",
+        timeLine: "#ef4444",
+        scrollbar: "#536176"
+    },
+    light: {
+        background: "#f8fafc",
+        panel: "#ffffff",
+        panelElevated: "#f1f5f9",
+        border: "#d8e0ea",
+        text: "#172033",
+        muted: "#667085",
+        outside: "#eef2f7",
+        today: "#2563eb",
+        todayText: "#ffffff",
+        hover: "#e8eef7",
+        weekend: "rgba(15, 23, 42, 0.025)",
+        timeLine: "#dc2626",
+        scrollbar: "#a2adbd"
+    }
+};
+
+var selectedTheme = calendarThemes[calendarConfig.theme] || calendarThemes.dark;
+var calendarEvents = [];
+var calendarError = "";
+
+try {
+    var calendarSource = data;
+
+    if (typeof calendarSource === "string") {
+        calendarSource = JSON.parse(calendarSource);
+    }
+
+    if (!Array.isArray(calendarSource) && calendarSource) {
+        if (Array.isArray(calendarSource.events)) {
+            calendarSource = calendarSource.events;
+        } else if (Array.isArray(calendarSource.items)) {
+            calendarSource = calendarSource.items;
+        } else if (Array.isArray(calendarSource.data)) {
+            calendarSource = calendarSource.data;
+        } else if (Array.isArray(calendarSource.result)) {
+            calendarSource = calendarSource.result;
+        }
+    }
+
+    if (!Array.isArray(calendarSource)) {
+        calendarError = "The selected data point does not contain an event array.";
+    } else {
+        for (var sourceIndex = 0; sourceIndex < calendarSource.length; sourceIndex += 1) {
+            var sourceEvent = calendarSource[sourceIndex];
+
+            if (
+                sourceEvent &&
+                sourceEvent.name !== undefined &&
+                sourceEvent.start !== undefined &&
+                sourceEvent.end !== undefined
+            ) {
+                calendarEvents.push(sourceEvent);
+            }
+        }
+
+        if (calendarEvents.length !== calendarSource.length) {
+            calendarError = "Some events were ignored because name, start, or end is missing.";
+        }
+    }
+} catch (calendarException) {
+    calendarError = "The calendar JSON could not be processed.";
+}
+
+var calendarGlobalKey =
+    "__visJsontemplateCalendar_" +
+    String(widgetid).replace(/[^A-Za-z0-9_$]/g, "_");
+
+window[calendarGlobalKey] = {
+    config: calendarConfig,
+    error: calendarError,
+    events: calendarEvents
+};
+%>
+
+<style>
+    #<%- widgetid %> {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        color: <%- selectedTheme.text %>;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    #<%- widgetid %> * {
+        box-sizing: border-box;
+    }
+
+    #<%- widgetid %> .jtc-calendar {
+        --jtc-background: <%- selectedTheme.background %>;
+        --jtc-panel: <%- selectedTheme.panel %>;
+        --jtc-panel-elevated: <%- selectedTheme.panelElevated %>;
+        --jtc-border: <%- selectedTheme.border %>;
+        --jtc-text: <%- selectedTheme.text %>;
+        --jtc-muted: <%- selectedTheme.muted %>;
+        --jtc-outside: <%- selectedTheme.outside %>;
+        --jtc-today: <%- selectedTheme.today %>;
+        --jtc-today-text: <%- selectedTheme.todayText %>;
+        --jtc-hover: <%- selectedTheme.hover %>;
+        --jtc-weekend: <%- selectedTheme.weekend %>;
+        --jtc-time-line: <%- selectedTheme.timeLine %>;
+        --jtc-scrollbar: <%- selectedTheme.scrollbar %>;
+
+        position: absolute;
+        inset: 0;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background: var(--jtc-background);
+        border: 1px solid var(--jtc-border);
+        border-radius: 14px;
+        color: var(--jtc-text);
+    }
+
+    #<%- widgetid %> .jtc-controls {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px;
+        background: var(--jtc-panel);
+        border-bottom: 1px solid var(--jtc-border);
+    }
+
+    #<%- widgetid %> .jtc-control-group {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    #<%- widgetid %> .jtc-title {
+        min-width: 0;
+        flex: 1 1 auto;
+        overflow: hidden;
+        padding: 0 10px;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 16px;
+        font-weight: 750;
+    }
+
+    #<%- widgetid %> .jtc-button {
+        min-width: 36px;
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 0 10px;
+        color: var(--jtc-text);
+        background: var(--jtc-panel-elevated);
+        border: 1px solid var(--jtc-border);
+        border-radius: 8px;
+        cursor: pointer;
+        font: inherit;
+        font-size: 12px;
+        transition: background 120ms ease, border-color 120ms ease;
+    }
+
+    #<%- widgetid %> .jtc-button:hover,
+    #<%- widgetid %> .jtc-button:focus-visible {
+        background: var(--jtc-hover);
+        outline: none;
+    }
+
+    #<%- widgetid %> .jtc-button.is-active {
+        color: var(--jtc-today-text);
+        background: var(--jtc-today);
+        border-color: var(--jtc-today);
+    }
+
+    #<%- widgetid %> .jtc-status {
+        flex: 0 0 auto;
+        padding: 6px 10px;
+        color: #ffffff;
+        background: #b42318;
+        font-size: 11px;
+        line-height: 1.35;
+    }
+
+    #<%- widgetid %> .jtc-body {
+        position: relative;
+        min-height: 0;
+        flex: 1 1 auto;
+        overflow: hidden;
+    }
+
+    #<%- widgetid %> .jtc-month {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #<%- widgetid %> .jtc-month-header,
+    #<%- widgetid %> .jtc-month-grid {
+        display: grid;
+        grid-template-columns: var(--jtc-month-columns);
+    }
+
+    #<%- widgetid %> .jtc-month-header {
+        flex: 0 0 auto;
+        background: var(--jtc-panel);
+        border-bottom: 1px solid var(--jtc-border);
+    }
+
+    #<%- widgetid %> .jtc-weekday {
+        min-width: 0;
+        padding: 8px 5px;
+        color: var(--jtc-muted);
+        text-align: center;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    #<%- widgetid %> .jtc-month-grid {
+        min-height: 0;
+        flex: 1 1 auto;
+        grid-template-rows: repeat(6, minmax(0, 1fr));
+    }
+
+    #<%- widgetid %> .jtc-month-cell {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        padding: 5px;
+        background: var(--jtc-background);
+        border-right: 1px solid var(--jtc-border);
+        border-bottom: 1px solid var(--jtc-border);
+        cursor: pointer;
+    }
+
+    #<%- widgetid %> .jtc-month-cell.is-outside {
+        background: var(--jtc-outside);
+        color: var(--jtc-muted);
+    }
+
+    #<%- widgetid %> .jtc-month-cell.is-weekend {
+        box-shadow: inset 0 0 0 999px var(--jtc-weekend);
+    }
+
+    #<%- widgetid %> .jtc-month-cell:hover {
+        background: var(--jtc-hover);
+    }
+
+    #<%- widgetid %> .jtc-date-row {
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+        margin-bottom: 3px;
+    }
+
+    #<%- widgetid %> .jtc-date-number {
+        width: 24px;
+        height: 24px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    #<%- widgetid %> .jtc-date-number.is-today {
+        color: var(--jtc-today-text);
+        background: var(--jtc-today);
+    }
+
+    #<%- widgetid %> .jtc-week-number {
+        color: var(--jtc-muted);
+        font-size: 9px;
+    }
+
+    #<%- widgetid %> .jtc-month-events {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    #<%- widgetid %> .jtc-month-event {
+        overflow: hidden;
+        margin-bottom: 2px;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-size: 10px;
+        line-height: 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #<%- widgetid %> .jtc-more {
+        color: var(--jtc-muted);
+        font-size: 9px;
+    }
+
+    #<%- widgetid %> .jtc-agenda {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    #<%- widgetid %> .jtc-all-day,
+    #<%- widgetid %> .jtc-agenda-header {
+        flex: 0 0 auto;
+        display: grid;
+        grid-template-columns: 58px repeat(var(--jtc-day-columns), minmax(90px, 1fr));
+        background: var(--jtc-panel);
+    }
+
+    #<%- widgetid %> .jtc-agenda-header {
+        border-bottom: 1px solid var(--jtc-border);
+    }
+
+    #<%- widgetid %> .jtc-agenda-corner,
+    #<%- widgetid %> .jtc-agenda-day-title,
+    #<%- widgetid %> .jtc-all-day-label,
+    #<%- widgetid %> .jtc-all-day-cell {
+        min-width: 0;
+        padding: 7px 5px;
+        border-right: 1px solid var(--jtc-border);
+    }
+
+    #<%- widgetid %> .jtc-agenda-day-title {
+        cursor: pointer;
+        text-align: center;
+    }
+
+    #<%- widgetid %> .jtc-agenda-day-title:hover {
+        background: var(--jtc-hover);
+    }
+
+    #<%- widgetid %> .jtc-agenda-day-name {
+        color: var(--jtc-muted);
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+
+    #<%- widgetid %> .jtc-agenda-day-number {
+        margin-top: 3px;
+        font-size: 14px;
+        font-weight: 750;
+    }
+
+    #<%- widgetid %> .jtc-agenda-day-title.is-today .jtc-agenda-day-number {
+        width: 26px;
+        height: 26px;
+        display: inline-grid;
+        place-items: center;
+        color: var(--jtc-today-text);
+        background: var(--jtc-today);
+        border-radius: 50%;
+    }
+
+    #<%- widgetid %> .jtc-all-day {
+        max-height: 95px;
+        overflow-y: auto;
+        border-bottom: 1px solid var(--jtc-border);
+    }
+
+    #<%- widgetid %> .jtc-all-day-label {
+        color: var(--jtc-muted);
+        font-size: 9px;
+        text-align: right;
+    }
+
+    #<%- widgetid %> .jtc-all-day-cell {
+        min-height: 31px;
+    }
+
+    #<%- widgetid %> .jtc-all-day-event {
+        overflow: hidden;
+        margin-bottom: 2px;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-size: 9px;
+        line-height: 14px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #<%- widgetid %> .jtc-time-scroll {
+        min-height: 0;
+        flex: 1 1 auto;
+        overflow: auto;
+        scrollbar-color: var(--jtc-scrollbar) transparent;
+        scrollbar-width: thin;
+    }
+
+    #<%- widgetid %> .jtc-time-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 58px repeat(var(--jtc-day-columns), minmax(90px, 1fr));
+        min-width: max-content;
+    }
+
+    #<%- widgetid %> .jtc-time-axis,
+    #<%- widgetid %> .jtc-day-column {
+        position: relative;
+        min-width: 0;
+    }
+
+    #<%- widgetid %> .jtc-time-axis {
+        background: var(--jtc-panel);
+        border-right: 1px solid var(--jtc-border);
+    }
+
+    #<%- widgetid %> .jtc-time-label {
+        position: absolute;
+        right: 7px;
+        color: var(--jtc-muted);
+        font-size: 9px;
+        transform: translateY(-50%);
+    }
+
+    #<%- widgetid %> .jtc-day-column {
+        background-color: var(--jtc-background);
+        border-right: 1px solid var(--jtc-border);
+        background-image: repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent calc(var(--jtc-interval-height) - 1px),
+            var(--jtc-border) calc(var(--jtc-interval-height) - 1px),
+            var(--jtc-border) var(--jtc-interval-height)
+        );
+    }
+
+    #<%- widgetid %> .jtc-day-column.is-weekend {
+        box-shadow: inset 0 0 0 9999px var(--jtc-weekend);
+    }
+
+    #<%- widgetid %> .jtc-time-event {
+        position: absolute;
+        z-index: 2;
+        overflow: hidden;
+        padding: 3px 5px;
+        border-left: 3px solid rgba(255, 255, 255, 0.5);
+        border-radius: 5px;
+        font-size: 10px;
+        line-height: 1.25;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+    }
+
+    #<%- widgetid %> .jtc-time-event-time {
+        display: block;
+        margin-bottom: 2px;
+        font-size: 8px;
+        opacity: 0.85;
+    }
+
+    #<%- widgetid %> .jtc-now-line {
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        left: 0;
+        height: 2px;
+        background: var(--jtc-time-line);
+        pointer-events: none;
+    }
+
+    #<%- widgetid %> .jtc-now-line::before {
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: 9px;
+        height: 9px;
+        background: var(--jtc-time-line);
+        border-radius: 50%;
+        content: "";
+    }
+
+    #<%- widgetid %> .jtc-empty {
+        height: 100%;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        color: var(--jtc-muted);
+        text-align: center;
+    }
+
+    @media (max-width: 700px) {
+        #<%- widgetid %> .jtc-controls {
+            flex-wrap: wrap;
+        }
+
+        #<%- widgetid %> .jtc-title {
+            order: -1;
+            flex-basis: 100%;
+            padding-bottom: 3px;
+        }
+
+        #<%- widgetid %> .jtc-control-group {
+            flex: 1 1 auto;
+            justify-content: center;
+        }
+
+        #<%- widgetid %> .jtc-button-label {
+            display: none;
+        }
+
+        #<%- widgetid %> .jtc-month-cell {
+            padding: 3px;
+        }
+
+        #<%- widgetid %> .jtc-month-event {
+            padding: 1px 3px;
+            font-size: 8px;
+        }
+    }
+</style>
+
+<div class="jtc-calendar" data-calendar-key="<%- calendarGlobalKey %>">
+    <div class="jtc-controls">
+        <div class="jtc-control-group">
+            <button class="jtc-button" type="button" data-action="previous" title="Previous">&#x276E;</button>
+            <button class="jtc-button" type="button" data-action="today" title="Today">
+                <span>&#x25C9;</span>
+                <% if (calendarConfig.showControlLabels) { %>
+                    <span class="jtc-button-label">Today</span>
+                <% } %>
+            </button>
+            <button class="jtc-button" type="button" data-action="next" title="Next">&#x276F;</button>
+        </div>
+
+        <div class="jtc-title" data-role="title"></div>
+
+        <div class="jtc-control-group">
+            <button class="jtc-button" type="button" data-view="month">
+                <span>&#x25A6;</span>
+                <% if (calendarConfig.showControlLabels) { %>
+                    <span class="jtc-button-label">Month</span>
+                <% } %>
+            </button>
+            <button class="jtc-button" type="button" data-view="week">
+                <span>&#x2637;</span>
+                <% if (calendarConfig.showControlLabels) { %>
+                    <span class="jtc-button-label">Week</span>
+                <% } %>
+            </button>
+            <button class="jtc-button" type="button" data-view="day">
+                <span>&#x25A1;</span>
+                <% if (calendarConfig.showControlLabels) { %>
+                    <span class="jtc-button-label">Day</span>
+                <% } %>
+            </button>
+        </div>
+    </div>
+
+    <% if (calendarError) { %>
+        <div class="jtc-status"><%- calendarError %></div>
+    <% } %>
+
+    <div class="jtc-body" data-role="body"></div>
+</div>
+
+<script>
+    (function () {
+        "use strict";
+
+        var root = document.querySelector(
+            "#<%- widgetid %> .jtc-calendar[data-calendar-key='<%- calendarGlobalKey %>']"
+        );
+
+        var runtime = window["<%- calendarGlobalKey %>"];
+
+        if (!root || !runtime) {
+            return;
+        }
+
+        var config = runtime.config;
+        var body = root.querySelector("[data-role='body']");
+        var title = root.querySelector("[data-role='title']");
+        var view = config.initialView;
+        var focusDate = startOfDay(new Date());
+        var listeners = [];
+        var touchStartX = null;
+        var parsedEvents = parseEvents(runtime.events);
+
+        root.style.setProperty(
+            "--jtc-month-columns",
+            "repeat(" + config.weekdays.length + ", minmax(0, 1fr))"
+        );
+        root.style.setProperty("--jtc-day-columns", String(config.weekdays.length));
+        root.style.setProperty("--jtc-interval-height", config.intervalHeight + "px");
+
+        function addListener(target, eventName, handler, options) {
+            target.addEventListener(eventName, handler, options);
+            listeners.push(
+                function () {
+                    target.removeEventListener(eventName, handler, options);
+                }
+            );
+        }
+
+        function startOfDay(date) {
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        }
+
+        function copyDate(date) {
+            return new Date(date.getTime());
+        }
+
+        function addDays(date, count) {
+            var result = copyDate(date);
+            result.setDate(result.getDate() + count);
+            return result;
+        }
+
+        function addMonths(date, count) {
+            var result = new Date(date.getFullYear(), date.getMonth() + count, 1);
+            return result;
+        }
+
+        function sameDay(left, right) {
+            return (
+                left.getFullYear() === right.getFullYear() &&
+                left.getMonth() === right.getMonth() &&
+                left.getDate() === right.getDate()
+            );
+        }
+
+        function isDateOnly(value) {
+            return /^\d\d\d\d-\d\d-\d\d$/.test(String(value || ""));
+        }
+
+        function parseDate(value) {
+            var text = String(value || "");
+            var dateOnlyMatch = /^(\d\d\d\d)-(\d\d)-(\d\d)$/.exec(text);
+
+            if (dateOnlyMatch) {
+                return new Date(
+                    Number(dateOnlyMatch[1]),
+                    Number(dateOnlyMatch[2]) - 1,
+                    Number(dateOnlyMatch[3])
+                );
+            }
+
+            var parsed = new Date(text);
+            return Number.isNaN(parsed.getTime()) ? null : parsed;
+        }
+
+        function parseEvents(events) {
+            var result = [];
+
+            for (var index = 0; index < events.length; index += 1) {
+                var source = events[index];
+                var start = parseDate(source.start);
+                var end = parseDate(source.end);
+
+                if (!start || !end) {
+                    continue;
+                }
+
+                if (end.getTime() < start.getTime()) {
+                    end = copyDate(start);
+                }
+
+                result.push(
+                    {
+                        allDay: isDateOnly(source.start) && isDateOnly(source.end),
+                        color: source.color || "#3b82f6",
+                        colorText: source.colorText || "#ffffff",
+                        end: end,
+                        name: String(source.name),
+                        start: start
+                    }
+                );
+            }
+
+            return result;
+        }
+
+        function isVisibleWeekday(date) {
+            return config.weekdays.indexOf(date.getDay()) !== -1;
+        }
+
+        function nextVisibleDate(date, direction) {
+            var result = addDays(date, direction);
+            var guard = 0;
+
+            while (!isVisibleWeekday(result) && guard < 8) {
+                result = addDays(result, direction);
+                guard += 1;
+            }
+
+            return result;
+        }
+
+        function startOfConfiguredWeek(date) {
+            var result = startOfDay(date);
+            var targetDay = config.weekdays[0];
+            var guard = 0;
+
+            while (result.getDay() !== targetDay && guard < 8) {
+                result = addDays(result, -1);
+                guard += 1;
+            }
+
+            return result;
+        }
+
+        function getVisibleWeek(date) {
+            var days = [];
+            var current = startOfConfiguredWeek(date);
+
+            for (var index = 0; index < config.weekdays.length; index += 1) {
+                if (index > 0) {
+                    current = nextVisibleDate(current, 1);
+                }
+
+                days.push(copyDate(current));
+            }
+
+            return days;
+        }
+
+        function getWeekNumber(date) {
+            var target = startOfDay(date);
+            var dayNumber = (target.getDay() + 6) % 7;
+            target.setDate(target.getDate() - dayNumber + 3);
+            var firstThursday = new Date(target.getFullYear(), 0, 4);
+            var firstDayNumber = (firstThursday.getDay() + 6) % 7;
+            firstThursday.setDate(firstThursday.getDate() - firstDayNumber + 3);
+            return 1 + Math.round((target.getTime() - firstThursday.getTime()) / 604800000);
+        }
+
+        function formatDate(date, options) {
+            return new Intl.DateTimeFormat(config.locale, options).format(date);
+        }
+
+        function formatTime(date) {
+            return formatDate(
+                date,
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+        }
+
+        function eventTouchesDay(event, date) {
+            var dayStart = startOfDay(date);
+            var dayEnd = addDays(dayStart, 1);
+
+            if (event.allDay) {
+                return event.start.getTime() < dayEnd.getTime() && event.end.getTime() >= dayStart.getTime();
+            }
+
+            return event.start.getTime() < dayEnd.getTime() && event.end.getTime() > dayStart.getTime();
+        }
+
+        function createElement(tagName, className, text) {
+            var element = document.createElement(tagName);
+
+            if (className) {
+                element.className = className;
+            }
+
+            if (text !== undefined) {
+                element.textContent = text;
+            }
+
+            return element;
+        }
+
+        function applyEventColors(element, event) {
+            element.style.backgroundColor = event.color;
+            element.style.color = event.colorText;
+        }
+
+        function createMonthEvent(event) {
+            var element = createElement("div", "jtc-month-event", event.name);
+            element.title = event.name + " | " + formatTime(event.start);
+            applyEventColors(element, event);
+            return element;
+        }
+
+        function setView(nextView, selectedDate) {
+            if (nextView !== "month" && nextView !== "week" && nextView !== "day") {
+                return;
+            }
+
+            view = nextView;
+
+            if (selectedDate) {
+                focusDate = startOfDay(selectedDate);
+            }
+
+            render();
+        }
+
+        function updateViewButtons() {
+            var buttons = root.querySelectorAll("[data-view]");
+
+            for (var index = 0; index < buttons.length; index += 1) {
+                buttons[index].classList.toggle("is-active", buttons[index].dataset.view === view);
+            }
+        }
+
+        function updateTitle() {
+            if (view === "month") {
+                title.textContent = formatDate(
+                    focusDate,
+                    {
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+                return;
+            }
+
+            if (view === "day") {
+                title.textContent = formatDate(
+                    focusDate,
+                    {
+                        day: "numeric",
+                        month: "long",
+                        weekday: "long",
+                        year: "numeric"
+                    }
+                );
+                return;
+            }
+
+            var week = getVisibleWeek(focusDate);
+            title.textContent =
+                formatDate(
+                    week[0],
+                    {
+                        day: "numeric",
+                        month: "short"
+                    }
+                ) +
+                " - " +
+                formatDate(
+                    week[week.length - 1],
+                    {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric"
+                    }
+                );
+        }
+
+        function renderMonth() {
+            var month = createElement("div", "jtc-month");
+            var header = createElement("div", "jtc-month-header");
+            var grid = createElement("div", "jtc-month-grid");
+            var monthStart = new Date(focusDate.getFullYear(), focusDate.getMonth(), 1);
+            var current = startOfConfiguredWeek(monthStart);
+            var today = startOfDay(new Date());
+
+            for (var headerIndex = 0; headerIndex < config.weekdays.length; headerIndex += 1) {
+                var sampleDate = new Date(2023, 0, 1 + config.weekdays[headerIndex]);
+                var weekday = createElement(
+                    "div",
+                    "jtc-weekday",
+                    formatDate(
+                        sampleDate,
+                        {
+                            weekday: "short"
+                        }
+                    ).replace(".", "")
+                );
+                header.appendChild(weekday);
+            }
+
+            for (var cellIndex = 0; cellIndex < config.weekdays.length * 6; cellIndex += 1) {
+                if (cellIndex > 0) {
+                    current = nextVisibleDate(current, 1);
+                }
+
+                var cellDate = copyDate(current);
+                var cell = createElement("div", "jtc-month-cell");
+                var dateRow = createElement("div", "jtc-date-row");
+                var number = createElement("span", "jtc-date-number", String(cellDate.getDate()));
+
+                cell.dataset.date = String(cellDate.getTime());
+                cell.classList.toggle("is-outside", cellDate.getMonth() !== focusDate.getMonth());
+                cell.classList.toggle("is-weekend", cellDate.getDay() === 0 || cellDate.getDay() === 6);
+                number.classList.toggle("is-today", sameDay(cellDate, today));
+                dateRow.appendChild(number);
+
+                if (config.showWeekNumbers && cellIndex % config.weekdays.length === 0) {
+                    dateRow.appendChild(
+                        createElement("span", "jtc-week-number", "W" + getWeekNumber(cellDate))
+                    );
+                }
+
+                cell.appendChild(dateRow);
+
+                var eventContainer = createElement("div", "jtc-month-events");
+                var dayEvents = parsedEvents.filter(
+                    function (event) {
+                        return eventTouchesDay(event, cellDate);
+                    }
+                );
+                var visibleCount = Math.min(dayEvents.length, 3);
+
+                for (var eventIndex = 0; eventIndex < visibleCount; eventIndex += 1) {
+                    eventContainer.appendChild(createMonthEvent(dayEvents[eventIndex]));
+                }
+
+                if (dayEvents.length > visibleCount) {
+                    eventContainer.appendChild(
+                        createElement("div", "jtc-more", "+" + (dayEvents.length - visibleCount) + " more")
+                    );
+                }
+
+                cell.appendChild(eventContainer);
+                grid.appendChild(cell);
+            }
+
+            month.appendChild(header);
+            month.appendChild(grid);
+            body.appendChild(month);
+        }
+
+        function getAgendaDays() {
+            if (view === "day") {
+                return [copyDate(focusDate)];
+            }
+
+            return getVisibleWeek(focusDate);
+        }
+
+        function renderAgenda() {
+            var agenda = createElement("div", "jtc-agenda");
+            var header = createElement("div", "jtc-agenda-header");
+            var allDay = createElement("div", "jtc-all-day");
+            var scroll = createElement("div", "jtc-time-scroll");
+            var grid = createElement("div", "jtc-time-grid");
+            var axis = createElement("div", "jtc-time-axis");
+            var days = getAgendaDays();
+            var intervalCount =
+                ((config.timeAxisEndHour - config.timeAxisStartHour) * 60) /
+                config.intervalMinutes;
+            var gridHeight = intervalCount * config.intervalHeight;
+            var today = startOfDay(new Date());
+
+            agenda.style.setProperty("--jtc-day-columns", String(days.length));
+            header.appendChild(createElement("div", "jtc-agenda-corner"));
+
+            for (var headerIndex = 0; headerIndex < days.length; headerIndex += 1) {
+                var headerDay = days[headerIndex];
+                var dayTitle = createElement("div", "jtc-agenda-day-title");
+                dayTitle.dataset.date = String(headerDay.getTime());
+                dayTitle.classList.toggle("is-today", sameDay(headerDay, today));
+                dayTitle.appendChild(
+                    createElement(
+                        "div",
+                        "jtc-agenda-day-name",
+                        formatDate(
+                            headerDay,
+                            {
+                                weekday: "short"
+                            }
+                        ).replace(".", "")
+                    )
+                );
+                dayTitle.appendChild(
+                    createElement("div", "jtc-agenda-day-number", String(headerDay.getDate()))
+                );
+                header.appendChild(dayTitle);
+            }
+
+            allDay.appendChild(createElement("div", "jtc-all-day-label", "All day"));
+
+            for (var allDayIndex = 0; allDayIndex < days.length; allDayIndex += 1) {
+                var allDayCell = createElement("div", "jtc-all-day-cell");
+                var allDayDate = days[allDayIndex];
+
+                for (var parsedIndex = 0; parsedIndex < parsedEvents.length; parsedIndex += 1) {
+                    var allDayEvent = parsedEvents[parsedIndex];
+
+                    if (allDayEvent.allDay && eventTouchesDay(allDayEvent, allDayDate)) {
+                        var allDayElement = createElement(
+                            "div",
+                            "jtc-all-day-event",
+                            allDayEvent.name
+                        );
+                        allDayElement.title = allDayEvent.name;
+                        applyEventColors(allDayElement, allDayEvent);
+                        allDayCell.appendChild(allDayElement);
+                    }
+                }
+
+                allDay.appendChild(allDayCell);
+            }
+
+            axis.style.height = gridHeight + "px";
+
+            for (var intervalIndex = 0; intervalIndex <= intervalCount; intervalIndex += 1) {
+                var totalMinutes =
+                    config.timeAxisStartHour * 60 + intervalIndex * config.intervalMinutes;
+                var hours = Math.floor(totalMinutes / 60);
+                var minutes = totalMinutes % 60;
+                var labelDate = new Date(2000, 0, 1, hours, minutes);
+                var timeLabel = createElement("div", "jtc-time-label", formatTime(labelDate));
+                timeLabel.style.top = intervalIndex * config.intervalHeight + "px";
+                axis.appendChild(timeLabel);
+            }
+
+            grid.appendChild(axis);
+
+            for (var dayIndex = 0; dayIndex < days.length; dayIndex += 1) {
+                var day = days[dayIndex];
+                var column = createElement("div", "jtc-day-column");
+                column.style.height = gridHeight + "px";
+                column.classList.toggle("is-weekend", day.getDay() === 0 || day.getDay() === 6);
+
+                var timedEvents = parsedEvents.filter(
+                    function (event) {
+                        return !event.allDay && eventTouchesDay(event, day);
+                    }
+                );
+
+                for (var timedIndex = 0; timedIndex < timedEvents.length; timedIndex += 1) {
+                    var timedEvent = timedEvents[timedIndex];
+                    var dayStart = startOfDay(day);
+                    var visibleStart = new Date(
+                        day.getFullYear(),
+                        day.getMonth(),
+                        day.getDate(),
+                        config.timeAxisStartHour
+                    );
+                    var visibleEnd = new Date(
+                        day.getFullYear(),
+                        day.getMonth(),
+                        day.getDate(),
+                        config.timeAxisEndHour
+                    );
+                    var eventStart = new Date(
+                        Math.max(timedEvent.start.getTime(), dayStart.getTime(), visibleStart.getTime())
+                    );
+                    var eventEnd = new Date(
+                        Math.min(timedEvent.end.getTime(), addDays(dayStart, 1).getTime(), visibleEnd.getTime())
+                    );
+
+                    if (eventEnd.getTime() <= eventStart.getTime()) {
+                        continue;
+                    }
+
+                    var startMinutes =
+                        eventStart.getHours() * 60 +
+                        eventStart.getMinutes() -
+                        config.timeAxisStartHour * 60;
+                    var durationMinutes = (eventEnd.getTime() - eventStart.getTime()) / 60000;
+                    var top = (startMinutes / config.intervalMinutes) * config.intervalHeight;
+                    var height = Math.max(
+                        config.eventMinHeight,
+                        (durationMinutes / config.intervalMinutes) * config.intervalHeight
+                    );
+                    var eventElement = createElement("div", "jtc-time-event");
+                    eventElement.style.top = top + "px";
+                    eventElement.style.height = height + "px";
+                    eventElement.style.left = 3 + (timedIndex % 3) * 4 + "%";
+                    eventElement.style.right = 3 + ((timedIndex + 1) % 3) * 4 + "%";
+                    eventElement.title =
+                        timedEvent.name +
+                        " | " +
+                        formatTime(timedEvent.start) +
+                        " - " +
+                        formatTime(timedEvent.end);
+                    eventElement.appendChild(
+                        createElement(
+                            "span",
+                            "jtc-time-event-time",
+                            formatTime(timedEvent.start) + " - " + formatTime(timedEvent.end)
+                        )
+                    );
+                    eventElement.appendChild(document.createTextNode(timedEvent.name));
+                    applyEventColors(eventElement, timedEvent);
+                    column.appendChild(eventElement);
+                }
+
+                if (sameDay(day, today)) {
+                    var now = new Date();
+                    var nowMinutes =
+                        now.getHours() * 60 +
+                        now.getMinutes() -
+                        config.timeAxisStartHour * 60;
+
+                    if (
+                        nowMinutes >= 0 &&
+                        nowMinutes <= (config.timeAxisEndHour - config.timeAxisStartHour) * 60
+                    ) {
+                        var nowLine = createElement("div", "jtc-now-line");
+                        nowLine.style.top =
+                            (nowMinutes / config.intervalMinutes) * config.intervalHeight + "px";
+                        column.appendChild(nowLine);
+                    }
+                }
+
+                grid.appendChild(column);
+            }
+
+            scroll.appendChild(grid);
+            agenda.appendChild(header);
+            agenda.appendChild(allDay);
+            agenda.appendChild(scroll);
+            body.appendChild(agenda);
+
+            if (view === "day" || days.some(sameDay.bind(null, today))) {
+                var currentMinutes =
+                    new Date().getHours() * 60 +
+                    new Date().getMinutes() -
+                    config.timeAxisStartHour * 60;
+                var scrollTop =
+                    (currentMinutes / config.intervalMinutes) * config.intervalHeight -
+                    scroll.clientHeight / 3;
+                scroll.scrollTop = Math.max(0, scrollTop);
+            }
+        }
+
+        function render() {
+            body.replaceChildren();
+            updateTitle();
+            updateViewButtons();
+
+            if (view === "month") {
+                renderMonth();
+            } else {
+                renderAgenda();
+            }
+        }
+
+        function navigate(direction) {
+            if (view === "month") {
+                focusDate = addMonths(focusDate, direction);
+            } else if (view === "week") {
+                focusDate = addDays(focusDate, direction * 7);
+            } else {
+                focusDate = addDays(focusDate, direction);
+            }
+
+            render();
+        }
+
+        function onClick(event) {
+            var actionButton = event.target.closest("[data-action]");
+            var viewButton = event.target.closest("[data-view]");
+            var dateElement = event.target.closest("[data-date]");
+
+            if (actionButton) {
+                if (actionButton.dataset.action === "previous") {
+                    navigate(-1);
+                } else if (actionButton.dataset.action === "next") {
+                    navigate(1);
+                } else if (actionButton.dataset.action === "today") {
+                    focusDate = startOfDay(new Date());
+                    render();
+                }
+
+                return;
+            }
+
+            if (viewButton) {
+                setView(viewButton.dataset.view, focusDate);
+                return;
+            }
+
+            if (dateElement) {
+                var selectedDate = new Date(Number(dateElement.dataset.date));
+
+                if (view === "month") {
+                    setView(config.monthClickView, selectedDate);
+                } else if (view === "week") {
+                    setView(config.weekClickView, selectedDate);
+                } else {
+                    setView(config.dayClickView, selectedDate);
+                }
+            }
+        }
+
+        function onTouchStart(event) {
+            touchStartX = event.changedTouches[0].clientX;
+        }
+
+        function onTouchEnd(event) {
+            if (touchStartX === null) {
+                return;
+            }
+
+            var distance = event.changedTouches[0].clientX - touchStartX;
+            touchStartX = null;
+
+            if (Math.abs(distance) < 50) {
+                return;
+            }
+
+            navigate(distance < 0 ? 1 : -1);
+        }
+
+        addListener(root, "click", onClick);
+        addListener(root, "touchstart", onTouchStart, {
+            passive: true
+        });
+        addListener(root, "touchend", onTouchEnd, {
+            passive: true
+        });
+
+        render();
+
+        if (typeof window.__visJsonTemplateRegisterCleanup === "function") {
+            window.__visJsonTemplateRegisterCleanup(
+                function () {
+                    for (var index = 0; index < listeners.length; index += 1) {
+                        listeners[index]();
+                    }
+
+                }
+            );
+        }
+    }());
+</script>
