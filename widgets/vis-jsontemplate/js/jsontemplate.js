@@ -296,6 +296,7 @@ vis.binds['jsontemplate'] = {
                 );
             } catch (e) {
                 text = vis.binds['jsontemplate'].escapeHTML(e.message).replace(/(?:\r\n|\r|\n)/g, '<br>');
+                console.error(e.message);
                 text = text.replace(/ /gm, '&nbsp;');
                 text = `<code style="color:red;">${text}</code>`;
             }

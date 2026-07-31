@@ -143,6 +143,9 @@ Example output of data, widget and style in the template
     .replace(/ /g, '&nbsp;'); %>
 ```
 
+If an error occurs, it is displayed in the widget and output to the
+browser console (F12).
+
 #### Advanced use case
 
 In the examples above, only the pure output was covered.
@@ -420,6 +423,10 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 4.6.1 (2026-07-31)
+
+- Improved error output.
+
 ### 4.6.0 (2026-07-30)
 
 - some changes. see readme/below
@@ -454,11 +461,6 @@ Loop over the attributes of an object
 - add documentation for a responsive FRITZ!Box call list
 - Due to an inconsistency between the vis1 and vis2 widgets,
   both `widgetid` and `widgetID` are now passed to the template.
-
-### 4.4.3 (2026-04-21)
-
-- revert repochecker warning about fs/node:fs and path/node:path
-  because of error loading ejs
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

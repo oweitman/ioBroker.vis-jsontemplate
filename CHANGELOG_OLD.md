@@ -1,8 +1,13 @@
 # Older changes
+## 4.4.3 (2026-04-21)
+
+- revert repochecker warning about fs/node:fs and path/node:path
+  because of error loading ejs
+
+
 ## 4.4.2 (2026-04-13)
 
 - fix runtime
-
 
 ## 4.4.1 (2026-04-13)
 

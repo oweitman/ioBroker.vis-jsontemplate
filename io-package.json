@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.6.0",
+    "version": "4.6.1",
     "news": {
+      "4.6.1": {
+        "en": "- Improved error output.",
+        "de": "- Verbesserte Fehlerausgabe.",
+        "ru": "- Улучшен вывод сообщений об ошибках.",
+        "pt": "- Melhorada a saída de erros.",
+        "nl": "- Verbeterde foutuitvoer.",
+        "fr": "- Amélioration de l'affichage des erreurs.",
+        "it": "- Migliorata la visualizzazione degli errori.",
+        "es": "- Se ha mejorado la salida de errores.",
+        "pl": "- Ulepszono wyświetlanie błędów.",
+        "uk": "- Покращено виведення повідомлень про помилки.",
+        "zh-cn": "- 改进了错误输出。"
+      },
       "4.6.0": {
         "en": "- some changes. see readme/below",
         "de": "- einige änderungen. siehe readme/unten",
@@ -80,19 +93,6 @@
         "pl": "napraw środowisko wykonawcze",
         "uk": "фіксувати runtime",
         "zh-cn": "固定运行时间"
-      },
-      "4.4.1": {
-        "en": "fix regression\nupdate packages",
-        "de": "regression\nupdate-pakete",
-        "ru": "фиксировать регрессию\nобновление пакетов",
-        "pt": "corrigir regressão\natualizar pacotes",
-        "nl": "repareren regressie\npakketten bijwerken",
-        "fr": "fixer la régression\nmettre à jour les paquets",
-        "it": "correzione della regressione\npacchetti di aggiornamento",
-        "es": "regreso\nactualizar paquetes",
-        "pl": "naprawić regresję\naktualizacja pakietów",
-        "uk": "фіксація регресія\nоновлення пакетів",
-        "zh-cn": "修复回归\n更新软件包"
       }
     },
     "titleLang": {

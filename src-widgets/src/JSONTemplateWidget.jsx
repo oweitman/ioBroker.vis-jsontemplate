@@ -246,19 +246,16 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
             const datapointVariables = buildDatapointVariables(data, values);
             const template = data?.template || '';
 
-            const html = await renderEjsTemplate(
-                template,
-                {
-                    ...datapointVariables,
-                    widgetid: this.props.id,
-                    widgetID: this.props.id,
-                    data: oiddata,
-                    dp: datapoints,
-                    style: style,
-                    widget: data,
-                    I18n,
-                },
-            );
+            const html = await renderEjsTemplate(template, {
+                ...datapointVariables,
+                widgetid: this.props.id,
+                widgetID: this.props.id,
+                data: oiddata,
+                dp: datapoints,
+                style: style,
+                widget: data,
+                I18n,
+            });
 
             if (seq !== this._renderSeq) {
                 return;
@@ -276,6 +273,7 @@ class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
 
             const errorMessage = e instanceof Error ? e.message : String(e);
             let text = escapeHtml(errorMessage).replace(/(?:\r\n|\r|\n)/g, '<br>');
+            console.error(errorMessage);
             text = text.replace(/ /gm, '&nbsp;');
             const renderedHtml = `<code style="color:red;">${text}</code>`;
             this.setState(previousState => ({

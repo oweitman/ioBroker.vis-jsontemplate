@@ -75,7 +75,7 @@
   var version;
   var init_package = __esm({
     "../package.json"() {
-      version = "4.6.0";
+      version = "4.6.1";
     }
   });
 
@@ -345,6 +345,7 @@
                 );
               } catch (e) {
                 text = vis.binds["jsontemplate"].escapeHTML(e.message).replace(/(?:\r\n|\r|\n)/g, "<br>");
+                console.error(e.message);
                 text = text.replace(/ /gm, "&nbsp;");
                 text = `<code style="color:red;">${text}</code>`;
               }
