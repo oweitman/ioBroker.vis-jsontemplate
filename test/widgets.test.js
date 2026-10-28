@@ -3,7 +3,7 @@ const adapterName = require('../package.json').name.split('.').pop();
 
 describe('vis-2-widgets-jsontemplate', () => {
     before(async function () {
-        this.timeout(250000);
+        this.timeout(3000000);
         // install js-controller, web and vis-2-beta
         await helper.startIoBroker();
         await helper.startBrowser(process.env.CI === 'true' ? 'new' : false);
