@@ -1,0 +1,332 @@
+<%
+/* ================= Configuration ================= */
+const gaugeMin = 0;
+const gaugeMax = 5120;
+const gaugeStartAngle = -100;
+const gaugeStopAngle = 100;
+const gaugeBarWidth = 34;
+const gaugeBackgroundColor = "#eeeeee";
+
+/*
+Additional free space around the complete gauge. Increase this value when
+long boundary labels would otherwise extend beyond the SVG view box.
+*/
+const gaugeMargin = 50;
+
+const gaugeSectors = [
+    {
+        type: "absolute",
+        start: 0,
+        stop: 1280,
+        colorFrom: "#70df00",
+        colorTo: "#c6ff26"
+    },
+    {
+        type: "percent",
+        start: 25,
+        stop: 60,
+        colorFrom: "#f5d000",
+        colorTo: "#ff9700"
+    },
+    {
+        type: "percent",
+        start: 60,
+        stop: 100,
+        colorFrom: "#ff7800",
+        colorTo: "#e32626"
+    }
+];
+
+const showSectorLabels = true;
+const labelMode = "absolute";
+const labelDecimals = 0;
+const labelSuffixAbsolute = "";
+const labelSuffixPercent = "%";
+const labelColor = "#d8d8d8";
+const labelFontFamily = "Arial, sans-serif";
+const labelFontSize = 17;
+const labelFontWeight = "400";
+
+/*
+Fine adjustment for the absolute minimum and maximum labels when the gauge
+runs from -90 to 90 degrees. Positive Y values move a label downward.
+*/
+const gaugeEndLabelGap = 4;
+const gaugeMinLabelOffsetX = 0;
+const gaugeMinLabelOffsetY = 0;
+const gaugeMaxLabelOffsetX = 0;
+const gaugeMaxLabelOffsetY = 0;
+
+const showValue = true;
+const valueMode = "absolute";
+const valueDecimals = 0;
+const valuePrefix = "";
+const valueSuffixAbsolute = " W";
+const valueSuffixPercent = "%";
+const valueColor = "#ffffff";
+const valueFontFamily = "Arial, sans-serif";
+const valueFontSize = 30;
+const valueFontWeight = "700";
+
+const valueBoxEnabled = false;
+const valueBoxColor = "rgba(0, 0, 0, 0.55)";
+const valueBoxBorderColor = "transparent";
+const valueBoxBorderWidth = 0;
+const valueBoxRadius = 8;
+const valueBoxPaddingX = 12;
+const valueBoxPaddingY = 7;
+const gradientSegments = 64;
+
+/* ================= Helpers ================= */
+function clamp(value, minimum, maximum)
+{
+    return Math.max(minimum, Math.min(maximum, value));
+}
+
+function finiteNumber(value, fallback)
+{
+    const converted = Number(value);
+    return Number.isFinite(converted) ? converted : fallback;
+}
+
+function escapeXml(value)
+{
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+function rgb(color)
+{
+    let value = String(color || "").replace("#", "");
+    if (value.length === 3)
+    {
+        value = value.split("").map(function (part)
+        {
+            return part + part;
+        }).join("");
+    }
+    if (value.length !== 6)
+    {
+        return null;
+    }
+    return [
+        parseInt(value.substring(0, 2), 16),
+        parseInt(value.substring(2, 4), 16),
+        parseInt(value.substring(4, 6), 16)
+    ];
+}
+
+function mixColor(fromColor, toColor, position)
+{
+    const from = rgb(fromColor);
+    const to = rgb(toColor);
+    if (!from || !to)
+    {
+        return fromColor || toColor || "#ffffff";
+    }
+    const values = from.map(function (part, index)
+    {
+        return Math.round(part + (to[index] - part) * position);
+    });
+    return "rgb(" + values.join(",") + ")";
+}
+
+function absoluteToPercent(value)
+{
+    return gaugeMax === gaugeMin ? 0 : (value - gaugeMin) * 100 / (gaugeMax - gaugeMin);
+}
+
+function percentToAbsolute(value)
+{
+    return gaugeMin + (gaugeMax - gaugeMin) * value / 100;
+}
+
+function sectorPercent(sector, value)
+{
+    return sector.type === "percent" ? finiteNumber(value, 0) : absoluteToPercent(finiteNumber(value, gaugeMin));
+}
+
+const baseWidth = 500;
+const baseHeight = 310;
+const safeMargin = Math.max(0, finiteNumber(gaugeMargin, 0));
+const width = baseWidth + safeMargin * 2;
+const height = baseHeight + safeMargin * 2;
+const centerX = width / 2;
+const centerY = 220 + safeMargin;
+const radius = 165;
+const angleRange = gaugeStopAngle - gaugeStartAngle;
+const isHorizontalHalfGauge = gaugeStartAngle === -90 && gaugeStopAngle === 90;
+
+function point(percent, pointRadius)
+{
+    const angle = (gaugeStartAngle + angleRange * percent / 100) * Math.PI / 180;
+    return {
+        x: centerX + Math.sin(angle) * pointRadius,
+        y: centerY - Math.cos(angle) * pointRadius
+    };
+}
+
+function arc(start, stop)
+{
+    const safeStart = clamp(start, 0, 100);
+    const safeStop = clamp(stop, 0, 100);
+    const first = point(safeStart, radius);
+    const last = point(safeStop, radius);
+    const difference = Math.abs(angleRange * (safeStop - safeStart) / 100);
+    return "M " + first.x + " " + first.y + " A " + radius + " " + radius + " 0 " + (difference > 180 ? 1 : 0) + " " + (angleRange >= 0 ? 1 : 0) + " " + last.x + " " + last.y;
+}
+
+function format(value, decimals)
+{
+    return finiteNumber(value, 0).toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    });
+}
+
+let rawValue = 0;
+if (typeof gauge_value !== "undefined")
+{
+    rawValue = gauge_value;
+}
+else if (typeof gaugevalue_value !== "undefined")
+{
+    rawValue = gaugevalue_value;
+}
+else if (typeof gauge !== "undefined" && typeof dp !== "undefined")
+{
+    rawValue = dp[gauge];
+}
+else if (typeof gaugevalue !== "undefined")
+{
+    rawValue = typeof dp !== "undefined" ? dp[gaugevalue] : gaugevalue;
+}
+if (rawValue && typeof rawValue === "object" && Object.prototype.hasOwnProperty.call(rawValue, "val"))
+{
+    rawValue = rawValue.val;
+}
+
+const numericValue = finiteNumber(rawValue, gaugeMin);
+const currentPercent = clamp(absoluteToPercent(numericValue), 0, 100);
+const displayedValue = valueMode === "percent"
+    ? format(currentPercent, valueDecimals) + valueSuffixPercent
+    : valuePrefix + format(numericValue, valueDecimals) + valueSuffixAbsolute;
+const valueX = width / 2;
+const valueY = height / 2;
+const boxWidth = Math.max(valueFontSize * 2, displayedValue.length * valueFontSize * 0.61) + valueBoxPaddingX * 2;
+const boxHeight = valueFontSize + valueBoxPaddingY * 2;
+const boundaries = [];
+if (showSectorLabels && Array.isArray(gaugeSectors))
+{
+    gaugeSectors.forEach(function (sector)
+    {
+        boundaries.push(clamp(sectorPercent(sector, sector.start), 0, 100));
+        boundaries.push(clamp(sectorPercent(sector, sector.stop), 0, 100));
+    });
+}
+if (isHorizontalHalfGauge)
+{
+    boundaries.push(0);
+    boundaries.push(100);
+}
+const uniqueBoundaries = boundaries.filter(function (value, index, values)
+{
+    return values.indexOf(value) === index;
+}).sort(function (first, second)
+{
+    return first - second;
+});
+%>
+
+<style>
+#<%- widgetid %>
+{
+    background: transparent !important;
+    overflow: hidden;
+}
+#<%- widgetid %> .jt-gauge
+{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+#<%- widgetid %> svg
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#<%- widgetid %> .jt-gauge-arc
+{
+    fill: none;
+    stroke-width: <%- gaugeBarWidth %>;
+    stroke-linecap: butt;
+}
+#<%- widgetid %> text
+{
+    dominant-baseline: middle;
+    text-anchor: middle;
+}
+</style>
+
+<div class="jt-gauge">
+<svg viewBox="0 0 <%- width %> <%- height %>" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Gauge: <%- escapeXml(displayedValue) %>">
+<% if (gaugeBackgroundColor !== "transparent") {
+%><path class="jt-gauge-arc" d="<%- arc(0, 100) %>" stroke="<%- gaugeBackgroundColor %>"/><% }
+%>
+<% (Array.isArray(gaugeSectors) ? gaugeSectors : []).forEach(function (sector) {
+    let start = clamp(sectorPercent(sector, sector.start), 0, 100);
+    let stop = clamp(sectorPercent(sector, sector.stop), 0, 100);
+    if (stop < start) {
+        const swap = start;
+        start = stop;
+        stop = swap;
+    }
+    const visibleStop = Math.min(stop, currentPercent);
+    if (visibleStop <= start) {
+        return;
+    }
+    const gradient = Boolean(sector.colorFrom && sector.colorTo && sector.colorFrom !== sector.colorTo);
+    const parts = gradient ? Math.max(1, Math.floor(gradientSegments)) : 1;
+    for (let index = 0; index < parts; index++) {
+        const partStart = start + (stop - start) * index / parts;
+        const partStop = Math.min(visibleStop, start + (stop - start) * (index + 1) / parts);
+        if (partStop <= partStart) {
+            continue;
+        }
+        const color = gradient ? mixColor(sector.colorFrom, sector.colorTo, parts === 1 ? 0 : index / (parts - 1)) : (sector.color || sector.colorFrom || sector.colorTo || "#ffffff");
+%><path class="jt-gauge-arc" d="<%- arc(partStart, partStop) %>" stroke="<%- color %>"/><%
+    }
+});
+%>
+<% uniqueBoundaries.forEach(function (boundary) {
+    let labelPoint = point(boundary, radius + gaugeBarWidth / 2 + 25);
+    if (isHorizontalHalfGauge && (boundary === 0 || boundary === 100)) {
+        const endPoint = point(boundary, radius);
+        const isMinimum = boundary === 0;
+        labelPoint = {
+            x: endPoint.x + (isMinimum ? gaugeMinLabelOffsetX : gaugeMaxLabelOffsetX),
+            y: centerY + gaugeBarWidth / 2 + labelFontSize / 2 + gaugeEndLabelGap + (isMinimum ? gaugeMinLabelOffsetY : gaugeMaxLabelOffsetY)
+        };
+    }
+    const isGaugeEndLabel = isHorizontalHalfGauge && (boundary === 0 || boundary === 100);
+    const label = isGaugeEndLabel || labelMode === "absolute"
+        ? format(percentToAbsolute(boundary), labelDecimals) + labelSuffixAbsolute
+        : format(boundary, labelDecimals) + labelSuffixPercent;
+%><text x="<%- labelPoint.x %>" y="<%- labelPoint.y %>" fill="<%- labelColor %>" font-family="<%- labelFontFamily %>" font-size="<%- labelFontSize %>" font-weight="<%- labelFontWeight %>"><%- escapeXml(label) %></text><%
+});
+%>
+<% if (showValue) {
+    if (valueBoxEnabled) {
+%><rect x="<%- valueX - boxWidth / 2 %>" y="<%- valueY - boxHeight / 2 %>" width="<%- boxWidth %>" height="<%- boxHeight %>" rx="<%- valueBoxRadius %>" fill="<%- valueBoxColor %>" stroke="<%- valueBoxBorderColor %>" stroke-width="<%- valueBoxBorderWidth %>"/><%
+    }
+%><text x="<%- valueX %>" y="<%- valueY %>" fill="<%- valueColor %>" font-family="<%- valueFontFamily %>" font-size="<%- valueFontSize %>" font-weight="<%- valueFontWeight %>"><%- escapeXml(displayedValue) %></text><%
+}
+%>
+</svg>
+</div>

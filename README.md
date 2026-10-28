@@ -186,6 +186,7 @@ a specific layout. Here is an example:
 - [Use Case Tasklist](documentation/usecase-tasklist.md)
 - [Use Case public-transport](documentation/usecase-public-transport.md)
 - [Use Case simple gauge](documentation/usecase-simplegauge.md)
+- [Use Case configurable segmented gauge](documentation/usecase-configurable-gauge.md)
 - [Use Case Github Issues and PRs](documentation/usecase-githubissues.md)
 - [Use Case FRITZ!Box call list](documentation/usecase-fritzbox-call-list.md)
 
@@ -423,6 +424,11 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- last valid version for vis-2 with react 18 (vis-2 version <=2.15.4)
+
 ### 4.6.1 (2026-07-31)
 
 - Improved error output.

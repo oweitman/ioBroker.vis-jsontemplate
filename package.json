@@ -53,19 +53,21 @@
     "build": "npm run build-vis1widgets && npm run build-vis2widgets",
     "build-vis2widgets": "node tasks --javascript-vite",
     "build-vis1widgets": "cd widgets/vis-jsontemplate && npm run build && cd ../..",
+    "dev:upload": "dev-server upload",
+    "dev:run": "dev-server run",
+    "dev:watch": "dev-server watch --noStart",
+    "dev:watchvis2widgets": "npm run start --prefix src-widgets",
+    "dev:watchvis1widgets": "npm run watch --prefix widgets",
     "release": "release-script --all",
     "update-packages": "ncu --upgrade && cd src-widgets && ncu --upgrade && cd ..",
     "npm": "npm run npm:main && npm run npm:vis1widgets && npm run npm:vis2widgets",
     "npm:main": "npm i -f",
     "npm:vis2widgets": "cd src-widgets && npm i -f && cd ..",
     "npm:vis1widgets": "cd widgets && npm i && cd ..",
-    "debug": "npx dev-server watch --noStart --doNotWatch widgets/vis2vis-jsontemplate/**",
-    "repocheckerx": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.vis-jsontemplate --local",
-    "repocheckerx2": "npx @iobroker/repochecker https://github.com/oweitman/ioBroker.vis-jsontemplate",
+    "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.vis-jsontemplate --noinfo --local --env=../iobroker.env",
     "translate": "translate-adapter",
     "translate-widgets-vis2": "node ./bin/translate.js --source src-widgets/src/i18n/",
-    "translate-widgets-vis1": "node ./bin/translate.js --source widgets/vis-jsontemplate/myi18n/en.json --format single",
-    "debugiob": "npx dev-server watch --noStart"
+    "translate-widgets-vis1": "node ./bin/translate.js --source widgets/vis-jsontemplate/myi18n/en.json --format single"
   },
   "bugs": {
     "url": "https://github.com/oweitman/ioBroker.vis-jsontemplate/issues"
