@@ -5,7 +5,10 @@ describe('vis-2-widgets-jsontemplate', () => {
     before(async function () {
         this.timeout(3000000);
         // install js-controller, web and vis-2-beta
-        await helper.startIoBroker();
+        await helper.startIoBroker({
+            additionalAdapters: ['web', 'vis-2@2.15.8'],
+            mainGuiProject: 'vis-2',
+        });
         await helper.startBrowser(process.env.CI === 'true' ? 'new' : false);
         await helper.createProject();
 
