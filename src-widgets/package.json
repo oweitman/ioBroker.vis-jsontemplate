@@ -5,27 +5,24 @@
     "type": "module",
     "dependencies": {
         "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.0",
-        "@iobroker/adapter-react-v5": "^8.2.7",
-        "@iobroker/types-vis-2": "^2.14.4",
+        "@emotion/styled": "^11.14.1",
+        "@iobroker/gui-components": "^10.3.11",
+        "@iobroker/types-vis-2": "~2.20.1",
         "@module-federation/runtime": "^0.18.3",
-        "@module-federation/vite": "^1.7.2",
-        "@mui/icons-material": "^6.5.0",
-        "@mui/material": "^6.5.0",
+        "@module-federation/vite": "^1.22.1",
+        "@mui/icons-material": "^9.5.0",
+        "@mui/material": "^9.5.0",
+        "@mui/system": "^9.5.0",
         "@types/ace": "^0.0.52",
         "@types/ejs": "^3.1.5",
-        "@vitejs/plugin-react": "^5.2.0",
         "ace-builds": "^1.43.2",
         "ejs": "^3.1.10",
-        "react": "^18.3.1",
+        "iobroker.vis-jsontemplate": "file:..",
+        "react": "^19.3.1",
         "react-ace": "^14.0.1",
-        "react-dom": "^18.3.1",
+        "react-dom": "^19.3.1",
         "sass": "^1.91.0",
-        "typescript": "^5.9.3",
-        "vite": "7.3.2",
-        "vite-plugin-commonjs": "^0.10.4",
-        "vite-plugin-top-level-await": "^1.6.0",
-        "vite-tsconfig-paths": "^6.1.1"
+        "vite-plugin-commonjs": "^0.10.4"
     },
     "scripts": {
         "start": "vite --port 4173 --configLoader runner",
@@ -33,7 +30,8 @@
         "preview": "vite preview --port 4173",
         "lint": "eslint -c eslint.config.mjs",
         "i18n": "node node_modules/@iobroker/vis-2-widgets-react-dev/searchI18n jsontemplate",
-        "update-browsers": "npx browserslist@latest --update-db"
+        "update-browsers": "npx browserslist@latest --update-db",
+        "test:types": "tsc --noEmit && tsc --project tsconfig.node.json --noEmit"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -44,5 +42,12 @@
         "not dead",
         "not ie <= 11",
         "not op_mini all"
-    ]
+    ],
+    "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.2",
+        "typescript": "^7.0.2",
+        "vite": "^8.3.4"
+    }
 }

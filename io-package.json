@@ -121,16 +121,8 @@
       "uk": "vis-jsontemplate",
       "zh-cn": "vis-json模板1"
     },
-    "authors": [
-      "oweitman <oweitman@gmx.de>"
-    ],
-    "keywords": [
-      "jsontemplate",
-      "visualization",
-      "widgets",
-      "vis1",
-      "vis2"
-    ],
+    "authors": ["oweitman <oweitman@gmx.de>"],
+    "keywords": ["jsontemplate", "visualization", "widgets", "vis1", "vis2"],
     "licenseInformation": {
       "type": "free",
       "license": "MIT"
@@ -159,18 +151,16 @@
         "url": "vis2vis-jsontemplate/customWidgets.js",
         "urlxx": "http://localhost:4173/customWidgets.js",
         "bundlerType": "module",
-        "components": [
-          "JSONTemplateWidget"
-        ]
+        "components": ["JSONTemplateWidget"]
       }
     },
-    "restartAdapters": [
-      "vis",
-      "vis-2"
-    ],
+    "restartAdapters": ["vis", "vis-2"],
     "dependencies": [
       {
         "js-controller": ">=6.0.11"
+      },
+      {
+        "vis-2": ">=2.20.2"
       }
     ]
   },

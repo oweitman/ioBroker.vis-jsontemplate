@@ -122,9 +122,7 @@ function jsvClean() {
 }
 
 function jsvCopyAllFiles() {
-    copyFiles([`${SRC_JSV}build/customWidgets.js`], `widgets/${adapterName}`);
-    copyFiles([`${SRC_JSV}build/assets/*.*`], `widgets/${adapterName}/assets`);
-    copyFiles([`${SRC_JSV}build/img/*`], `widgets/${adapterName}/img`);
+    copyFiles([`${SRC_JSV}build/**/*`, `!${SRC_JSV}build/index.html`], `widgets/${adapterName}`);
 }
 
 if (process.argv.includes('--javascript-vite') || process.argv.length === 2) {
@@ -138,5 +136,8 @@ if (process.argv.includes('--javascript-vite') || process.argv.length === 2) {
     npmPromise
         .then(() => buildReact(src_jsv, { rootDir: __dirname, vite: true }))
         .then(() => jsvCopyAllFiles())
-        .catch(e => console.error(`Cannot build: ${e}`));
+        .catch(e => {
+            console.error(`Cannot build: ${e}`);
+            process.exitCode = 1;
+        });
 }

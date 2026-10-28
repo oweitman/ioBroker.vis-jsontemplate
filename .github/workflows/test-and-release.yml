@@ -35,6 +35,9 @@ jobs:
                   install-command: 'npm ci && cd src-widgets && npm ci'
                   lint: true
 
+            - name: Check widget TypeScript types
+              run: npm run test:types
+
     # Runs adapter tests on all supported node versions and OSes
     adapter-tests:
         if: contains(github.event.head_commit.message, '[skip ci]') == false

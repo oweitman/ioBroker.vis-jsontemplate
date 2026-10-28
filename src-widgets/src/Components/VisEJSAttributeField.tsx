@@ -3,7 +3,7 @@ import type { JSX } from 'react';
 
 import { TextField, Button } from '@mui/material';
 import { Edit as EditIcon } from '@mui/icons-material';
-import { I18n } from '@iobroker/adapter-react-v5';
+import { I18n } from '@iobroker/gui-components';
 
 import EJSDialog from './EJSDialog';
 

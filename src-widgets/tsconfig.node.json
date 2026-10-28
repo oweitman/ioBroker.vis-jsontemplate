@@ -1,8 +1,10 @@
 {
     "compilerOptions": {
         "composite": true,
+        "tsBuildInfoFile": "./node_modules/.cache/tsconfig.node.tsbuildinfo",
+        "skipLibCheck": true,
         "module": "ESNext",
-        "moduleResolution": "Node",
+        "moduleResolution": "Bundler",
         "allowSyntheticDefaultImports": true
     },
     "include": ["vite.config.ts", "module-federation/vite-importmap-shim.ts"]
