@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.6.1",
+    "version": "4.6.2",
     "news": {
+      "4.6.2": {
+        "en": "last valid version for vis-2 with react 18 (vis-2 version <=2.15.4)",
+        "de": "letzte gültige Version für Vis-2 mit React 18 (vis-2 <=2.15.4)",
+        "ru": "последняя действительная версия для vis-2 с реакцией 18 (версия vis-2 <= 2.15.4)",
+        "pt": "última versão válida para vis-2 com react 18 (vis-2 <=2.15.4)",
+        "nl": "laatste geldige versie voor vis-2 met react 18 (vis-2 versie <=2.15.4)",
+        "fr": "dernière version valide pour Vis-2 avec React 18 (vis-2 version <=2.15.4)",
+        "it": "ultima versione valida per vis-2 con react 18 (vis-2 <=2.15.4)",
+        "es": "última versión válida para vis-2 con react 18 (vis-2 versión <=2.15.4)",
+        "pl": "ostatnia poprawna wersja dla vis-2 z reactem 18 (wersja vis-2 <=2.15.4)",
+        "uk": "остання дійсна версія для vis-2 з реакцією 18 (версія vis-2 <= 2.15.4)",
+        "zh-cn": "使用 react 18 的 vis-2 的最后一个有效版本（vis-2 版本 <=2.15.4）"
+      },
       "4.6.1": {
         "en": "- Improved error output.",
         "de": "- Verbesserte Fehlerausgabe.",
@@ -80,19 +93,6 @@
         "pl": "- revert repochecker warning about fs / node: fs and path / node: path\nz powodu błędu wczytywania dżinsów",
         "uk": "- перевернути повторне попередження про fs/node:fs і шлях/node:path\nчерез завантаження помилок",
         "zh-cn": "- 恢复关于fs/节点:fs和路径/节点:路径的重新检查器警告\n因为装入 ejs 出错"
-      },
-      "4.4.2": {
-        "en": "fix runtime",
-        "de": "die laufzeit",
-        "ru": "исправить runtime",
-        "pt": "corrigir o tempo de execução",
-        "nl": "runtime corrigeren",
-        "fr": "fixer l'exécution",
-        "it": "correzione di runtime",
-        "es": "corrección",
-        "pl": "napraw środowisko wykonawcze",
-        "uk": "фіксувати runtime",
-        "zh-cn": "固定运行时间"
       }
     },
     "titleLang": {
