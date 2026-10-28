@@ -1,4 +1,9 @@
 # Older changes
+## 4.4.5 (2026-07-22)
+
+- fix packages for vis-2
+
+
 ## 4.4.4 (2026-07-22)
 
 - some changes. see readme/below

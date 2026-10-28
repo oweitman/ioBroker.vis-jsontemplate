@@ -75,7 +75,7 @@
   var version;
   var init_package = __esm({
     "../package.json"() {
-      version = "4.6.3";
+      version = "5.0.0";
     }
   });
 
