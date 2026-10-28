@@ -15,3 +15,4 @@ widgets/vis-jsontemplate/myi18n/en.json
 #ignore .commitinfo created by ioBroker release script
 .commitinfo
 .env
+documentation/migration.md

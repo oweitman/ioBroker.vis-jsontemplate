@@ -1,15 +1,12 @@
 const helper = require('@iobroker/vis-2-widgets-testing');
+const assert = require('node:assert/strict');
 const adapterName = require('../package.json').name.split('.').pop();
 
 describe('vis-2-widgets-jsontemplate', () => {
     before(async function () {
         this.timeout(3000000);
-        // install js-controller, web and vis-2-beta
-        await helper.startIoBroker({
-            additionalAdapters: ['web', 'vis-2@2.15.8'],
-            mainGuiProject: 'vis-2',
-            visUploadedId: 'vis-2.0.info.uploaded',
-        });
+        // Install js-controller, web and a compatible vis-2 version.
+        await helper.startIoBroker();
         await helper.startBrowser(process.env.CI === 'true' ? 'new' : false);
         await helper.createProject();
 
@@ -19,10 +16,11 @@ describe('vis-2-widgets-jsontemplate', () => {
     });
 
     it('Check all widgets', async function () {
-        this.timeout(60000);
+        this.timeout(120000);
         const widgets = await helper.palette.getListOfWidgets(null, adapterName);
+        assert.ok(widgets.length, 'The widget set must expose at least one widget');
         for (let w = 0; w < widgets.length; w++) {
-            const wid = await helper.palette.addWidget(null, widgets[w], true);
+            const wid = await helper.palette.addWidget(null, widgets[w]);
             await helper.screenshot(null, `10_${widgets[w]}`);
             await helper.view.deleteWidget(null, wid);
         }

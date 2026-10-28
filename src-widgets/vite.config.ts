@@ -1,19 +1,18 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import commonjs from 'vite-plugin-commonjs';
-import vitetsConfigPaths from 'vite-tsconfig-paths';
 import { federation } from '@module-federation/vite';
 import { moduleFederationShared } from '@iobroker/types-vis-2/modulefederation.vis.config';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-const pack = JSON.parse(readFileSync('./package.json').toString());
+const pack = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));
 const sourceDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 const config = {
     plugins: [
         federation({
             manifest: true,
-            name: 'vis2visjsonTemplateWidgets',
+            name: 'vis2vis-jsonTemplateWidgets',
             filename: 'customWidgets.js',
             exposes: {
                 './JSONTemplateWidget': './src/JSONTemplateWidget', // List of all widgets in this package
@@ -21,9 +20,9 @@ const config = {
             },
             remotes: {},
             shared: moduleFederationShared(pack),
+            dts: false,
         }),
         react(),
-        vitetsConfigPaths(),
         commonjs(),
     ],
     server: {
@@ -41,6 +40,7 @@ const config = {
         },
     },
     base: './',
+    oxc: { jsx: { development: false } },
     build: {
         target: 'chrome89',
         outDir: './build',
@@ -55,6 +55,8 @@ const config = {
         },
     },
     resolve: {
+        tsconfigPaths: true,
+        dedupe: ['react', 'react-dom', '@emotion/react', '@mui/material', '@mui/system', '@mui/icons-material'],
         alias: {
             fs: path.resolve(sourceDirectory, 'src/empty.js'),
             path: path.resolve(sourceDirectory, 'src/empty.js'),

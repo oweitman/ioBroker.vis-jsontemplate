@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { I18n } from '@iobroker/adapter-react-v5';
-import { VisRxWidget } from '@iobroker/vis-2-widgets-react-dev';
+import { I18n } from '@iobroker/gui-components';
 import VisEJSAttributeField from './Components/VisEJSAttributeField';
 import JSONTemplateRenderer from './Components/JSONTemplateRenderer';
 import { buildAssetKey, getAssetLists, loadAssetsInOrder } from './assetLoader';
@@ -14,7 +13,7 @@ import {
     renderEjsTemplate,
 } from './templateUtils';
 
-class JSONTemplateWidget extends (window.visRxWidget || VisRxWidget) {
+class JSONTemplateWidget extends window.visRxWidget {
     constructor(props) {
         super(props);
         const initialState = /** @type {Record<string, any>} */ (/** @type {unknown} */ (this.state));

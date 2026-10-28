@@ -1,16 +1,17 @@
 import { type JSX, type Ref, type RefObject, useEffect, useRef } from 'react';
-import AceEditor from 'react-ace';
+import AceEditorModule from 'react-ace';
 
 import 'ace-builds/src-noconflict/ace';
 import 'ace-builds/src-noconflict/mode-ejs';
-import 'ace-builds/src-noconflict/theme-tomorrow_night_bright';
 import 'ace-builds/src-noconflict/theme-chrome';
 import 'ace-builds/src-noconflict/snippets/ejs';
 import 'ace-builds/src-noconflict/snippets/html';
 import 'ace-builds/src-noconflict/ext-language_tools';
 import 'ace-builds/src-noconflict/ext-searchbox';
 
-import { I18n } from '@iobroker/adapter-react-v5';
+import { I18n } from '@iobroker/gui-components';
+
+const AceEditor = (AceEditorModule as unknown as { default?: typeof AceEditorModule }).default || AceEditorModule;
 
 interface EJSAceEditorProps {
     onChange?: (value: string) => void;
@@ -122,7 +123,7 @@ export const EJSAceEditor = (props: EJSAceEditorProps): JSX.Element => {
         >
             <AceEditor
                 mode="ejs"
-                theme={props.themeType === 'dark' ? 'tomorrow_night_bright' : 'chrome'}
+                theme="chrome"
                 width="100%"
                 height="100%"
                 value={props.value}

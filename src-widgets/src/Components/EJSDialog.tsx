@@ -2,7 +2,7 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import type { JSX } from 'react';
 
-import { I18n } from '@iobroker/adapter-react-v5';
+import { I18n } from '@iobroker/gui-components';
 import JSONTemplateDialog from './JSONTemplateDialog';
 const EJSAceEditor = lazy(() => import('./EJSAceEditor'));
 
