@@ -29,7 +29,7 @@
     "@iobroker/eslint-config": "^2.2.0",
     "@iobroker/testing": "^6.3.1",
     "@iobroker/vis-2-widgets-react-dev": "^4.0.4",
-    "@iobroker/vis-2-widgets-testing": "^1.0.6",
+    "@iobroker/vis-2-widgets-testing": "^2.0.0",
     "@types/node": "^25.9.9"
   },
   "main": "widgets/vis2jsontemplate/customWidgets.js",
