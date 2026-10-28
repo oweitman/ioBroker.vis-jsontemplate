@@ -11,7 +11,6 @@
 - Due to an inconsistency between the vis1 and vis2 widgets,
   both `widgetid` and `widgetID` are now passed to the template.
 
-
 ## 4.4.3 (2026-04-21)
 
 - revert repochecker warning about fs/node:fs and path/node:path

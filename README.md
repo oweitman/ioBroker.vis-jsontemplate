@@ -424,7 +424,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### 4.6.2 (2026-10-28)
+### 4.6.3 (2026-10-28)
 
 - last valid version for vis-2 with react 18 (vis-2 version <=2.15.4)
 
@@ -454,6 +454,7 @@ Loop over the attributes of an object
 ### 4.4.5 (2026-07-22)
 
 - fix packages for vis-2
+
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

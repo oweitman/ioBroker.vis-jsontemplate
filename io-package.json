@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "4.6.2",
+    "version": "4.6.3",
     "news": {
-      "4.6.2": {
+      "4.6.3": {
         "en": "last valid version for vis-2 with react 18 (vis-2 version <=2.15.4)",
         "de": "letzte gültige Version für Vis-2 mit React 18 (vis-2 <=2.15.4)",
         "ru": "последняя действительная версия для vis-2 с реакцией 18 (версия vis-2 <= 2.15.4)",
