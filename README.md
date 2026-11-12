@@ -424,8 +424,7 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 5.0.1 (2026-11-12)
 
 - fix optional vis-2 dependency
 
@@ -448,17 +447,6 @@ Loop over the attributes of an object
 #### Changes 2026-07-30
 
 - add optional variable names to extra datapoints
-
-### 4.5.0 (2026-07-29)
-
-- some changes. see readme/below
-
-#### Changes 2026-07-29
-
-- repair widget rendering
-- add search and fullscreen to ejs-edit for vis-2 widget
-- improve ki documentation for regex expressions
-- improve vis-2 ejs edit theme for dark mode
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

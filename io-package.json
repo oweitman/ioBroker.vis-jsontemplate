@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-jsontemplate",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "news": {
+      "5.0.1": {
+        "en": "fix optional vis-2 dependency",
+        "de": "Fix optionale Vis-2-Abhängigkeit",
+        "ru": "исправить опциональную зависимость vis-2",
+        "pt": "fix opcional vs-2",
+        "nl": "Optionele afhankelijkheid ten opzichte van 2-2 oplossen",
+        "fr": "fix la dépendance optionnelle Vis-2",
+        "it": "fix dipendenza vis-2 opzionale",
+        "es": "corregir la dependencia opcional de Vis 2",
+        "pl": "naprawić opcjonalną zależność vis-2",
+        "uk": "виправлено необов'язкову залежність vis-2",
+        "zh-cn": "修复可选的 vis-2 依赖关系"
+      },
       "5.0.0": {
         "en": "Migrated to React 19 and MUI 9 (vis-2 >= 2.20.0 is required now",
         "de": "Migriert auf React 19 und MUI 9 (vis-2 >= 2.20.0) ist nun nötig",
@@ -80,19 +93,6 @@
         "pl": "poprawki do pakietów dla vis-2",
         "uk": "виправити пакети для vis-2",
         "zh-cn": "vis-2 的修复包"
-      },
-      "4.4.4": {
-        "en": "some changes. see readme",
-        "de": "einige änderungen. siehe readme",
-        "ru": "некоторые изменения. см. readme",
-        "pt": "algumas mudanças. ver lerme",
-        "nl": "wat veranderingen. zie readme",
-        "fr": "quelques changements. voir lecture",
-        "it": "alcuni cambiamenti. vedi leggere",
-        "es": "algunos cambios. ver readme",
-        "pl": "kilka zmian. patrz readme",
-        "uk": "деякі зміни. переглянути файл",
-        "zh-cn": "一些变化。 参见readme"
       }
     },
     "titleLang": {
@@ -121,8 +121,16 @@
       "uk": "vis-jsontemplate",
       "zh-cn": "vis-json模板1"
     },
-    "authors": ["oweitman <oweitman@gmx.de>"],
-    "keywords": ["jsontemplate", "visualization", "widgets", "vis1", "vis2"],
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "jsontemplate",
+      "visualization",
+      "widgets",
+      "vis1",
+      "vis2"
+    ],
     "licenseInformation": {
       "type": "free",
       "license": "MIT"
@@ -151,10 +159,15 @@
         "url": "vis2vis-jsontemplate/customWidgets.js",
         "urlxx": "http://localhost:4173/customWidgets.js",
         "bundlerType": "module",
-        "components": ["JSONTemplateWidget"]
+        "components": [
+          "JSONTemplateWidget"
+        ]
       }
     },
-    "restartAdapters": ["vis", "vis-2"],
+    "restartAdapters": [
+      "vis",
+      "vis-2"
+    ],
     "dependencies": [
       {
         "js-controller": ">=6.0.11"

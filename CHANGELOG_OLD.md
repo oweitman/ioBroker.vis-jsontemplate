@@ -1,8 +1,19 @@
 # Older changes
+## 4.5.0 (2026-07-29)
+
+- some changes. see readme/below
+
+#### Changes 2026-07-29
+
+- repair widget rendering
+- add search and fullscreen to ejs-edit for vis-2 widget
+- improve ki documentation for regex expressions
+- improve vis-2 ejs edit theme for dark mode
+
+
 ## 4.4.5 (2026-07-22)
 
 - fix packages for vis-2
-
 
 ## 4.4.4 (2026-07-22)
 
