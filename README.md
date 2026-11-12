@@ -424,6 +424,11 @@ Loop over the attributes of an object
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- fix optional vis-2 dependency
+
 ### 5.0.0 (2026-10-28)
 
 - (oweitman) Migrated to React 19 and MUI 9 (vis-2 >= 2.20.0 is required now
